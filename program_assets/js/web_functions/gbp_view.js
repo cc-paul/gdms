@@ -24,6 +24,11 @@ function showParentGBP() {
                 
                 $("#lblFY").text(data[i].year);
                 $("#lblGAABudget").text(data[i].totalAmount);
+				
+				$("#lblApprovedByName").text(data[i].approvedBy);
+				$("#lblApprovedByPosition").text(data[i].approvedByPosition);
+				$("#lblPreparedByName").text(data[i].preparedBy);
+				$("#lblPreparedByPosition").text(data[i].preparedByPosition);
             }
         }
     });

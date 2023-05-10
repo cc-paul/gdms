@@ -352,17 +352,25 @@
             
             $sql    = "
                 SELECT 
-                    a.id,
+                    a.id,   
                     a.parentFolderID,
                     FORMAT(a.totalAmount,2) AS totalAmount,
                     a.`year`,
-                    a.`status`
+                    a.`status`,
+                    c.approvedBy,
+                    c.approvedByPosition,
+                    c.preparedBy,
+                    c.preparedByPosition
                 FROM
                     omg_gbp_parent a 
                 INNER JOIN
                     omg_gbp b 
                 ON 
                     a.parentFolderID = b.parentFolderID 
+                LEFT JOIN
+                    omg_signatory c 
+                ON 
+                    a.parentFolderID = c.parentFolderID
                 ORDER BY
                     a.id DESC 
                 LIMIT 1
@@ -376,7 +384,11 @@
                     'parentFolderID'  => $row["parentFolderID"],
                     'totalAmount'     => $row["totalAmount"],
                     'year'            => $row["year"],
-                    'status'          => $row["status"]
+                    'status'          => $row["status"],
+                    'approvedBy'         => $row["approvedBy"],
+                    'approvedByPosition' => $row["approvedByPosition"],
+                    'preparedBy'         => $row["preparedBy"],
+                    'preparedByPosition' => $row["preparedByPosition"]
                 );
             }
             echo json_encode($json);
@@ -747,6 +759,81 @@
                 $json[] = array(
                     'budgetSource' => $row["budgetSource"],
                     'alloc_budget' => $row["alloc_budget"]
+                );
+            }
+            echo json_encode($json);
+            
+        break;
+    
+        case "save_signatory" :
+            
+            $parentFolderID = $_POST["parentFolderID"];
+            $preparedBy = $_POST["preparedBy"];
+            $preparedByPosition = $_POST["preparedByPosition"];
+            $approvedBy = $_POST["approvedBy"];
+            $approvedByPosition = $_POST["approvedByPosition"];
+            
+            $find_query = mysqli_query($con,"SELECT * FROM omg_signatory WHERE parentFolderID = '$parentFolderID'");
+            if (mysqli_num_rows($find_query) == 0) {
+                mysqli_next_result($con);
+           
+                $query = "INSERT INTO omg_signatory (parentFolderID,preparedBy,preparedByPosition,approvedBy,approvedByPosition) VALUES (?,?,?,?,?)";
+                if ($stmt = mysqli_prepare($con, $query)) {
+                    mysqli_stmt_bind_param($stmt,"sssss",$parentFolderID,$preparedBy,$preparedByPosition,$approvedBy,$approvedByPosition);
+                    mysqli_stmt_execute($stmt);
+                   
+                    $error   = false;
+                    $color   = "green";
+                    $message = "Signatory has been saved"; 
+                   
+                } else {
+                    $error   = true;
+                    $color   = "red";
+                    $message = "Error saving signatory"; 
+                }
+               
+            } else {
+                
+                $query = "UPDATE omg_signatory SET preparedBy = ?,preparedByPosition = ?,approvedBy = ?,approvedByPosition = ? WHERE parentFolderID = ?";
+                if ($stmt = mysqli_prepare($con, $query)) {
+                    mysqli_stmt_bind_param($stmt,"sssss",$preparedBy,$preparedByPosition,$approvedBy,$approvedByPosition,$parentFolderID);
+                    mysqli_stmt_execute($stmt);
+                   
+                    $error   = false;
+                    $color   = "green";
+                    $message = "Signatory has been updated"; 
+                   
+                } else {
+                    $error   = true;
+                    $color   = "red";
+                    $message = "Error saving signatory"; 
+                }
+                
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+            
+        break;
+    
+        case "show_signatory" :
+            
+            $parentFolderID = $_POST["parentFolderID"];
+            
+            $sql    = "SELECT * FROM omg_signatory WHERE parentFolderID = '$parentFolderID'";
+            $result = mysqli_query($con,$sql);
+            
+            $json = array();
+            while ($row  = mysqli_fetch_assoc($result)) {
+                $json[] = array(
+                    'preparedBy'  => $row["preparedBy"],
+                    'preparedByPosition' => $row["preparedByPosition"],
+                    'approvedBy'  => $row["approvedBy"],
+                    'approvedByPosition'  => $row["approvedByPosition"]
                 );
             }
             echo json_encode($json);

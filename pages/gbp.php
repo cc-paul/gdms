@@ -240,7 +240,7 @@
 												View GBP
 												&nbsp;
 											</button>
-											<button type="button" class="btn btn-default cust-label">
+											<button id="btnSignatory" type="button" class="btn btn-default cust-label">
 												&nbsp;
 												<i class="fa fa-thumbs-up"></i>
 												&nbsp;
@@ -1574,8 +1574,105 @@
 								</div>
 							</div>
 						</div>
+						<br>
+						<br>
+						<div class="row">
+							<div class="col-md-4 col-xs-12">
+								<div class="row">
+									<div class="col-md-6 col-xs-12">
+										<label class="cust-label">Prepared By : </label>
+									</div>
+									<div class="col-md-6 col-xs-12">
+										<label class="cust-label">Approved By : </label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 col-xs-12">
+								<div class="row">
+									<div class="col-md-6 col-xs-12">
+										<label id="lblPreparedByName" class="cust-label"></label>
+									</div>
+									<div class="col-md-6 col-xs-12">
+										<label id="lblApprovedByName" class="cust-label"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 col-xs-12">
+								<div class="row">
+									<div class="col-md-6 col-xs-12">
+										<label id="lblPreparedByPosition" class="cust-label"></label>
+									</div>
+									<div class="col-md-6 col-xs-12">
+										<label id="lblApprovedByPosition" class="cust-label"></label>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="box-footer"></div>
+					<div class="box-footer">
+						
+					</div>
+				</div>
+			<!-- /.modal-content -->
+			</div>
+		<!-- /.modal-dialog -->
+		</div>
+		
+		<!-- Modal Name  -->
+		<div class="modal fade" id="mdSignatory" name="mdSignatory">
+			<div class="modal-dialog modal-md">
+				<div class="box box-default">
+					<div class="box-header with-border">
+						<label class="cust-label">Set Signatory</label>
+						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
+						</button>
+					</div>
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+								  <label for="txtPreparedBy" class="cust-label">Prepared By</label>
+								  <input type="text" class="form-control cust-label cust-textbox" id="txtPreparedBy" name="txtPreparedBy" placeholder="Enter Prepared By Name" autocomplete="off">
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+								  <label for="txtPreparedByPosition" class="cust-label">Position</label>
+								  <input type="text" class="form-control cust-label cust-textbox" id="txtPreparedByPosition" name="txtPreparedByPosition" placeholder="Enter Postion" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+								  <label for="txtApprovedBy" class="cust-label">Approved By</label>
+								  <input type="text" class="form-control cust-label cust-textbox" id="txtApprovedBy" name="txtApprovedBy" placeholder="Enter Approvers Name" autocomplete="off">
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group">
+								  <label for="txtApprovedByPosition" class="cust-label">Position</label>
+								  <input type="text" class="form-control cust-label cust-textbox" id="txtApprovedByPosition" name="txtApprovedByPosition" placeholder="Enter Position" autocomplete="off">
+								</div>
+							</div>
+						</div>			
+					</div>
+					<div class="box-footer">
+						<div class="row">
+							<div class="col-md-4 col-xs-12 pull-right">
+								<button id="btnSaveSignatory" name="btnSaveSignatory" type="button" class="btn btn-block btn-default btn-sm cust-textbox pull-right">
+									<i class="fa fa-save"></i>
+									&nbsp;
+									Save Signatory
+								</button>		
+							</div>
+						</div>
+					</div>
 				</div>
 			<!-- /.modal-content -->
 			</div>
@@ -1620,5 +1717,6 @@
 		<script src="../program_assets/js/web_functions/gbp_attr_validation.js?random=<?php echo uniqid(); ?>"></script>
 		<script src="../program_assets/js/web_functions/gbp_attr_table.js?random=<?php echo uniqid(); ?>"></script>
 		<script src="../program_assets/js/web_functions/gbp_view.js?random=<?php echo uniqid(); ?>"></script>
+		<script src="../program_assets/js/web_functions/signatory.js?random=<?php echo uniqid(); ?>"></script>
 	</body>
 </html>
