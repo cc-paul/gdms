@@ -479,6 +479,90 @@
             
         break;
     
+        case "load_attr_view" :
+            
+            $tab = $_POST["tab"];
+            $parentFolderID = $_POST["parentFolderID"];
+            
+            $sql = "
+                SELECT
+                    a.id,
+                    a.folderID,
+                    a.genderID,
+                    a.gadID,
+                    a.program AS gadActivity,                    
+                    IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.genderID),' - ') AS gender,
+                    IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.gadID),' - ') AS gad,
+                    d.performanceIndicator,
+                    FORMAT(SUM(e.budget),2) budget,
+                    IFNULL((
+                                    SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',REPLACE(FORMAT(budget,2),'.00','')) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
+                    ),'') AS arrBudget,
+                    IFNULL((
+                                    SELECT GROUP_CONCAT(CONCAT(fileName) SEPARATOR '~~') FROM omg_gbp_files WHERE folderID = a.folderID
+                    ),'') AS arrFiles,
+                    IFNULL((
+                                    SELECT GROUP_CONCAT(CONCAT(gadResult) SEPARATOR '~~') FROM omg_gbp_gadresult WHERE folderID = a.folderID
+                    ),'') AS arrGADResult,
+                    IFNULL((
+                                    SELECT GROUP_CONCAT(CONCAT(genderIssue) SEPARATOR '~~') FROM omg_gbp_genderissue WHERE folderID = a.folderID
+                    ),'') AS arrGenderIssue,
+                    IFNULL((
+                                    SELECT GROUP_CONCAT(CONCAT(type,'~',statement) SEPARATOR '~~') FROM omg_gbp_mfo WHERE folderID = a.folderID
+                    ),'') AS arrMFO,
+                    IFNULL((
+                                    SELECT GROUP_CONCAT(CONCAT(responsibleOffices) SEPARATOR '~~') FROM omg_gbp_offices WHERE folderID = a.folderID
+                    ),'') AS arrOffices,
+                    IFNULL((
+                                    SELECT GROUP_CONCAT(CONCAT(performanceIndicator,'~',target) SEPARATOR '~~') FROM omg_gbp_performanceindicator WHERE folderID = a.folderID
+                    ),'') AS arrPerformanceIndicator
+                FROM
+                    omg_gbp a 
+                LEFT JOIN
+                    omg_gbp_performanceindicator d 
+                ON 
+                    a.folderID = d.folderID 
+                LEFT JOIN
+                    omg_gbp_budget e 
+                ON 
+                    a.folderID = e.folderID
+                WHERE
+                    a.isRemoved = 0
+                AND
+                    a.parentFolderID = '$parentFolderID'
+                AND
+                    a.tab = $tab
+                GROUP BY
+                    a.folderID
+            ";
+            
+            $result = mysqli_query($con,$sql);
+            
+            $json = array();
+            while ($row  = mysqli_fetch_assoc($result)) {
+                $json[] = array(
+                    'id' => $row["id"],
+                    'folderID' => $row["folderID"],
+                    'genderID' => $row["genderID"],
+                    'gadID' => $row["gadID"],
+                    'gadActivity' => $row["gadActivity"],
+                    'gender' => $row["gender"],
+                    'gad' => $row["gad"],
+                    'performanceIndicator' => $row["performanceIndicator"],
+                    'budget' => $row["budget"],
+                    'arrBudget' => $row["arrBudget"],
+                    'arrFiles' => $row["arrFiles"],
+                    'arrGADResult' => $row["arrGADResult"],
+                    'arrGenderIssue' => $row["arrGenderIssue"],
+                    'arrMFO' => $row["arrMFO"],
+                    'arrOffices' => $row["arrOffices"],
+                    'arrPerformanceIndicator' => $row["arrPerformanceIndicator"]
+                );
+            }
+            echo json_encode($json);
+            
+        break;
+    
         case "load_activity2" :
             
             $tab = $_POST["tab"];
@@ -839,6 +923,164 @@
             echo json_encode($json);
             
         break;
+    
+        case "save_comment" :
+            
+            $commentMotherID = $_POST["commentMotherID"];
+            $comment         = $_POST["comment"];
+            $dateCreated     = $global_date;
+            $createdBy       = $_SESSION["id"];
+            
+            $query = "INSERT INTO omg_comments (commentMotherID,comment,dateCreated,createdBy) VALUES (?,?,?,?)";
+            if ($stmt = mysqli_prepare($con, $query)) {
+                mysqli_stmt_bind_param($stmt,"ssss",$commentMotherID,$comment,$dateCreated,$createdBy);
+                mysqli_stmt_execute($stmt);
+               
+                $error   = false;
+                $color   = "green";
+                $message = "Comment has been saved successfully"; 
+               
+            } else {
+                $error   = true;
+                $color   = "red";
+                $message = "Error saving comment"; 
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message,
+                'last_id' => mysqli_insert_id($con)
+            );
+            echo json_encode($json);
+            
+        break;
+    
+        case "upload_file_comment" :
+            
+            $folderID   = $_POST["folderID"];
+            $fileName   = $_POST["fileName"];
+            $commentMotherID = $_POST["commentMotherID"];
+            $location   = '../../../documents/'. $folderID . '/' . $fileName;
+            
+            if ( 0 < $_FILES['file']['error'] ) {
+                $error   = true;
+                $color   = "red";
+                $message = "There is an error uploading your file. Please try again later";
+            } else {
+                
+                if (!mkdir('../../../documents/' . $folderID, 0777, true)) {
+                    $error   = true;
+                    $color   = "red";
+                    $message = "There is an error creating folder"; 
+                }
+                
+                if (file_exists($location)) {
+                    
+                    $error   = true;
+                    $color   = "red";
+                    $message = "File already added";
+                    
+                } else {
+                    if (move_uploaded_file($_FILES['file']['tmp_name'], $location)) {
+                        
+                        $query = "UPDATE omg_comments SET folderID=?,fileName=? WHERE id = ?";
+                        if ($stmt = mysqli_prepare($con, $query)) {
+                            mysqli_stmt_bind_param($stmt,"sss",$folderID,$fileName,$commentMotherID);
+                            mysqli_stmt_execute($stmt);
+                           
+                            $error   = false;
+                            $color   = "green";
+                            $message = "Comment has been added";
+                           
+                        } else {
+                            $error   = true;
+                            $color   = "red";
+                            $message = "There is an error adding comment. Please try again later";
+                        }
+                        
+                    } else {
+                        $error   = true;
+                        $color   = "red";
+                        $message = "There is an error uploading your file. Please try again later";
+                    }
+                }
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+            
+        break;
+    
+        case "show_comments" :
+            
+            $commentMotherID = $_POST["commentMotherID"];
+            
+            $sql    = "
+                SELECT
+                    CONCAT(b.lastName,', ',b.firstName,' ',IFNULL(b.middleName,'')) AS fullName,
+                    a.`comment`,
+                    a.dateCreated,
+                    a.folderID,
+                    a.fileName,
+                    a.id
+                FROM
+                    omg_comments a 
+                INNER JOIN
+                    omg_registration b
+                ON
+                    a.createdBy = b.id
+                WHERE
+                    commentMotherID = '$commentMotherID'
+                ORDER BY
+                    a.dateCreated DESC;
+            ";
+            $result = mysqli_query($con,$sql);
+            
+            $json = array();
+            while ($row  = mysqli_fetch_assoc($result)) {
+                $json[] = array(
+                    'fullName'    => $row["fullName"],
+                    'comment'     => $row["comment"],
+                    'dateCreated' => formatTimeAgo($row["dateCreated"]),
+                    'folderID'    => $row["folderID"],
+                    'fileName'    => $row["fileName"],
+                    'id'          => $row["id"]
+                );
+            }
+            echo json_encode($json);
+            
+        break;
+    
+        case "delete_comment" :
+            
+            $query = "DELETE FROM omg_comments WHERE id = ?";
+            if ($stmt = mysqli_prepare($con, $query)) {
+                mysqli_stmt_bind_param($stmt,"s",$_POST["commentID"]);
+                mysqli_stmt_execute($stmt);
+               
+                $error   = false;
+                $color   = "green";
+                $message = ""; 
+               
+            } else {
+                $error   = true;
+                $color   = "red";
+                $message = ""; 
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+            
+        break;
     }
     
     function recursiveCopy($source, $destination) {
@@ -863,6 +1105,39 @@
             }
         }
     }
+    
+    function formatTimeAgo($dateString) {
+        $timestamp = strtotime($dateString);
+        $currentTimestamp = time();
+        $difference = $currentTimestamp - $timestamp;
+        
+        $intervals = array(
+            array('years', 31536000),
+            array('months', 2592000),
+            array('weeks', 604800),
+            array('days', 86400),
+            array('hours', 3600),
+            array('minutes', 60),
+            array('seconds', 1)
+        );
+        
+        foreach ($intervals as $interval) {
+            $unit = $interval[0];
+            $seconds = $interval[1];
+            if ($difference >= $seconds) {
+                $value = floor($difference / $seconds);
+                $output = $value . ' ' . $unit;
+                if ($value > 1) {
+                    $output .= 's';
+                }
+                $output .= ' ago';
+                return $output;
+            }
+        }
+        
+        return 'Just now';
+    }
+
     
     mysqli_close($con);
 ?>

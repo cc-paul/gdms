@@ -1304,7 +1304,7 @@
 						<div class="row">
 							<div class="col-md-12 col-sm-12">
 								<div class="table-container">
-									<div style="width:2806px">
+									<div style="height: 300px">
 										<table id="tblViewClientFocus" name="tblViewClientFocus" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
 											<thead>
 												<tr>
@@ -1423,22 +1423,74 @@
 														</center>
 													</th>
 												</tr>
-												<tr>
+												<!--<tr>
 													<th colspan="12" style="background-color:#FFFDCC">
 														<center>
 															CLIENT FOCUSED
 														</center>
 													</th>
-												</tr>
+												</tr>-->
 											</thead>
 											<tbody></tbody>
+											<tfoot>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td colspan="2">
+														<b>SUB TOTAL</b>
+													</td>
+													<td>
+														<span id="lblPrimarySource2" class="cust-label"></span>
+													</td>
+													<td>GAA</td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td>
+														<span id="lblOtherSource2" class="cust-label"></span>
+													</td>
+													<td>ODA</td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td colspan="2">
+														<b>TOTAL GAD BUDGET</b>
+													</td>
+													<td>
+														<span id="lblGAABudget2" class="cust-label"></span>
+													</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</tfoot>
 										</table>
 									</div>
 								</div>
 							</div>
 						</div>
 						<br>
-						<div class="row">
+						<div class="row" hidden>
 							<div class="col-md-12 col-sm-12">
 								<div class="table-container">
 									<div style="width:2806px">
@@ -1569,6 +1621,9 @@
 												</tr>
 											</thead>
 											<tbody></tbody>
+											<tfoot>
+												
+											</tfoot>
 										</table>
 									</div>
 								</div>
@@ -1679,6 +1734,63 @@
 		<!-- /.modal-dialog -->
 		</div>
 		
+		
+		<!-- Modal Name  -->
+		<div class="modal fade" id="mdComments" name="mdComments">
+			<div class="modal-dialog modal-md">
+				<div class="box box-default">
+					<div class="box-header with-border">
+						<label class="cust-label">Comments</label>
+						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
+						</button>
+					</div>
+					<div class="box-body">
+						<div id="dvComments" class="box-body" style="height: 334px; overflow-y: auto; overflow-x: hidden;">
+						
+						</div>
+					</div>
+					<div class="box-footer">
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<textarea id="txtComment" name="txtComment" rows="4" class="form-control cust-label cust-textbox" placeholder="Enter Comment Details"></textarea>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-8 col-sm-12">
+								
+							</div>
+							<div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<input
+										type="file"
+										class="form-control cust-label cust-textbox cust-label"
+										id="txtCommentFile"
+										name="txtCommentFile"
+										accept=
+										"application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+										text/plain, application/pdf,.doc,.docx"
+									>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8 col-xs-12"></div>
+							<div class="col-md-4 col-xs-12">
+								<button id="btnSaveComment" name="btnSaveComment" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
+									<i class="fa fa-save"></i>
+									&nbsp;
+									Save Changes
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- /.modal-content -->
+			</div>
+		<!-- /.modal-dialog -->
+		</div>
+		
 		<!-- jQuery 3 -->
 		<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap 3.3.7 -->
@@ -1718,5 +1830,6 @@
 		<script src="../program_assets/js/web_functions/gbp_attr_table.js?random=<?php echo uniqid(); ?>"></script>
 		<script src="../program_assets/js/web_functions/gbp_view.js?random=<?php echo uniqid(); ?>"></script>
 		<script src="../program_assets/js/web_functions/signatory.js?random=<?php echo uniqid(); ?>"></script>
+		<script src="../program_assets/js/web_functions/gbp_comments.js?random=<?php echo uniqid(); ?>"></script>
 	</body>
 </html>
