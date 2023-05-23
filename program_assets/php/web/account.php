@@ -139,9 +139,14 @@
                     a.accountStatus,
                     a.isPasswordChange,
                     DATE_FORMAT(a.dateCreated,'%m/%d/%Y') AS dateCreated,
-                    DATE_FORMAT(a.birthDate,'%m/%d/%Y') AS fBirthDate
+                    DATE_FORMAT(a.birthDate,'%m/%d/%Y') AS fBirthDate,
+                    b.position
                 FROM
                     omg_registration a 
+                LEFT JOIN
+                    omg_positions b 
+                ON 
+                    a.positionID = b.id
                 ORDER BY
                     a.dateCreated DESC;
             ";
@@ -153,10 +158,11 @@
             
             $userID        = $_POST["userID"];
             $accountStatus = $_POST["accountStatus"];
+            $position = $_POST["position"];
             
-            $query = "UPDATE omg_registration SET accountStatus = ? WHERE id = ?";
+            $query = "UPDATE omg_registration SET accountStatus = ?,positionID = ? WHERE id = ?";
             if ($stmt = mysqli_prepare($con, $query)) {
-                mysqli_stmt_bind_param($stmt,"ss",$accountStatus,$userID);
+                mysqli_stmt_bind_param($stmt,"sss",$accountStatus,$position,$userID);
                 mysqli_stmt_execute($stmt);
                
                 $error   = false;

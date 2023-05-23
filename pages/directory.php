@@ -194,7 +194,7 @@
 				<section class="content col-md-10 col-xs-12">
 					<div class="nav-tabs-custom">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Account Maintenance</a></li>
+							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">List of Personnel</a></li>
 							<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
 						</ul>
 						<div class="tab-content">
@@ -221,17 +221,13 @@
 											<table id="tblAccount" name="tblAccount" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
 												<thead>
 													<tr>
-														<th>Username</th>
 														<th>First Name</th>
 														<th>Middle Name</th>
 														<th>Last Name</th>
-														<th>Position</th>
 														<th>Mobile Number</th>
 														<th>Email Address</th>
 														<th>Sex</th>
-														<th>Status</th>
 														<th>Date Registered</th>
-														<th></th>
 													</tr>
 												</thead>
 												<tbody></tbody>
@@ -430,7 +426,7 @@
 		<!-- StartUp Custom JS (do not remove)  -->
 		<script src="../program_assets/js/site_essentials/sidebar.js?random=<?php echo uniqid(); ?>"></script>
 		<script src="../program_assets/js/site_essentials/others.js?random=<?php echo uniqid(); ?>"></script>
-		<script src="../program_assets/js/web_functions/account.js?random=<?php echo uniqid(); ?>"></script>
+		<script src="../program_assets/js/web_functions/directory.js?random=<?php echo uniqid(); ?>"></script>
 		
 	</body>
 </html>

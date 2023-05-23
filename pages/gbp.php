@@ -228,7 +228,7 @@
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Prepare GBP</a></li>
 						</ul>
-						<div class="tab-content" style="height: 650px; overflow-x: hidden;">
+						<div class="tab-content" style="height: 600px; overflow-x: hidden;">
 							<div class="tab-pane active" id="admin">
 								<div class="row">
 									<div class="col-md-12 col-xs-12">
@@ -254,7 +254,7 @@
 												Save Draft
 												&nbsp;
 											</button>
-											<button type="button" class="btn btn-default cust-label">
+											<button id="btnSubmitGBPFinal" name="btnSubmitGBPFinal" type="button" class="btn btn-default cust-label">
 												&nbsp;
 												<i class="fa fa-send"></i>
 												&nbsp;
@@ -1669,7 +1669,16 @@
 						</div>
 					</div>
 					<div class="box-footer">
-						
+						<div class="row">
+							<div class="col-md-3 col-xs-4 pull-right">
+								<div class="pull-right">
+									<label class="cust-label">
+										Document Status : 
+									</label>
+									<span id="lblDocReq"></span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			<!-- /.modal-content -->
@@ -1791,6 +1800,40 @@
 		<!-- /.modal-dialog -->
 		</div>
 		
+		<!-- Modal Name  -->
+		<div class="modal fade" id="mdSentApproval" name="mdSentApproval">
+			<div class="modal-dialog modal-md">
+				<div class="box box-default">
+					<div class="box-header with-border">
+						<label class="cust-label">GBP Approval</label>
+						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
+						</button>
+					</div>
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<textarea id="txtGBPRemarks" name="txtGBPRemarks" rows="6" class="form-control cust-label cust-textbox" placeholder="Before submitting, Please provide any remarks or detailed instruction"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer">
+						<div class="row">
+							<div class="col-md-8 col-xs-12"></div>
+							<div class="col-md-4 col-xs-12">
+								<button id="btnProceedSubmit" name="btnProceedSubmit" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
+									<i class="fa fa-send"></i>
+									&nbsp;
+									Proceed to Submission
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- /.modal-content -->
+			</div>
+		<!-- /.modal-dialog -->
+		</div>
+		
 		<!-- jQuery 3 -->
 		<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap 3.3.7 -->
@@ -1831,5 +1874,6 @@
 		<script src="../program_assets/js/web_functions/gbp_view.js?random=<?php echo uniqid(); ?>"></script>
 		<script src="../program_assets/js/web_functions/signatory.js?random=<?php echo uniqid(); ?>"></script>
 		<script src="../program_assets/js/web_functions/gbp_comments.js?random=<?php echo uniqid(); ?>"></script>
+		<script src="../program_assets/js/web_functions/gbp_submit.js?random=<?php echo uniqid(); ?>"></script>
 	</body>
 </html>

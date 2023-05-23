@@ -186,10 +186,10 @@
             </div>
             <div class="col-md-4 col-sm-12">
               <div class="form-group">
-                <label for="cmbGender" class="cust-label">Gender</label>
+                <label for="cmbGender" class="cust-label">Sex</label>
                 <code>*</code>
                 <select id="cmbGender" name="cmbGender" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
-                  <option value="" selected disabled>Please select gender</option>
+                  <option value="" selected disabled>Please select sex</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>

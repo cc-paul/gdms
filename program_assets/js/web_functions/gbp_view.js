@@ -29,6 +29,7 @@ function showParentGBP() {
 				$("#lblApprovedByPosition").text(data[i].approvedByPosition);
 				$("#lblPreparedByName").text(data[i].preparedBy);
 				$("#lblPreparedByPosition").text(data[i].preparedByPosition);
+				$("#lblDocReq").text(data[i].status);
             }
         }
     });

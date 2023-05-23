@@ -1081,6 +1081,35 @@
             echo json_encode($json);
             
         break;
+        
+        case "gbp_for_approval" :
+            
+            $parentFolderID = $_POST["parentFolderID"];
+            $remarks        = $_POST["remarks"];
+            
+            $query = "UPDATE omg_gbp_parent SET `status` = 'For Review',remarks = ? WHERE parentFolderID =?";
+            if ($stmt = mysqli_prepare($con, $query)) {
+                mysqli_stmt_bind_param($stmt,"ss",$remarks,$parentFolderID);
+                mysqli_stmt_execute($stmt);
+               
+                $error   = false;
+                $color   = "green";
+                $message = "GBP has been sent for approval"; 
+               
+            } else {
+                $error   = true;
+                $color   = "red";
+                $message = "Error submitting GBP"; 
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+            
+        break;
     }
     
     function recursiveCopy($source, $destination) {

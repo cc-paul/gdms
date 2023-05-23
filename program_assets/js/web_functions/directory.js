@@ -45,30 +45,18 @@ function loadAccount() {
         	}    
         },
         'aoColumns' : [
-        	{ mData: 'username'},
             { mData: 'firstName'},
             { mData: 'middleName'},
             { mData: 'lastName'},
-			{ mData: 'position'},
             { mData: 'mobileNumber'},
             { mData: 'email'},
             { mData: 'sex'},
-            { mData: 'accountStatus'},
-            { mData: 'dateCreated'},
-            { mData: 'id',
-                render: function (data,type,row) {
-                    return '<div class="input-group">' + 
-                           '	<button id="list_' + row.id + '" name="list_' + row.id + '" type="submit" class="btn btn-default btn-xs dt-button list">' +
-                           '		<i class="fa fa-edit"></i>' +
-                           '	</button>' +
-                           '</div>';
-                }
-            }
+            { mData: 'dateCreated'}
         ],
         'aoColumnDefs': [
         //	{"className": "custom-center", "targets": [8]},
-        	{"className": "dt-center", "targets": [0,1,2,3,4,5,6,7,8]},
-        	{ "width": "1%", "targets": [9,10] },
+        	{"className": "dt-center", "targets": [0,1,2,3,4,5,6]},
+        	{ "width": "1%", "targets": [5,6] },
         //	{"className" : "hide_column", "targets": [9]} 
         ],
         "drawCallback": function() {  
