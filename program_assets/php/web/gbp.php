@@ -303,7 +303,7 @@
                     IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.genderID),' - ') AS gender,
                     IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.gadID),' - ') AS gad,
                     d.performanceIndicator,
-                    FORMAT(SUM(e.budget),2) budget,
+                    FORMAT(SUM(e.budget) / 2,2) budget,
                     IFNULL((
                             SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',budget) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
                     ),'') AS arrBudget,
@@ -578,7 +578,7 @@
                     b.statement AS gender,
                     c.statement AS gad,
                     d.performanceIndicator,
-                    FORMAT(SUM(e.budget),2) budget,
+                    FORMAT(SUM(e.budget) / 2,2) budget,
                     IFNULL((
                             SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',budget) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
                     ),'') AS arrBudget,

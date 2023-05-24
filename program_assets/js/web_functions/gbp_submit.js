@@ -46,6 +46,7 @@ $("#btnProceedSubmit").click(function(){
             
             if (!data[0].error) {
                 $("#mdSentApproval").modal("hide");
+				location.reload();
             }
         }
     });

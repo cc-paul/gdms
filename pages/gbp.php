@@ -265,7 +265,45 @@
 									</div>
 								</div>
 								<br>
-								<br>
+								<br
+								<div class="row">
+									<div class="col-md-12" hidden>
+										<?php
+											include "../program_assets/php/connection/conn.php";
+											$data_parentFolderID = "-";
+											$data_year = "";
+											$data_amount = "";
+											$data_status = "";
+											
+											$sql = "
+												SELECT parentFolderID,`year`,FORMAT(totalAmount,0) AS totalAmount,`status` FROM omg_gbp_parent ORDER BY id DESC LIMIT 1;
+											";
+											$result = mysqli_query($con,$sql);
+											
+											while ($row  = mysqli_fetch_assoc($result)) {
+												$data_parentFolderID = $row["parentFolderID"];
+												$data_year = $row["year"];
+												$data_amount = $row["totalAmount"];
+												$data_status = $row["status"];
+											}
+										?>
+										<label id="lblParentFolderID" class="cust-label">
+											<?php echo $data_parentFolderID ?>
+										</label>
+										
+										<label id="lblParentYear" class="cust-label">
+											<?php echo $data_year ?>
+										</label>
+										
+										<label id="lblParentAmount" class="cust-label">
+											<?php echo $data_amount ?>
+										</label>
+										
+										<label id="lblParentStatus" class="cust-label">
+											<?php echo $data_status ?>
+										</label>
+									</div>
+								</div>
 								<div class="row">
 									<div class="col-md-3 col-xs-6">
 										<div class="row">
@@ -462,6 +500,14 @@
 													</div>
 												</div>
 											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row" id="dvReminder">
+									<div class="col-md-12 col-xs-12">
+										<div class="alert alert-info alert-dismissible">
+											<h4><i class="icon fa fa-info"></i> Alert!</h4>
+											Unable to create GBP. There is an ongoing approval. You can create/edit once it is returned to you.
 										</div>
 									</div>
 								</div>

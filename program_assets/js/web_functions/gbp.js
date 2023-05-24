@@ -20,7 +20,41 @@ var selectedGender = 0;
 var checFormEverySecond;
 var selectedTab = 1;
 var parentFolderID = makeid(10);
+var loadedStatus = $("#lblParentStatus").text().trim();
 
+if (loadedStatus == "Draft") {
+    parentFolderID = $("#lblParentFolderID").text().trim();
+    
+    $("#txtAllottedBudget").val($("#lblParentAmount").text().trim());
+    $("#cmbYear").val($("#lblParentYear").text().trim()).trigger("change");
+    
+    setTimeout(function() {
+        computeGAD();
+    }, 100);
+    
+    $("#dvReminder").hide();
+    $("#btnSignatory").prop("disabled", false);
+    $("#btnSaveDraft").prop("disabled", false);
+    $("#btnSubmitGBPFinal").prop("disabled", false);
+    $("#btnAddActivity").prop("disabled", false);
+    $("#btnDeleteActivity").prop("disabled", false);
+} else if (loadedStatus == null || loadedStatus == "") {
+    $("#dvReminder").hide();
+    $("#btnSignatory").prop("disabled", false);
+    $("#btnSaveDraft").prop("disabled", false);
+    $("#btnSubmitGBPFinal").prop("disabled", false);
+    $("#btnAddActivity").prop("disabled", false);
+    $("#btnDeleteActivity").prop("disabled", false);
+} else {
+    $("#dvReminder").show();
+    $("#btnSignatory").prop("disabled", true);
+    $("#btnSaveDraft").prop("disabled", true);
+    $("#btnSubmitGBPFinal").prop("disabled", true);
+    $("#btnAddActivity").prop("disabled", true);
+    $("#btnDeleteActivity").prop("disabled", true);
+}
+    
+    
 $("#btnAddActivity").click(function(){
     if (selectedTab == 1 || selectedTab == 2) {
         checFormEverySecond = window.setInterval(function(){

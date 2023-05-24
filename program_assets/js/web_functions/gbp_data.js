@@ -535,17 +535,16 @@ $("#btnSaveDraft").click(function(){
 });
 
 function computeGAD() {
-    var total = 0;
+    
     
     tblClientFocus2.rows().every( function ( rowIdx, tableLoop, rowLoop ) {
         var data = this.data();
         var budget = data.budget.replaceAll(",","");
         
-        total += Number(budget);
+        
     });
     
-    $("#spTotalBudget").text(total.toLocaleString('en-US', {maximumFractionDigits: 2}));
-    $("#lblTotalBudget").text(total.toLocaleString('en-US', {maximumFractionDigits: 2}));
+    
     
     $.ajax({
         url: "../program_assets/php/web/gbp",
@@ -557,22 +556,29 @@ function computeGAD() {
         success: function (data) {
             var data = jQuery.parseJSON(data);
             var html = "";
+            var total = 0;
             
             for (var i = 0; i < data.length; i++) {
                 html += `
                     <b>
                         <span class="cust-label">${data[i].budgetSource}</span>
                     </b>
-                    <span id="spTotalBudget" name="spTotalBudget" class="cust-label">${data[i].alloc_budget}</span>
+                    <span class="cust-label">${data[i].alloc_budget}</span>
                     <br>
                 `;
+                
+                 total += Number(data[i].alloc_budget.replaceAll(",",""));
             }
             
+           
             $("#dvGadAllocated").html(html);
+            
+            $("#spTotalBudget").text(total.toLocaleString('en-US', {maximumFractionDigits: 2}));
+            $("#lblTotalBudget").text(total.toLocaleString('en-US', {maximumFractionDigits: 2}));
+            
+            computeAllocated();
         }
     });
-    
-    computeAllocated();
 }
 
 function computeAllocated() {
