@@ -212,7 +212,7 @@
           </div>
           <br>
           <div class="row">
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-4 col-sm-12">
               <div class="form-group">
                 <label for="txtEmailAddress" class="cust-label">Email Address</label>
                 <code>*</code>
@@ -224,6 +224,18 @@
                 <label for="txtUsername" class="cust-label">Username</label>
                 <code>*</code>
                 <input type="text" class="form-control cust-label cust-textbox" id="txtUsername" name="txtUsername"  placeholder="Enter Username">
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <div class="form-group">
+                <label for="cmbGender" class="cust-label">College \ Campus \ Units</label>
+                <code>*</code>
+                <select id="cmbCollege" name="cmbCollege" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
+                  <option value="" selected disabled>Please select college</option>
+                  <?php
+                    include dirname(__FILE__,2) . '/program_assets/php/dropdown/colleges.php';
+                  ?>
+                </select>
               </div>
             </div>
           </div>

@@ -144,6 +144,141 @@
             echo json_encode($json);
             
         break;
+    
+        case "load_college" :
+            
+            $sql = "
+                SELECT
+                    id,
+                    college
+                FROM
+                    omg_colleges
+                WHERE
+                    isActive = 1
+                ORDER BY
+                    college ASC;
+            ";
+            return builder($con,$sql);
+            
+        break;
+    
+        case "save_college" :
+            
+            $collegeID  = $_POST["collegeID"];
+            $college    = $_POST["college"];
+            $oldCollege = $_POST["oldCollege"];
+            
+            if ($collegeID == 0) {
+                
+                $find_query = mysqli_query($con,"SELECT * FROM omg_colleges WHERE college = '$college' AND isActive = 1");
+                if (mysqli_num_rows($find_query) == 0) {
+                    mysqli_next_result($con);
+                   
+                    $query = "INSERT INTO omg_colleges (college) VALUES (?)";
+                    if ($stmt = mysqli_prepare($con, $query)) {
+                        mysqli_stmt_bind_param($stmt,"s",$college);
+                        mysqli_stmt_execute($stmt);
+                       
+                        $error   = false;
+                        $color   = "green";
+                        $message = "College has been saved successfully"; 
+                       
+                    } else {
+                        $error   = true;
+                        $color   = "red";
+                        $message = "Error saving college"; 
+                    }
+                   
+                } else {
+                    $error   = true;
+                    $color   = "red";
+                    $message = "College already exist"; 
+                }
+                
+            } else {
+                
+                if ($college != $oldCollege) {
+                    
+                    $find_query = mysqli_query($con,"SELECT * FROM omg_colleges WHERE college = '$college' AND isActive = 1");
+                    if (mysqli_num_rows($find_query) == 0) {
+                        mysqli_next_result($con);
+                       
+                        $query = "UPDATE omg_colleges SET college=? WHERE id=?";
+                        if ($stmt = mysqli_prepare($con, $query)) {
+                            mysqli_stmt_bind_param($stmt,"ss",$college,$collegeID);
+                            mysqli_stmt_execute($stmt);
+                           
+                            $error   = false;
+                            $color   = "green";
+                            $message = "College has been updated successfully"; 
+                           
+                        } else {
+                            $error   = true;
+                            $color   = "red";
+                            $message = "Error updating college"; 
+                        }
+                       
+                    } else {
+                        $error   = true;
+                        $color   = "red";
+                        $message = "College already exist"; 
+                    }
+                    
+                } else {
+                    $query = "UPDATE omg_colleges SET college=? WHERE id=?";
+                    if ($stmt = mysqli_prepare($con, $query)) {
+                        mysqli_stmt_bind_param($stmt,"ss",$college,$collegeID);
+                        mysqli_stmt_execute($stmt);
+                       
+                        $error   = false;
+                        $color   = "green";
+                        $message = "College has been updated successfully"; 
+                       
+                    } else {
+                        $error   = true;
+                        $color   = "red";
+                        $message = "Error updating college"; 
+                    }
+                }
+                
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+            
+        break;
+    
+        case "delete_college" :
+            
+            $collegeID  = $_POST["collegeID"];
+            
+            $query = "UPDATE omg_colleges SET isActive = 0 WHERE id=?";
+            if ($stmt = mysqli_prepare($con, $query)) {
+                mysqli_stmt_bind_param($stmt,"s",$collegeID);
+                mysqli_stmt_execute($stmt);
+               
+                $error   = false;
+                $color   = "green";
+                $message = "College has been removed successfully"; 
+               
+            } else {
+                $error   = true;
+                $color   = "red";
+                $message = "Error removing college"; 
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+            
+        break;
     }
     
 ?>

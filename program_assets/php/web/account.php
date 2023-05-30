@@ -31,6 +31,7 @@
             $emailAddress = $_POST["emailAddress"];
             $username     = $_POST["username"];
             $password     = $_POST["password"];
+            $college      = $_POST["college"];
             $arr_exist    = array();
             
             $find_email = mysqli_query($con,"SELECT * FROM omg_registration WHERE email = '$emailAddress'");
@@ -61,13 +62,14 @@
                         mobileNumber,
                         birthDate,
                         sex,
-                        dateCreated
+                        dateCreated,
+                        collegeID
                     ) VALUES (
-                        ?,?,?,?,?,MD5(?),?,?,?,?
+                        ?,?,?,?,?,MD5(?),?,?,?,?,?
                     )
                 ";
                 if ($stmt = mysqli_prepare($con, $query)) {
-                    mysqli_stmt_bind_param($stmt,"ssssssssss",$firstName,$middleName,$lastName,$emailAddress,$username,$password,$mobileNumber,$birthDate,$gender,$global_date);
+                    mysqli_stmt_bind_param($stmt,"sssssssssss",$firstName,$middleName,$lastName,$emailAddress,$username,$password,$mobileNumber,$birthDate,$gender,$global_date,$college);
                     mysqli_stmt_execute($stmt);
                    
                     $error   = false;

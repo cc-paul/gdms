@@ -30,6 +30,7 @@ $("#aRegister").click(function(){
 	$("#txtLastName").val(null);
 	$("#txtBirthDate").val(null);
 	$("#cmbGender").val(null).trigger("change");
+	$("#cmbCollege").val(null).trigger("change");
 	$("#txtMobileNumber").val(null);
 	$("#txtEmailAddress").val(null);
 	$("#txtUsername").val(null);
@@ -60,6 +61,7 @@ $("#btnRegisterAccount").click(function(){
 	const lastName = $("#txtLastName").val();
 	const birthDate = $("#txtBirthDate").val();
 	const gender = $("#cmbGender").val();
+	const college = $("#cmbCollege").val();
 	const mobileNumber = $("#txtMobileNumber").val();
 	const emailAddress = $("#txtEmailAddress").val();
 	const username = $("#txtUsername").val();
@@ -67,7 +69,7 @@ $("#btnRegisterAccount").click(function(){
 	const repeatPassword = $("#txtRepeatPassword").val();
 	
 	if (firstName == ""  || lastName == "" || birthDate == "" || gender == "" || mobileNumber == "" ||
-		emailAddress == "" || username == "" || password == "" || repeatPassword == "") {
+		emailAddress == "" || username == "" || password == "" || repeatPassword == "" || college == null || college == "") {
 		
 		JAlert("Please fill in required fields","red");
 		return;
@@ -110,7 +112,8 @@ $("#btnRegisterAccount").click(function(){
 			mobileNumber : mobileNumber,
 			emailAddress : emailAddress,
 			username : username.replace("'",""),
-			password : password
+			password : password,
+			college : college
 		},
 		type: 'post',
 		success: function (data) {
@@ -377,3 +380,9 @@ function CheckPasswordStrength(password) {
     password_strength.style.color = color;
 }
 
+/* init select2 */
+try {
+	$('.select2').select2();
+} catch(e){
+	console.log(e);
+}
