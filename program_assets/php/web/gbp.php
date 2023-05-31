@@ -350,6 +350,8 @@
     
         case "load_activity_parent" :
             
+            $id = $_SESSION["id"];
+            
             $sql    = "
                 SELECT 
                     a.id,   
@@ -371,6 +373,59 @@
                     omg_signatory c 
                 ON 
                     a.parentFolderID = c.parentFolderID
+                WHERE
+                    a.createdBy = $id
+                ORDER BY
+                    a.id DESC 
+                LIMIT 1
+            ";
+            $result = mysqli_query($con,$sql);
+            
+            $json = array();
+            while ($row  = mysqli_fetch_assoc($result)) {
+                $json[] = array(
+                    'id'              => $row["id"],
+                    'parentFolderID'  => $row["parentFolderID"],
+                    'totalAmount'     => $row["totalAmount"],
+                    'year'            => $row["year"],
+                    'status'          => $row["status"],
+                    'approvedBy'         => $row["approvedBy"],
+                    'approvedByPosition' => $row["approvedByPosition"],
+                    'preparedBy'         => $row["preparedBy"],
+                    'preparedByPosition' => $row["preparedByPosition"]
+                );
+            }
+            echo json_encode($json);
+            
+        break;
+    
+        case "load_activity_parent_filter" :
+            
+            $parentFolderID = $_POST["parentFolderID"];
+            
+            $sql    = "
+                SELECT 
+                    a.id,   
+                    a.parentFolderID,
+                    FORMAT(a.totalAmount,2) AS totalAmount,
+                    a.`year`,
+                    a.`status`,
+                    c.approvedBy,
+                    c.approvedByPosition,
+                    c.preparedBy,
+                    c.preparedByPosition
+                FROM
+                    omg_gbp_parent a 
+                INNER JOIN
+                    omg_gbp b 
+                ON 
+                    a.parentFolderID = b.parentFolderID 
+                LEFT JOIN
+                    omg_signatory c 
+                ON 
+                    a.parentFolderID = c.parentFolderID
+                WHERE
+                    a.parentFolderID = '$parentFolderID'
                 ORDER BY
                     a.id DESC 
                 LIMIT 1
@@ -773,14 +828,15 @@
             $parentFolderID = $_POST["parentFolderID"]; 
             $year           = $_POST["year"]; 
             $total          = str_replace(",","",$_POST["total"]);
+            $id             = $_SESSION["id"];
             
             $find_query = mysqli_query($con,"SELECT * FROM omg_gbp_parent WHERE parentFolderID = '$parentFolderID'");
             if (mysqli_num_rows($find_query) == 0) {
                 mysqli_next_result($con);
                
-                $query = "INSERT INTO omg_gbp_parent (parentFolderID,totalAmount,year) VALUES (?,?,?)";
+                $query = "INSERT INTO omg_gbp_parent (parentFolderID,totalAmount,year,createdBy) VALUES (?,?,?,?)";
                 if ($stmt = mysqli_prepare($con, $query)) {
-                    mysqli_stmt_bind_param($stmt,"sss",$parentFolderID,$total,$year);
+                    mysqli_stmt_bind_param($stmt,"ssss",$parentFolderID,$total,$year,$id);
                     mysqli_stmt_execute($stmt);
                    
                     $error   = false;
@@ -1108,6 +1164,35 @@
                 'message' => $message
             );
             echo json_encode($json);
+            
+        break;
+    
+        case "load_gbp_table" :
+            
+            $report = $_POST["report"];
+            $year   = $_POST["year"];
+            $status = $_POST["status"];
+            $id     = $_SESSION["id"];
+            
+            $q_report = $report == '-' ? '' : " OR a.reportType = '$report' ";
+            $q_year   = $year   == '-' ? '' : " OR a.`year` = '$year' ";
+            $q_status = $status == '-' ? '' : " OR a.`status` = '$status' ";
+            
+            $sql = "
+                SELECT 
+                    a.parentFolderID,
+                    a.reportType,
+                    a.`year`,
+                    a.`status`,
+                    FORMAT(a.totalAmount,2) AS totalAmount,
+                    a.remarks,
+                    a.id
+                FROM
+                    omg_gbp_parent a
+                WHERE
+                    a.createdBy = $id $q_report $q_year $q_status
+            ";
+            return builder($con,$sql);
             
         break;
     }

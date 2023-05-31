@@ -240,6 +240,13 @@
 												View GBP
 												&nbsp;
 											</button>
+											<button id="btnViewReportFilter" type="button" class="btn btn-default cust-label">
+												&nbsp;
+												<i class="fa fa-file-word-o"></i>
+												&nbsp;
+												Report Filter
+												&nbsp;
+											</button>
 											<button id="btnSignatory" type="button" class="btn btn-default cust-label">
 												&nbsp;
 												<i class="fa fa-thumbs-up"></i>
@@ -274,9 +281,27 @@
 											$data_year = "";
 											$data_amount = "";
 											$data_status = "";
+											$data_approver = "";
+											$id = $_SESSION["id"];
 											
 											$sql = "
-												SELECT parentFolderID,`year`,FORMAT(totalAmount,0) AS totalAmount,`status` FROM omg_gbp_parent ORDER BY id DESC LIMIT 1;
+												SELECT
+													a.parentFolderID,
+													a.`year`,
+													FORMAT( a.totalAmount, 0 ) AS totalAmount,
+													a.`status`,
+													b.approvedBy
+												FROM
+													omg_gbp_parent a  
+												LEFT JOIN 
+													omg_signatory b 
+												ON 
+													a.parentFolderID = b.parentFolderID
+												WHERE
+													a.createdBy = $id 
+												ORDER BY
+													a.id DESC 
+													LIMIT 1;
 											";
 											$result = mysqli_query($con,$sql);
 											
@@ -285,6 +310,7 @@
 												$data_year = $row["year"];
 												$data_amount = $row["totalAmount"];
 												$data_status = $row["status"];
+												$data_approver = $row["approvedBy"];
 											}
 										?>
 										<label id="lblParentFolderID" class="cust-label">
@@ -507,7 +533,9 @@
 									<div class="col-md-12 col-xs-12">
 										<div class="alert alert-info alert-dismissible">
 											<h4><i class="icon fa fa-info"></i> Alert!</h4>
-											Unable to create GBP. There is an ongoing approval. You can create/edit once it is returned to you.
+											<!--Unable to create GBP. There is an ongoing approval. You can create/edit once it is returned to you.-->
+											The <?php echo $data_year; ?> GAD Plan and Budget Report has been submitted to <?php echo $data_approver; ?> of Gender and 
+Development Resource Center for review and may not be edited until it has been returned to you.
 										</div>
 									</div>
 								</div>
@@ -1272,7 +1300,7 @@
 														<b>Organization:</b> 
 													</span>
 													<span class="cust-label">
-														Cavite State University (CSVU)
+														<?php echo $_SESSION["college"]; ?>
 													</span>
 												</td>
 												<td colspan="4">
@@ -1280,7 +1308,7 @@
 														<b>Organization Category:</b> 
 													</span>
 													<span class="cust-label">
-														Cavite State University (CSVU)
+														<?php echo $_SESSION["college"]; ?>
 													</span>
 												</td>
 											</tr>
@@ -1290,7 +1318,7 @@
 														<b>Organization Hierarchy:</b> 
 													</span>
 													<span class="cust-label">
-														Cavite State University (CSVU)
+														<?php echo $_SESSION["college"]; ?>
 													</span>
 												</td>
 											</tr>
@@ -1880,6 +1908,75 @@
 		<!-- /.modal-dialog -->
 		</div>
 		
+		<!-- Modal Name  -->
+		<div class="modal fade" id="mdGBPFilter" name="mdGBPFilter">
+			<div class="modal-dialog modal-lg">
+				<div class="box box-default">
+					<div class="box-header with-border">
+						<label class="cust-label">GBP Filter</label>
+						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
+						</button>
+					</div>
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-4 col-sm-12">
+								<label class="cust-label">Report</label>
+								<select id="cmbFilterReport" name="cmbFilterReport" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
+									<option value="-" selected>Select All Report</option>
+									<?php
+										$to_filter = "report";
+										require dirname(__FILE__,2) . '/program_assets/php/dropdown/filter.php';
+									?>
+								</select>
+							</div>
+							<div class="col-md-4 col-sm-12">
+								<label class="cust-label">Year</label>
+								<select id="cmbFilterYear" name="cmbFilterYear" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
+									<option value="-" selected>Select All Year</option>
+									<?php
+										$to_filter = "year";
+										require dirname(__FILE__,2) . '/program_assets/php/dropdown/filter.php';
+									?>
+								</select>
+							</div>
+							<div class="col-md-4 col-sm-12">
+								<label class="cust-label">Status</label>
+								<select id="cmbFilterStatus" name="cmbFilterStatus" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
+									<option value="-" selected>Select All Status</option>
+									<?php
+										$to_filter = "status";
+										require dirname(__FILE__,2) . '/program_assets/php/dropdown/filter.php';
+									?>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div class="table-container">
+									<table id="tblGBPTable" name="tblGBPTable" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+										<thead>
+											<tr>
+												<th>Report Type</th>
+												<th>Year</th>
+												<th>Status</th>
+												<th>Amount</th>
+												<th>Remarks</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer"></div>
+				</div>
+			<!-- /.modal-content -->
+			</div>
+		<!-- /.modal-dialog -->
+		</div>
+		
 		<!-- jQuery 3 -->
 		<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Bootstrap 3.3.7 -->
@@ -1921,5 +2018,6 @@
 		<script src="../program_assets/js/web_functions/signatory.js?random=<?php echo uniqid(); ?>"></script>
 		<script src="../program_assets/js/web_functions/gbp_comments.js?random=<?php echo uniqid(); ?>"></script>
 		<script src="../program_assets/js/web_functions/gbp_submit.js?random=<?php echo uniqid(); ?>"></script>
+		<script src="../program_assets/js/web_functions/gbp_filter.js?random=<?php echo uniqid(); ?>"></script>
 	</body>
 </html>
