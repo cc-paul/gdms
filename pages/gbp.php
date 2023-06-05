@@ -1305,10 +1305,10 @@ Development Resource Center for review and may not be edited until it has been r
 												</td>
 												<td colspan="4">
 													<span class="cust-label">
-														<b>Organization Category:</b> 
+														<b>Organization Category: </b> 
 													</span>
 													<span class="cust-label">
-														<?php echo $_SESSION["college"]; ?>
+														State Universities and Colleges, State University or College (Main Campus):
 													</span>
 												</td>
 											</tr>

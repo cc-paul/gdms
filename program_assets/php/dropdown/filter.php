@@ -52,6 +52,30 @@
             ";
             
         break;
+    
+        case "college" :
+            
+            $sql = "
+                SELECT 
+                    c.id,
+                    c.college
+                FROM
+                    omg_gbp_parent a 
+                INNER JOIN	
+                    omg_registration b 
+                ON 
+                    a.createdBy = b.id 
+                INNER JOIN
+                    omg_colleges c 
+                ON 
+                    b.collegeID = c.id 
+                GROUP BY
+                    c.college 
+                ORDER BY 
+                    c.college ASC
+            ";
+            
+        break;
     }
     
     $result = mysqli_query($con,$sql);

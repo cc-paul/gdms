@@ -96,7 +96,7 @@ $('#tblAccount tbody').on('click', 'td button', function (){
 	$("#txtEmailAddress").val(data.email);
 	$("#txtUsername").val(data.username);
     $("#cmbStatus").val(data.accountStatus).trigger("change");
-	$("#cmbPosition").val(data.position).trigger("change");
+	$("#cmbPosition").val(data.positionID).trigger("change");
     userID = data.id;
     
     $("#mdRegister").modal();

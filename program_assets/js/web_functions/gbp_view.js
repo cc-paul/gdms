@@ -23,7 +23,7 @@ function showParentGBP() {
                 $("#mdViewGBP").modal();
                 
                 $("#lblFY").text(data[i].year);
-                $("#lblGAABudget").text(data[i].totalAmount);
+                //$("#lblGAABudget").text(data[i].totalAmount);
 				
 				$("#lblApprovedByName").text(data[i].approvedBy);
 				$("#lblApprovedByPosition").text(data[i].approvedByPosition);
@@ -639,6 +639,8 @@ function showGBPView(parentFolderID) {
         $("#lblPrimarySource").text(totalPrimarySource.toLocaleString('en-US', {maximumFractionDigits: 2}));
         $("#lblOtherSource").text(totalOtherSource.toLocaleString('en-US', {maximumFractionDigits: 2}));
 		
+		var generalTotal = Number(totalPrimarySource + totalOtherSource);
+		$("#lblGAABudget").text(generalTotal.toLocaleString('en-US', {maximumFractionDigits: 2}));
 		
 		$("#lblPrimarySource2").text($("#lblPrimarySource").text());
 		$("#lblOtherSource2").text($("#lblOtherSource").text());

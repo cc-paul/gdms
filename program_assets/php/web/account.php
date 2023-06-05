@@ -142,7 +142,8 @@
                     a.isPasswordChange,
                     DATE_FORMAT(a.dateCreated,'%m/%d/%Y') AS dateCreated,
                     DATE_FORMAT(a.birthDate,'%m/%d/%Y') AS fBirthDate,
-                    b.position
+                    b.position,
+                    b.id AS positionID
                 FROM
                     omg_registration a 
                 LEFT JOIN
