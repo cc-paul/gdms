@@ -43,7 +43,12 @@
                     a.`year`,
                     a.`status`,
                     FORMAT(a.totalAmount,2) AS totalAmount,
-                    CONCAT(IFNULL(b.lastName,''),', ',IFNULL(b.firstName,''),' ',IFNULL(middleName,'')) AS fullName
+                    CONCAT(IFNULL(b.lastName,''),', ',IFNULL(b.firstName,''),' ',IFNULL(middleName,'')) AS fullName,
+                    d.approvedBy,
+                    d.approvedByPosition,
+                    d.preparedBy,
+                    d.preparedByPosition,
+                    b.email
                 FROM
                     omg_gbp_parent a 
                 INNER JOIN 
@@ -53,13 +58,47 @@
                 INNER JOIN	
                     omg_colleges c 
                 ON 
-                    b.collegeID = c.id
-                WHERE 1
+                    b.collegeID = c.id 
+                LEFT JOIN
+                    omg_signatory d
+                ON 
+                    a.parentFolderID = d.parentFolderID
+                WHERE
+                    a.`status` != 'Draft' 
                     $q_report $q_year $q_status $q_college
                 ORDER BY
                     a.id DESC
             ";
             return builder($con,$sql);
+            
+        break;
+    
+        case "change_status" :
+            
+            $status = $_POST["status"];
+            $parentFolderID = $_POST["parentFolderID"];
+            
+            $query = "UPDATE omg_gbp_parent SET `status` = ? WHERE parentFolderID = ?";
+            if ($stmt = mysqli_prepare($con, $query)) {
+                mysqli_stmt_bind_param($stmt,"ss",$status,$parentFolderID);
+                mysqli_stmt_execute($stmt);
+               
+                $error   = false;
+                $color   = "green";
+                $message = "GBP Status has been updated."; 
+               
+            } else {
+                $error   = true;
+                $color   = "red";
+                $message = "Error updating GBP Status" . mysqli_error($con); 
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
             
         break;
     }

@@ -235,7 +235,6 @@ function showGBPView(parentFolderID) {
                         </td>
                         <td>
                             <div class="btn-group" style="width: 100px;">
-                                <button type="button" class="btn btn-default" style="width: 43px"><i class="fa fa-edit"></i></button>
                                 <button type="button" class="btn btn-default" style="width: 43px"><i class="fa fa-lock"></i></button>
                             </div>
                         </td>
@@ -431,7 +430,6 @@ function showGBPView(parentFolderID) {
 							</td>
 							<td>
 								<div class="btn-group">
-									<button type="button" class="btn btn-default" style="width: 43px"><i class="fa fa-edit"></i></button>
 									<button type="button" class="btn btn-default" style="width: 43px"><i class="fa fa-lock"></i></button>
 								</div>
 							</td>
@@ -610,7 +608,6 @@ function showGBPView(parentFolderID) {
 							</td>
 							<td>
 								<div class="btn-group">
-									<button type="button" class="btn btn-default" style="width: 43px"><i class="fa fa-edit"></i></button>
 									<button type="button" class="btn btn-default" style="width: 43px"><i class="fa fa-lock"></i></button>
 								</div>
 							</td>

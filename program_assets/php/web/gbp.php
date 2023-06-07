@@ -1226,13 +1226,13 @@
         $difference = $currentTimestamp - $timestamp;
         
         $intervals = array(
-            array('years', 31536000),
-            array('months', 2592000),
-            array('weeks', 604800),
-            array('days', 86400),
-            array('hours', 3600),
-            array('minutes', 60),
-            array('seconds', 1)
+            array('year', 31536000),
+            array('month', 2592000),
+            array('week', 604800),
+            array('day', 86400),
+            array('hour', 3600),
+            array('minute', 60),
+            array('second', 1)
         );
         
         foreach ($intervals as $interval) {

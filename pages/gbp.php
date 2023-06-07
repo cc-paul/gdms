@@ -1308,7 +1308,7 @@ Development Resource Center for review and may not be edited until it has been r
 														<b>Organization Category: </b> 
 													</span>
 													<span class="cust-label">
-														State Universities and Colleges, State University or College (Main Campus):
+														State Universities and Colleges, State University or College (Main Campus)
 													</span>
 												</td>
 											</tr>

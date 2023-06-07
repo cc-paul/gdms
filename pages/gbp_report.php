@@ -61,6 +61,22 @@
 			.pointer {
 				cursor:pointer;
 			}
+			
+			.full_modal-dialog {
+				width: 90% !important;
+				height: 92% !important;
+				min-width: 90% !important;
+				min-height: 92% !important;
+				max-width: 90% !important;
+				max-height: 92% !important;
+				padding: 0 !important;
+			}
+			
+			.full_modal-content {
+				height: 99% !important;
+				min-height: 99% !important;
+				max-height: 99% !important;
+			}
 		</style>
 	</head>
 	
@@ -314,6 +330,582 @@
 			<div class="control-sidebar-bg"></div>
 		</div>
 		<!-- ./wrapper -->
+		
+		<!-- Modal Name  -->
+		<div class="modal fade" id="mdViewGBP" name="mdViewGBP">
+			<div class="modal-dialog full_modal-dialog">
+				<div class="box box-default">
+					<div class="box-header with-border">
+						<label class="cust-label">View GBP</label>
+						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
+						</button>
+					</div>
+					<div class="box-body">
+						<!--<div class="row">
+							<div class="col-md-12 col-xs-12">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default"><i class="fa fa-file-excel-o"></i></button>
+									<button type="button" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></button>
+									<button type="button" class="btn btn-default"><i class="fa fa-file-word-o"></i></button>
+								</div>
+							</div>
+						</div>
+						<br>-->
+						<div class="row">
+							<div class="col-md-12">
+								<center>
+									<label class="cust-label">ANNUAL GENDER AND DEVELOPMENT (GAD) PLAN AND BUDGET</label>
+									<br>
+									<label class="cust-label">FY</label>
+									<label id="lblFY" class="cust-label" style="margin-left:10px;">0000</label>
+									<br>
+									<a href="#" class="cust-label">General Comments</a>
+								</center>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div class="table-container">
+									<table id="table_name" name="table_name" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+										<thead>
+											<tr>
+												<td colspan="4">
+													<span class="cust-label">
+														<b>Organization:</b> 
+													</span>
+													<span id="spOrg" class="cust-label">
+														
+													</span>
+												</td>
+												<td colspan="4">
+													<span class="cust-label">
+														<b>Organization Category: </b> 
+													</span>
+													<span class="cust-label">
+														State Universities and Colleges, State University or College (Main Campus)
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="5">
+													<span class="cust-label">
+														<b>Organization Hierarchy:</b> 
+													</span>
+													<span id="spOrgHi" class="cust-label">
+														
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td style="width: 250px;">
+													<span class="cust-label">
+														<b>Total Budget/GAA of Organization</b> 
+													</span>
+												</td>
+												<td>
+													<span id="lblGAABudget" class="cust-label">
+														0
+													</span>
+												</td>
+												<td>
+													<span class="cust-label">
+														<b>Primary Source</b> 
+													</span>
+												</td>
+												<td colspan="2">
+													<span id="lblPrimarySource" class="cust-label">
+														0
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2"></td>
+												<td>
+													<span class="cust-label">
+														<b>Other Source</b> 
+													</span>
+												</td>
+												<td colspan="2">
+													<span id="lblOtherSource" class="cust-label">
+														0
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="cust-label">
+														<b>% of GAD Allocation</b> 
+													</span>
+												</td>
+												<td colspan="2">
+													<span id="lblGADPercent" class="cust-label">
+														0.00%
+													</span>
+												</td>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div class="table-container">
+									<div style="height: 300px">
+										<table id="tblViewClientFocus" name="tblViewClientFocus" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+											<thead>
+												<tr>
+													<th style="vertical-align: middle; width:104px;"></th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															Gender Issue / <br> GAD Mandate
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															Cause of Gender Issue
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															GAD Result Statement / <br> GAD Objective
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															Relevant Organization <br> MFO/PAP or PPA
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															GAD Activity
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															Performance Indicator / <br> Targets
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:151px;">
+														<center>
+															GAD Budget
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															Source of Budget
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:200px;">
+														<center>
+															Responsible Unit / <br> Offices
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:150px;">
+														<center>
+															Attachments
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:150px;">
+														<center>
+															Action
+														</center>
+													</th>
+												</tr>
+												<tr>
+													<th></th>
+													<th style="vertical-align: middle;">
+														<center>
+															1
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															2
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															3
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															4
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															5
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															6
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															7
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															8
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															9
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															10
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															
+														</center>
+													</th>
+												</tr>
+												<!--<tr>
+													<th colspan="12" style="background-color:#FFFDCC">
+														<center>
+															CLIENT FOCUSED
+														</center>
+													</th>
+												</tr>-->
+											</thead>
+											<tbody></tbody>
+											<tfoot>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td colspan="2">
+														<b>SUB TOTAL</b>
+													</td>
+													<td>
+														<span id="lblPrimarySource2" class="cust-label"></span>
+													</td>
+													<td>GAA</td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td>
+														<span id="lblOtherSource2" class="cust-label"></span>
+													</td>
+													<td>ODA</td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td colspan="2">
+														<b>TOTAL GAD BUDGET</b>
+													</td>
+													<td>
+														<span id="lblGAABudget2" class="cust-label"></span>
+													</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="row" hidden>
+							<div class="col-md-12 col-sm-12">
+								<div class="table-container">
+									<div style="width:2806px">
+										<table id="tblViewOrgFocus" name="tblViewOrgFocus" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+											<thead>
+												<tr>
+													<th style="vertical-align: middle; width:104px;"></th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															Gender Issue / <br> GAD Mandate
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															Cause of Gender Issue
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															GAD Result Statement / <br> GAD Objective
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															Relevant Organization <br> MFO/PAP or PPA
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															GAD Activity
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															Performance Indicator / <br> Targets
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:151px;">
+														<center>
+															GAD Budget
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:317px;">
+														<center>
+															Source of Budget
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:200px;">
+														<center>
+															Responsible Unit / <br> Offices
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:150px;">
+														<center>
+															Attachments
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:150px;">
+														<center>
+															Action
+														</center>
+													</th>
+												</tr>
+												<tr>
+													<th></th>
+													<th style="vertical-align: middle;">
+														<center>
+															1
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															2
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															3
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															4
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															5
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															6
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															7
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															8
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															9
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															10
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															
+														</center>
+													</th>
+												</tr>
+												<tr>
+													<th colspan="12" style="background-color:#FFFDCC">
+														<center>
+															ORGANIZATIONAL FOCUSED
+														</center>
+													</th>
+												</tr>
+											</thead>
+											<tbody></tbody>
+											<tfoot>
+												
+											</tfoot>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<br>
+						<div class="row">
+							<div class="col-md-4 col-xs-12">
+								<div class="row">
+									<div class="col-md-6 col-xs-12">
+										<label class="cust-label">Prepared By : </label>
+									</div>
+									<div class="col-md-6 col-xs-12">
+										<label class="cust-label">Approved By : </label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 col-xs-12">
+								<div class="row">
+									<div class="col-md-6 col-xs-12">
+										<label id="lblPreparedByName" class="cust-label"></label>
+									</div>
+									<div class="col-md-6 col-xs-12">
+										<label id="lblApprovedByName" class="cust-label"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 col-xs-12">
+								<div class="row">
+									<div class="col-md-6 col-xs-12">
+										<label id="lblPreparedByPosition" class="cust-label"></label>
+									</div>
+									<div class="col-md-6 col-xs-12">
+										<label id="lblApprovedByPosition" class="cust-label"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer">
+						<div class="row">
+							<div class="col-md-8 col-xs-12">
+							</div>
+							<div class="col-md-1 col-xs-12">
+								<select id="cmbFinalStatus" name="cmbFinalStatus" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
+									<option value="Draft">Draft</option>
+									<option value="For Review">For Review</option>
+									<option value="Endorse">Endorse</option>
+								</select>
+							</div>
+							<div class="col-md-1 col-xs-12">
+								<button id="btnFinalize" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
+									<i class="fa fa-send"></i>
+									&nbsp;
+									Finalize
+								</button>
+							</div>
+							<div class="col-md-2 col-xs-12">
+								<div class="pull-right">
+									<label class="cust-label">
+										Document Status : 
+									</label>
+									<span id="lblDocReq"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- /.modal-content -->
+			</div>
+		<!-- /.modal-dialog -->
+		</div>
+		
+		<!-- Modal Name  -->
+		<div class="modal fade" id="mdComments" name="mdComments">
+			<div class="modal-dialog modal-md">
+				<div class="box box-default">
+					<div class="box-header with-border">
+						<label class="cust-label">Comments</label>
+						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
+						</button>
+					</div>
+					<div class="box-body">
+						<div id="dvComments" class="box-body" style="height: 334px; overflow-y: auto; overflow-x: hidden;">
+						
+						</div>
+					</div>
+					<div class="box-footer">
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<textarea id="txtComment" name="txtComment" rows="4" class="form-control cust-label cust-textbox" placeholder="Enter Comment Details"></textarea>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-8 col-sm-12">
+								
+							</div>
+							<div class="col-md-4 col-sm-12">
+								<div class="form-group">
+									<input
+										type="file"
+										class="form-control cust-label cust-textbox cust-label"
+										id="txtCommentFile"
+										name="txtCommentFile"
+										accept=
+										"application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+										text/plain, application/pdf,.doc,.docx"
+									>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8 col-xs-12"></div>
+							<div class="col-md-4 col-xs-12">
+								<button id="btnSaveComment" name="btnSaveComment" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
+									<i class="fa fa-save"></i>
+									&nbsp;
+									Save Changes
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- /.modal-content -->
+			</div>
+		<!-- /.modal-dialog -->
+		</div>
 		
 		<!-- jQuery 3 -->
 		<script src="../bower_components/jquery/dist/jquery.min.js"></script>
