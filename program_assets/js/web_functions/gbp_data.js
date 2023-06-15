@@ -203,11 +203,13 @@ $('#tblClientFocus tbody').on('click', '.edit', function (){
         if (data.arrFiles != "" || data.arrFiles != null) {
             var arrData = data.arrFiles.split('~~');
             
-            for(var i = 0; i < arrData.length; i++) {
-                tblFiles.row.add({
-                    "description" : arrData[i],
-                    "id" : ++tblFilesID
-                }).draw( false );
+            if (arrData != '') {
+                for(var i = 0; i < arrData.length; i++) {
+                    tblFiles.row.add({
+                        "description" : arrData[i],
+                        "id" : ++tblFilesID
+                    }).draw( false );
+                }
             }
         }
         

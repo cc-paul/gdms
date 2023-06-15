@@ -226,7 +226,7 @@
 				<section class="content col-md-10 col-sm-12">
 					<div class="nav-tabs-custom">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">List of Reports</a></li>
+							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">List of Approvals</a></li>
 							<!--<li class=""><a href="#gender" data-toggle="tab" aria-expanded="true" class="cust-label">Gender Issues</a></li>-->
 						</ul>
 						<div class="tab-content">

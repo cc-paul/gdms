@@ -85,7 +85,15 @@
                
                 $error   = false;
                 $color   = "green";
-                $message = "GBP Status has been updated."; 
+                $message = "GBP Status has been updated.";
+                
+                if ($status == "Endorse") {
+                    $query = "UPDATE omg_gbp_parent SET dateEndorse = ? WHERE parentFolderID = ? AND dateEndorse IS NULL";
+                    if ($stmt = mysqli_prepare($con, $query)) {
+                        mysqli_stmt_bind_param($stmt,"ss",$global_date,$parentFolderID);
+                        mysqli_stmt_execute($stmt);
+                    }
+                }
                
             } else {
                 $error   = true;
