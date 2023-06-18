@@ -232,12 +232,12 @@
 				<section class="content col-md-10 col-sm-12">
 					<div class="nav-tabs-custom">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">List of Endorsed GBP</a></li>
+							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Endorsed GBP</a></li>
 							<!--<li class=""><a href="#gender" data-toggle="tab" aria-expanded="true" class="cust-label">Gender Issues</a></li>-->
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="admin">
-								<div class="row">
+								<div class="row" hidden>
 									<div class="col-md-10 col-sm-12">
 										<input id="txtSearchAcc" class="form-control input-sm cust-label" type="text" placeholder="Search accomplishment here..." autocomplete="off">
 									</div>
@@ -249,7 +249,7 @@
 										</button>
 									</div>
 								</div>
-								<div class="row">
+								<div class="row" hidden>
 									<div class="col-md-12 col-sm-12">
 										<div class="table-container">
 											<table id="tblAccTable" name="tblAccTable" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
@@ -266,6 +266,189 @@
 												</thead>
 												<tbody></tbody>
 											</table>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 col-xs-12">
+										<div class="btn-group pull-right">
+											<button id="btnViewGBP" type="button" class="btn btn-default cust-label">
+												&nbsp;
+												<i class="fa fa-eye"></i>
+												&nbsp;
+												View AR
+												&nbsp;
+											</button>
+											<button id="btnSaveDraft" name="btnSaveDraft" type="button" class="btn btn-default cust-label" disabled="">
+												&nbsp;
+												<i class="fa fa-edit"></i>
+												&nbsp;
+												Save Draft
+												&nbsp;
+											</button>
+											<button id="btnSubmitGBPFinal" name="btnSubmitGBPFinal" type="button" class="btn btn-default cust-label" disabled="">
+												&nbsp;
+												<i class="fa fa-send"></i>
+												&nbsp;
+												Submit GBP
+												&nbsp;
+											</button>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-md-3 col-xs-12">
+										<label class="cust-label">Reference: </label>
+										<span class="cust-label">No Reference ID</span>
+									</div>
+									<div class="col-md-3 col-xs-12">
+										<label class="cust-label">Date Endoresed: </label>
+										<span id="spDateEndorse" class="cust-label"></span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 col-xs-12">
+										<label class="cust-label">Organization: </label>
+										<span id="spCollege" class="cust-label"></span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 col-xs-12">
+										<label class="cust-label">Total Budget/GAA of Organization: </label>
+										<span id="spTotalGAA" class="cust-label"></span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3 col-xs-12">
+										<label class="cust-label">Actual GAD Expenditure: </label>
+										<br>
+										<span id="spTotalExpenditure" class="cust-label">0</span>
+									</div>
+									<div class="col-md-3 col-xs-12">
+										<label class="cust-label">Original Budget: </label>
+										<br>
+										<span id="spOriginalBudget" class="cust-label">0</span>
+									</div>
+									<div class="col-md-3 col-xs-12">
+										<label class="cust-label">% of Util. of Budget: </label>
+										<br>
+										<span id="spUtilBudget" class="cust-label">0</span>
+									</div>
+									<div class="col-md-3 col-xs-12">
+										<label class="cust-label">% of GAD Exp.: </label>
+										<br>
+										<span id="spGADExp" class="cust-label">{{ No Data Yet }}</span>
+									</div>
+								</div>
+								<br>
+								<br>
+								<div class="row">
+									<div class="col-md-12 col-xs-12">
+										<div class="nav-tabs-custom">
+											<ul class="nav nav-tabs">
+												<li class="active" id="liTabActive"><a href="#tab1" data-toggle="tab" aria-expanded="true" class="cust-label" onClick="selectTab(1);">Client Focused</a></li>
+												<li class=""><a href="#tab1" data-toggle="tab" aria-expanded="true" class="cust-label" onClick="selectTab(2);">Organization Focused</a></li>
+												<li class=""><a href="#tab3" data-toggle="tab" aria-expanded="true" class="cust-label" onClick="selectTab(3);">Attributed Program</a></li>
+											</ul>
+											<div class="tab-content">
+												<div class="tab-pane active" id="tab1">
+													<div class="row">
+														<div class="col-md-10 col-xs-12">
+															<div class="form-group">
+																<input id="txtSearchClientFocus" class="form-control input-sm cust-label" type="text" placeholder="Search data here..." autocomplete="off">
+															</div>
+														</div>
+														<div class="col-md-2 col-xs-12">
+															<div class="form-group">
+																<select id="cmbClientXEntries" name="cmbClientXEntries" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
+																	<option value="5" selected>Showing 5 Entries</option>
+																	<option value="10">Showing 10 Entries</option>
+																	<option value="15">Showing 15 Entries</option>
+																	<option value="20">Showing 20 Entries</option>
+																	<option value="25">Showing 25 Entries</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="row" style="height:350px; overflow-x:auto;">
+														<div class="col-md-12 col-sm-12">
+															<div class="table-container">
+																<table id="tblClientFocus" name="tblClientFocus" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+																	<thead>
+																		<tr>
+																			<th>Gender Issue / GAD Mandate</th>
+																			<th>GAD Activity</th>
+																			<th>Total Agency Approved Budget</th>
+																			<th>Actual Cost / Expenditure</th>
+																			<th>Variance / Remarks</th>
+																			<th>Action</th>
+																		</tr>
+																	</thead>
+																	<tbody></tbody>
+																</table>
+																
+																<br>
+																<div hidden>
+																	<table id="tblClientFocus2" name="tblClientFocus2" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+																		<thead>
+																			<tr>
+																				<th>Gender Issue / GAD Mandate</th>
+																				<th>GAD Activity</th>
+																				<th>Total Agency Approved Budget</th>
+																				<th>Actual Cost / Expenditure</th>
+																				<th>Variance / Remarks</th>
+																				<th>Action</th>
+																			</tr>
+																		</thead>
+																		<tbody></tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="tab-pane" id="tab3">
+													<div class="row">
+														<div class="col-md-10 col-xs-12">
+															<div class="form-group">
+																<input id="txtSearchAttr" class="form-control input-sm cust-label" type="text" placeholder="Search data here..." autocomplete="off">
+															</div>
+														</div>
+														<div class="col-md-2 col-xs-12">
+															<div class="form-group">
+																<select id="cmbAttrXEntries" name="cmbAttrXEntries" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
+																	<option value="5" selected>Showing 5 Entries</option>
+																	<option value="10">Showing 10 Entries</option>
+																	<option value="15">Showing 15 Entries</option>
+																	<option value="20">Showing 20 Entries</option>
+																	<option value="25">Showing 25 Entries</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="row" style="height:350px; overflow-x:auto;">
+														<div class="col-md-12 col-sm-12">
+															<div class="table-container">
+																<table id="tblAttrMain" name="tblAttrMain" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+																	<thead>
+																		<tr>
+																			<th>Program</th>
+																			<th>Budget</th>
+																			<th>Budget Source</th>
+																			<th>Attachments</th>
+																			<th>Actual Cost / Expenditure</th>
+																			<th>Variance / Remarks</th>
+																			<th>Action</th>
+																		</tr>
+																	</thead>
+																	<tbody></tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -298,161 +481,7 @@
 						</button>
 					</div>
 					<div class="box-body">
-						<div class="row">
-							<div class="col-md-1 col-xs-12">
-								<label class="cust-label">Reference: </label>
-								<br>
-								<span class="cust-label">No Reference ID</span>
-							</div>
-							<div class="col-md-1 col-xs-12">
-								<label class="cust-label">Date Endoresed: </label>
-								<br>
-								<span id="spDateEndorse" class="cust-label"></span>
-							</div>
-							<div class="col-md-3 col-xs-12">
-								<div class="ellipsis">
-									<label class="cust-label">Organization: </label>
-									<br>
-									<span id="spCollege" class="cust-label"></span>
-								</div>
-							</div>
-							<div class="col-md-2 col-xs-12">
-								<label class="cust-label">Total Budget/GAA of Organization: </label>
-								<br>
-								<span id="spTotalGAA" class="cust-label"></span>
-							</div>
-							<div class="col-md-2 col-xs-12">
-								<label class="cust-label">Actual GAD Expenditure: </label>
-								<br>
-								<span id="spTotalExpenditure" class="cust-label">0</span>
-							</div>
-							<div class="col-md-1 col-xs-12">
-								<label class="cust-label">Original Budget: </label>
-								<br>
-								<span id="spOriginalBudget" class="cust-label">0</span>
-							</div>
-							<div class="col-md-1 col-xs-12">
-								<label class="cust-label">% of Util. of Budget: </label>
-								<br>
-								<span id="spUtilBudget" class="cust-label">0</span>
-							</div>
-							<div class="col-md-1 col-xs-12">
-								<label class="cust-label">% of GAD Exp.: </label>
-								<br>
-								<span id="spGADExp" class="cust-label">{{ No Data Yet }}</span>
-							</div>
-						</div>
-						<br>
-						<br>
-						<div class="row">
-							<div class="col-md-12 col-xs-12">
-								<div class="nav-tabs-custom">
-									<ul class="nav nav-tabs">
-										<li class="active" id="liTabActive"><a href="#tab1" data-toggle="tab" aria-expanded="true" class="cust-label" onClick="selectTab(1);">Client Focused</a></li>
-										<li class=""><a href="#tab1" data-toggle="tab" aria-expanded="true" class="cust-label" onClick="selectTab(2);">Organization Focused</a></li>
-										<li class=""><a href="#tab3" data-toggle="tab" aria-expanded="true" class="cust-label" onClick="selectTab(3);">Attributed Program</a></li>
-									</ul>
-									<div class="tab-content">
-										<div class="tab-pane active" id="tab1">
-											<div class="row">
-												<div class="col-md-10 col-xs-12">
-													<div class="form-group">
-														<input id="txtSearchClientFocus" class="form-control input-sm cust-label" type="text" placeholder="Search data here..." autocomplete="off">
-													</div>
-												</div>
-												<div class="col-md-2 col-xs-12">
-													<div class="form-group">
-														<select id="cmbClientXEntries" name="cmbClientXEntries" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
-															<option value="5" selected>Showing 5 Entries</option>
-															<option value="10">Showing 10 Entries</option>
-															<option value="15">Showing 15 Entries</option>
-															<option value="20">Showing 20 Entries</option>
-															<option value="25">Showing 25 Entries</option>
-														</select>
-													</div>
-												</div>
-											</div>
-											<div class="row" style="height:450px; overflow-x:auto;">
-												<div class="col-md-12 col-sm-12">
-													<div class="table-container">
-														<table id="tblClientFocus" name="tblClientFocus" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
-															<thead>
-																<tr>
-																	<th>Gender Issue / GAD Mandate</th>
-																	<th>GAD Activity</th>
-																	<th>Total Agency Approved Budget</th>
-																	<th>Actual Cost / Expenditure</th>
-																	<th>Variance / Remarks</th>
-																	<th>Action</th>
-																</tr>
-															</thead>
-															<tbody></tbody>
-														</table>
-														
-														<br>
-														<div hidden>
-															<table id="tblClientFocus2" name="tblClientFocus2" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
-																<thead>
-																	<tr>
-																		<th>Gender Issue / GAD Mandate</th>
-																		<th>GAD Activity</th>
-																		<th>Total Agency Approved Budget</th>
-																		<th>Actual Cost / Expenditure</th>
-																		<th>Variance / Remarks</th>
-																		<th>Action</th>
-																	</tr>
-																</thead>
-																<tbody></tbody>
-															</table>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="tab-pane" id="tab3">
-											<div class="row">
-												<div class="col-md-10 col-xs-12">
-													<div class="form-group">
-														<input id="txtSearchAttr" class="form-control input-sm cust-label" type="text" placeholder="Search data here..." autocomplete="off">
-													</div>
-												</div>
-												<div class="col-md-2 col-xs-12">
-													<div class="form-group">
-														<select id="cmbAttrXEntries" name="cmbAttrXEntries" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
-															<option value="5" selected>Showing 5 Entries</option>
-															<option value="10">Showing 10 Entries</option>
-															<option value="15">Showing 15 Entries</option>
-															<option value="20">Showing 20 Entries</option>
-															<option value="25">Showing 25 Entries</option>
-														</select>
-													</div>
-												</div>
-											</div>
-											<div class="row" style="height:450px; overflow-x:auto;">
-												<div class="col-md-12 col-sm-12">
-													<div class="table-container">
-														<table id="tblAttrMain" name="tblAttrMain" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
-															<thead>
-																<tr>
-																	<th>Program</th>
-																	<th>Budget</th>
-																	<th>Budget Source</th>
-																	<th>Attachments</th>
-																	<th>Actual Cost / Expenditure</th>
-																	<th>Variance / Remarks</th>
-																	<th>Action</th>
-																</tr>
-															</thead>
-															<tbody></tbody>
-														</table>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 					<div class="box-footer">
 						

@@ -19,9 +19,17 @@ $("#btnExport").click(function(){
 	$(".btn-export-acc").click();
 });
 
+$(document).ready(function(){
+  setTimeout(function() {
+    var row = tblAccTable.row(0);
+    var button = row.node().querySelector('.gbp-acc-view');
+    button.click();
+  }, 1000);
+});
+
 $('#tblAccTable tbody').on('click', 'td button', function (){
 	var data = tblAccTable.row( $(this).parents('tr') ).data();
-    
+     
   $("#spDateEndorse").text(data.dateEndorse);
   $("#spCollege").text(data.college);
   $("#spTotalGAA").text(data.totalAmount);
@@ -36,7 +44,7 @@ $('#tblAccTable tbody').on('click', 'td button', function (){
   
   getTotalUtils();
   
-  $("#mdViewGBP").modal();
+  //$("#mdViewGBP").modal();
 });
 
 function getTotalUtils() {
