@@ -21,9 +21,15 @@ $("#btnExport").click(function(){
 
 $(document).ready(function(){
   setTimeout(function() {
-    var row = tblAccTable.row(0);
-    var button = row.node().querySelector('.gbp-acc-view');
-    button.click();
+    try {
+      var row = tblAccTable.row(0);
+      var button = row.node().querySelector('.gbp-acc-view');
+      button.click();
+    }
+    catch(err) {
+      $("#btnViewGBP").prop("disabled", true);
+      $("#btnSubmitGBPFinal").prop("disabled", true);
+    }
   }, 1000);
 });
 
@@ -33,6 +39,8 @@ $('#tblAccTable tbody').on('click', 'td button', function (){
   $("#spDateEndorse").text(data.dateEndorse);
   $("#spCollege").text(data.college);
   $("#spTotalGAA").text(data.totalAmount);
+  
+  
   
   activaTab('tab1');
   loadClientFocus(1,data.parentFolderID);
@@ -45,6 +53,28 @@ $('#tblAccTable tbody').on('click', 'td button', function (){
   getTotalUtils();
   
   //$("#mdViewGBP").modal();
+});
+
+$("#btnSubmitGBPFinal").click(function(){
+  $.ajax({
+    url: "../program_assets/php/web/accomplishment.php",
+    data: {
+      command   : 're_endorse',
+      parentFolderID : cur_parentFolderID
+    },
+    type: 'post',
+    success: function (data) {
+      var data = jQuery.parseJSON(data);
+      
+      JAlert(data[0].message,data[0].color);
+      
+      if (!data[0].error) {
+        setTimeout(function() {
+          location.reload();
+        }, 1500);   
+      }
+    }
+  });
 });
 
 function getTotalUtils() {
@@ -559,6 +589,8 @@ $('#tblClientFocus tbody').on('click', '.view', function (){
         
     }, 1500);
 });
+
+
 
 function prepareGBP() {
     $("#mdGBP").modal();

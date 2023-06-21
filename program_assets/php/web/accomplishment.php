@@ -20,6 +20,34 @@
     $json    = array();
     
     switch ($command) {
+        case "re_endorse" :
+            
+            $parentFolderID = $_POST["parentFolderID"];
+             
+            $query = "UPDATE omg_gbp_parent SET reportType = 'Accomplishment Report' WHERE parentFolderID = ?";
+            if ($stmt = mysqli_prepare($con, $query)) {
+                mysqli_stmt_bind_param($stmt,"s",$parentFolderID);
+                mysqli_stmt_execute($stmt);
+               
+                $error   = false;
+                $color   = "green";
+                $message = "AR has been re-endorse to reviewer"; 
+               
+            } else {
+                $error   = true;
+                $color   = "red";
+                $message = "Error updating AR"; 
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+            
+        break;
+        
         case "load_acc" :
             
             $id = $_SESSION["id"];
@@ -55,7 +83,9 @@
                 ON 
                     a.parentFolderID = d.parentFolderID
                 WHERE
-                    a.`status` = 'Endorse' 
+                    a.`status` = 'Endorse'
+                AND
+                    a.reportType != 'Accomplishment Report'
                 AND
                     a.createdBy = $id
                 ORDER BY

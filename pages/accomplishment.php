@@ -279,18 +279,18 @@
 												View AR
 												&nbsp;
 											</button>
-											<button id="btnSaveDraft" name="btnSaveDraft" type="button" class="btn btn-default cust-label" disabled="">
+											<!--<button id="btnSaveDraft" name="btnSaveDraft" type="button" class="btn btn-default cust-label" disabled="">
 												&nbsp;
 												<i class="fa fa-edit"></i>
 												&nbsp;
 												Save Draft
 												&nbsp;
-											</button>
-											<button id="btnSubmitGBPFinal" name="btnSubmitGBPFinal" type="button" class="btn btn-default cust-label" disabled="">
+											</button>-->
+											<button id="btnSubmitGBPFinal" name="btnSubmitGBPFinal" type="button" class="btn btn-default cust-label">
 												&nbsp;
 												<i class="fa fa-send"></i>
 												&nbsp;
-												Submit GBP
+												Submit AR
 												&nbsp;
 											</button>
 										</div>

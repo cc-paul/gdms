@@ -63,19 +63,19 @@
 			}
 			
 			.full_modal-dialog {
-				width: 90% !important;
-				height: 92% !important;
-				min-width: 90% !important;
-				min-height: 92% !important;
-				max-width: 90% !important;
-				max-height: 92% !important;
+				width: 100% !important;
+				height: 100% !important;
+				min-width: 100% !important;
+				min-height: 100% !important;
+				max-width: 100% !important;
+				max-height: 100% !important;
 				padding: 0 !important;
 			}
 			
 			.full_modal-content {
-				height: 99% !important;
-				min-height: 99% !important;
-				max-height: 99% !important;
+				height: 100% !important;
+				min-height: 100% !important;
+				max-height: 100% !important;
 			}
 		</style>
 	</head>
@@ -505,6 +505,21 @@
 													</th>
 													<th style="vertical-align: middle; width:150px;">
 														<center>
+															Actual Result (Outcome)
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:150px;">
+														<center>
+															Actual Cost / Expenditure
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:150px;">
+														<center>
+															Variance / Remarks
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:150px;">
+														<center>
 															Attachments
 														</center>
 													</th>
@@ -564,6 +579,23 @@
 													<th style="vertical-align: middle;">
 														<center>
 															10
+														</center>
+													</th>
+													
+													
+													<th style="vertical-align: middle;">
+														<center>
+															11
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															12
+														</center>
+													</th>
+													<th style="vertical-align: middle;">
+														<center>
+															13
 														</center>
 													</th>
 													<th style="vertical-align: middle;">

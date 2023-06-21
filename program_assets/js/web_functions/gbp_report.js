@@ -102,6 +102,8 @@ function showGBPView(parentFolderID) {
         success: function (data) {
             var data = jQuery.parseJSON(data);
             var newContent = "";
+			
+			console.log(data);
             
             $("#tblViewClientFocus tbody").append(newContent);
 			
@@ -114,7 +116,7 @@ function showGBPView(parentFolderID) {
 				
 				 $("#tblViewClientFocus thead").append(`
 					<tr>
-						<th colspan="12" style="background-color:#FFFDCC">
+						<th colspan="15" style="background-color:#FFFDCC">
 							<center>
 								CLIENT FOCUSED
 							</center>
@@ -212,7 +214,44 @@ function showGBPView(parentFolderID) {
                     
                 }
                 
+				var actualCostText = "";
+                var arrActualCost = data[i].actualCost.split('~~');
+				
+				if (data[i].actualCost != "") {
+					for (var h = 0; h < arrActualCost.length; h++) {
+						var [source,item,expense] = arrActualCost[h].split('~');
+                      
+						actualCostText += `
+						  <span style="white-space:normal"><b>Source : </b>${source}</span>
+						  <br>
+						  <span style="white-space:normal"><b>Item : </b>${item}</span>
+						  <br>
+						  <span style="white-space:normal"><b>Expense : </b>${expense}</span>
+						  <br>
+						  <br>
+						`;
+						
+					}
+                }
     
+	
+				var strVariance = "";
+                  
+				if (data[i].varianceRemarks != "") {
+				  var arrVariance = data[i].varianceRemarks.split('~~');
+				
+				  for(var j = 0; j < arrVariance.length; j++) {
+					var [variance,remarks] = arrVariance[j].split('~');
+					
+					strVariance += `
+					  <span style="white-space:normal"><b>Variance : </b>${variance}</span>
+					  <br>
+					  <span style="white-space:normal"><b>Remarks : </b>${remarks}</span>
+					  <br>
+					  <br>
+					`;
+				  }
+				}
                 
                 newContent += `
                     <tr>
@@ -272,11 +311,29 @@ function showGBPView(parentFolderID) {
                             <br>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows}')">Comments</a>
                         </td>
+						<td>
+							${data[i].actualResult}
+							<br>
+                            <br>
+                            <a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
+						</td>
+						<td>
+							${actualCostText}
+							<br>
+                            <br>
+                            <a href="#" onclick="openCommentModal('${parentFolderID}-col10-row${countRows}')">Comments</a>
+						</td>
+						<td>
+							${strVariance}
+							<br>
+                            <br>
+                            <a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows}')">Comments</a>
+						</td>
                         <td>
                             ${files}
                             <br>
                             <br>
-                            <a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
+                            <a href="#" onclick="openCommentModal('${parentFolderID}-col12-row${countRows}')">Comments</a>
                         </td>
                         <td>
                             <div class="btn-group" style="width: 100px;">
@@ -310,7 +367,7 @@ function showGBPView(parentFolderID) {
 				if (data.length != 0) {
 					 $("#tblViewClientFocus tbody:first").append(`
 						<tr>
-							<th colspan="12" style="background-color:#FFFDCC">
+							<th colspan="15" style="background-color:#FFFDCC">
 								<center>
 									ORGANIZATIONAL FOCUSED
 								</center>
@@ -409,9 +466,48 @@ function showGBPView(parentFolderID) {
 					
 		
 					
+					var actualCostText = "";
+					var arrActualCost = data[i].actualCost.split('~~');
+					
+					if (data[i].actualCost != "") {
+						for (var h = 0; h < arrActualCost.length; h++) {
+							var [source,item,expense] = arrActualCost[h].split('~');
+						  
+							actualCostText += `
+							  <span style="white-space:normal"><b>Source : </b>${source}</span>
+							  <br>
+							  <span style="white-space:normal"><b>Item : </b>${item}</span>
+							  <br>
+							  <span style="white-space:normal"><b>Expense : </b>${expense}</span>
+							  <br>
+							  <br>
+							`;
+							
+						}
+					}
+		
+		
+					var strVariance = "";
+					  
+					if (data[i].varianceRemarks != "") {
+					  var arrVariance = data[i].varianceRemarks.split('~~');
+					
+					  for(var j = 0; j < arrVariance.length; j++) {
+						var [variance,remarks] = arrVariance[j].split('~');
+						
+						strVariance += `
+						  <span style="white-space:normal"><b>Variance : </b>${variance}</span>
+						  <br>
+						  <span style="white-space:normal"><b>Remarks : </b>${remarks}</span>
+						  <br>
+						  <br>
+						`;
+					  }
+					}
+					
 					newContent += `
 						<tr>
-							<td>${ countRows + 1 }</td>
+							<td>${ i + 1 }</td>
 							<td>
 								<b>Gender Issue : </b> ${data[i].gender}
 								<br>
@@ -419,62 +515,80 @@ function showGBPView(parentFolderID) {
 								<b>GAD Mandate : </b> ${data[i].gad}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col1-row${countRows2}')">Comments</a>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col1-row${countRows}')">Comments</a>
 							</td>
 							<td>
 								${causeGender}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col2-row${countRows2}')">Comments</a>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col2-row${countRows}')">Comments</a>
 							</td>
 							<td>
 								${gadResult}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col3-row${countRows2}')">Comments</a>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col3-row${countRows}')">Comments</a>
 							</td>
 							<td>
 								${relevantOrg}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col4-row${countRows2}')">Comments</a>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col4-row${countRows}')">Comments</a>
 							</td>
 							<td>
 								${ data[i].gadActivity }
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col5-row${countRows2}')">Comments</a>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col5-row${countRows}')">Comments</a>
 							</td>
 							<td>
 								${performanceIndicator}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col6-row${countRows2}')">Comments</a>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col6-row${countRows}')">Comments</a>
 							</td>
 							<td colspan="2">
-								<table style="width:100%;">
+								<table id="tbNotThis" style="width:100%;">
 									<tbody>
 										${budgetText}
 									</tbody>
 								</table>
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col7-row${countRows2}')">Comments</a>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col7-row${countRows}')">Comments</a>
 							</td>
 							<td>
 								${office}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows2}')">Comments</a>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows}')">Comments</a>
+							</td>
+							<td>
+								${data[i].actualResult}
+								<br>
+								<br>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
+							</td>
+							<td>
+								${actualCostText}
+								<br>
+								<br>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col10-row${countRows}')">Comments</a>
+							</td>
+							<td>
+								${strVariance}
+								<br>
+								<br>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows}')">Comments</a>
 							</td>
 							<td>
 								${files}
 								<br>
 								<br>
-								<a href="#" onload="console.log(1)	;" onclick="openCommentModal('${parentFolderID}-col9-row${countRows2}')">Comments</a>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col12-row${countRows}')">Comments</a>
 							</td>
 							<td>
-								<div class="btn-group">
+								<div class="btn-group" style="width: 100px;">
 									<button type="button" class="btn btn-default" style="width: 43px"><i class="fa fa-lock"></i></button>
 								</div>
 							</td>
@@ -509,7 +623,7 @@ function showGBPView(parentFolderID) {
 				if (data.length != 0) {
 					 $("#tblViewClientFocus tbody:first").append(`
 						<tr>
-							<th colspan="12" style="background-color:#FFFDCC">
+							<th colspan="15" style="background-color:#FFFDCC">
 								<center>
 									ATTRIBUTED PROGRAM
 								</center>
@@ -606,6 +720,45 @@ function showGBPView(parentFolderID) {
 						
 					}
 					
+					
+					var actualCostText = "";
+					var arrActualCost = data[i].actualCost.split('~~');
+					
+					if (data[i].actualCost != "") {
+						for (var h = 0; h < arrActualCost.length; h++) {
+							var [source,item,expense] = arrActualCost[h].split('~');
+						  
+							actualCostText += `
+							  <span style="white-space:normal"><b>Source : </b>${source}</span>
+							  <br>
+							  <span style="white-space:normal"><b>Item : </b>${item}</span>
+							  <br>
+							  <span style="white-space:normal"><b>Expense : </b>${expense}</span>
+							  <br>
+							  <br>
+							`;
+							
+						}
+					}
+		
+		
+					var strVariance = "";
+					  
+					if (data[i].varianceRemarks != "") {
+					  var arrVariance = data[i].varianceRemarks.split('~~');
+					
+					  for(var j = 0; j < arrVariance.length; j++) {
+						var [variance,remarks] = arrVariance[j].split('~');
+						
+						strVariance += `
+						  <span style="white-space:normal"><b>Variance : </b>${variance}</span>
+						  <br>
+						  <span style="white-space:normal"><b>Remarks : </b>${remarks}</span>
+						  <br>
+						  <br>
+						`;
+					  }
+					}
 		
 					
 					newContent += `
@@ -646,10 +799,29 @@ function showGBPView(parentFolderID) {
 								
 							</td>
 							<td>
-								${files}
+								${data[i].actualResult}
 								<br>
 								<br>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows2}')">Comments</a>
+							</td>
+							</td>
+							<td>
+								${actualCostText}
+								<br>
+								<br>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col10-row${countRows2}')">Comments</a>
+							</td>
+							<td>
+								${strVariance}
+								<br>
+								<br>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows2}')">Comments</a>
+							</td>
+							<td>
+								${files}
+								<br>
+								<br>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col12-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								<div class="btn-group">

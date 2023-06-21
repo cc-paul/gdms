@@ -486,7 +486,14 @@
                     ),'') AS arrOffices,
                     IFNULL((
                             SELECT GROUP_CONCAT(CONCAT(performanceIndicator,'~',target) SEPARATOR '~~') FROM omg_gbp_performanceindicator WHERE folderID = a.folderID
-                    ),'') AS arrPerformanceIndicator
+                    ),'') AS arrPerformanceIndicator,
+                    IFNULL(a.actualResult,'') AS actualResult,
+                    IFNULL((
+                            SELECT GROUP_CONCAT(CONCAT(source,'~',item,'~',FORMAT(expense,2)) SEPARATOR '~~') FROM omg_gbp_actual_cost WHERE parentFolderID = a.folderID
+                    ),'') AS actualCost,
+                    IFNULL((
+                            SELECT GROUP_CONCAT(CONCAT(FORMAT(variance,2),'~',remarks) SEPARATOR '~~') FROM omg_gbp_variance WHERE parentFolderID = a.folderID
+                    ),'') AS varianceRemarks
                 FROM
                     omg_gbp a 
                 INNER JOIN
@@ -527,7 +534,10 @@
                     'arrGenderIssue' => $row["arrGenderIssue"],
                     'arrMFO' => $row["arrMFO"],
                     'arrOffices' => $row["arrOffices"],
-                    'arrPerformanceIndicator' => $row["arrPerformanceIndicator"]
+                    'arrPerformanceIndicator' => $row["arrPerformanceIndicator"],
+                    'actualResult' => $row["actualResult"],
+                    'actualCost' => $row["actualCost"],
+                    'varianceRemarks' => $row["varianceRemarks"]
                 );
             }
             echo json_encode($json);
@@ -570,7 +580,14 @@
                     ),'') AS arrOffices,
                     IFNULL((
                                     SELECT GROUP_CONCAT(CONCAT(performanceIndicator,'~',target) SEPARATOR '~~') FROM omg_gbp_performanceindicator WHERE folderID = a.folderID
-                    ),'') AS arrPerformanceIndicator
+                    ),'') AS arrPerformanceIndicator,
+                    IFNULL(a.actualResult,'') AS actualResult,
+                    IFNULL((
+                            SELECT GROUP_CONCAT(CONCAT(source,'~',item,'~',FORMAT(expense,2)) SEPARATOR '~~') FROM omg_gbp_actual_cost WHERE parentFolderID = a.folderID
+                    ),'') AS actualCost,
+                    IFNULL((
+                            SELECT GROUP_CONCAT(CONCAT(FORMAT(variance,2),'~',remarks) SEPARATOR '~~') FROM omg_gbp_variance WHERE parentFolderID = a.folderID
+                    ),'') AS varianceRemarks
                 FROM
                     omg_gbp a 
                 LEFT JOIN
@@ -611,7 +628,10 @@
                     'arrGenderIssue' => $row["arrGenderIssue"],
                     'arrMFO' => $row["arrMFO"],
                     'arrOffices' => $row["arrOffices"],
-                    'arrPerformanceIndicator' => $row["arrPerformanceIndicator"]
+                    'arrPerformanceIndicator' => $row["arrPerformanceIndicator"],
+                    'actualResult' => $row["actualResult"],
+                    'actualCost' => $row["actualCost"],
+                    'varianceRemarks' => $row["varianceRemarks"]
                 );
             }
             echo json_encode($json);
