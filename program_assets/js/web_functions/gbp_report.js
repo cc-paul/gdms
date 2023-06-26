@@ -15,6 +15,10 @@ $("#btnExport").click(function(){
 	$(".btn-export-gbp").click();
 });
 
+$("#aGeneralComments").click(function(){
+	openCommentModal(`${selectParentFolderID}-generalcomment`);
+});
+
 $('#tblGBPTable tbody').on('click', '.gbp-table-view', function (){
 	var data = tblGBPTable.row( $(this).parents('tr') ).data();
 	

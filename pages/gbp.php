@@ -1284,7 +1284,7 @@ Development Resource Center for review and may not be edited until it has been r
 									<label class="cust-label">FY</label>
 									<label id="lblFY" class="cust-label" style="margin-left:10px;">0000</label>
 									<br>
-									<a href="#" class="cust-label">General Comments</a>
+									<a id="aGeneralComments" href="#" class="cust-label">General Comments</a>
 								</center>
 							</div>
 						</div>

@@ -1,8 +1,13 @@
 var totalPrimarySource;
 var totalOtherSource;
+var generalCommentParentID;
 
 $("#btnViewGBP").click(function(){
 	showParentGBP();
+});
+
+$("#aGeneralComments").click(function(){
+	openCommentModal(`${generalCommentParentID}-generalcomment`);
 });
 
 function showParentGBP() {
@@ -19,6 +24,8 @@ function showParentGBP() {
             var data = jQuery.parseJSON(data);
             
             for (var i = 0; i < data.length; i++) {
+				generalCommentParentID = data[i].parentFolderID;
+				
                 showGBPView(data[i].parentFolderID);
                 $("#mdViewGBP").modal();
                 

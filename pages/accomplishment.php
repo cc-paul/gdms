@@ -338,7 +338,7 @@
 									<div class="col-md-3 col-xs-12">
 										<label class="cust-label">% of GAD Exp.: </label>
 										<br>
-										<span id="spGADExp" class="cust-label">{{ No Data Yet }}</span>
+										<span id="spGADExp" class="cust-label">0%</span>
 									</div>
 								</div>
 								<br>

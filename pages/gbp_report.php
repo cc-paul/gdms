@@ -359,7 +359,7 @@
 									<label class="cust-label">FY</label>
 									<label id="lblFY" class="cust-label" style="margin-left:10px;">0000</label>
 									<br>
-									<a href="#" class="cust-label">General Comments</a>
+									<a id="aGeneralComments" href="#" class="cust-label">General Comments</a>
 								</center>
 							</div>
 						</div>
@@ -858,6 +858,7 @@
 									<option value="Draft">Draft</option>
 									<option value="For Review">For Review</option>
 									<option value="Endorse">Endorse</option>
+									<option value="Endorse">Re-Endorse</option>
 								</select>
 							</div>
 							<div class="col-md-1 col-xs-12">
@@ -872,7 +873,7 @@
 									<label class="cust-label">
 										Document Status : 
 									</label>
-									<span id="lblDocReq"></span>
+									<span id="lblDocReq" class="cust-label"></span>
 								</div>
 							</div>
 						</div>
