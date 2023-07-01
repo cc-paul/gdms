@@ -96,6 +96,69 @@
             
         break;
     
+        case "load_acc_details" :
+            
+            $parentFolderID = $_POST["parentFolderID"];
+            
+            $sql = "
+                SELECT 
+                    a.id,
+                    a.parentFolderID,
+                    a.reportType,
+                    c.college,
+                    a.`year`,
+                    a.`status`,
+                    FORMAT(a.totalAmount,2) AS totalAmount,
+                    CONCAT(IFNULL(b.lastName,''),', ',IFNULL(b.firstName,''),' ',IFNULL(middleName,'')) AS fullName,
+                    d.approvedBy,
+                    d.approvedByPosition,
+                    d.preparedBy,
+                    d.preparedByPosition,
+                    b.email
+                FROM
+                    omg_gbp_parent a 
+                INNER JOIN 
+                    omg_registration b 
+                ON 
+                    a.createdBy = b.id 
+                INNER JOIN	
+                    omg_colleges c 
+                ON 
+                    b.collegeID = c.id 
+                LEFT JOIN
+                    omg_signatory d
+                ON 
+                    a.parentFolderID = d.parentFolderID
+                WHERE
+                    a.parentFolderID = '$parentFolderID'
+                ORDER BY
+                    a.id DESC
+            ";
+            
+            $result = mysqli_query($con,$sql);
+            
+            $json = array();
+            while ($row  = mysqli_fetch_assoc($result)) {
+                $json[] = array(
+                    'id'          => $row["id"],
+                    'parentFolderID'          => $row["parentFolderID"],
+                    'reportType'          => $row["reportType"],
+                    'college'          => $row["college"],
+                    'year'          => $row["year"],
+                    'status'          => $row["status"],
+                    'totalAmount'          => $row["totalAmount"],
+                    'fullName'          => $row["fullName"],
+                    'approvedBy'          => $row["approvedBy"],
+                    'approvedByPosition'          => $row["approvedByPosition"],
+                    'preparedBy'          => $row["preparedBy"],
+                    'preparedByPosition'          => $row["preparedByPosition"],
+                    'email'          => $row["email"]
+                );
+            }
+            echo json_encode($json);
+            
+        break;
+    
         case "load_activity" :
             
             $tab = $_POST["tab"];
