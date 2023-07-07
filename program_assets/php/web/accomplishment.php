@@ -31,7 +31,17 @@
                
                 $error   = false;
                 $color   = "green";
-                $message = "AR has been re-endorse to reviewer"; 
+                $message = "AR has been re-endorse to reviewer";
+                
+                $subject      = "For Revision of AR for 2023";
+                $notifRemarks = "Your AR has been returned to reviewer for checking.";
+                $fromID       = $_SESSION["id"];
+                $notifDate    = $global_date;
+                
+                $query = "INSERT INTO omg_gbp_notification (parenteFolderID,subject,remarks,fromID,dateCreated) VALUES (?,?,?,?,?)";
+                $stmt  = mysqli_prepare($con, $query);
+                mysqli_stmt_bind_param($stmt,"sssss",$parentFolderID,$subject,$notifRemarks,$fromID,$notifDate);
+                mysqli_stmt_execute($stmt);
                
             } else {
                 $error   = true;
@@ -447,6 +457,35 @@
                 'totalBudget' => $budget
             );
             echo json_encode($json);
+            
+        break;
+    
+        case "load_notif" :
+            
+            $id = $_SESSION["id"];
+            
+            $sql = "
+                SELECT
+                    CONCAT('<b>',a.`subject`,'</b>',' - ',c.college) AS `subject`,
+                    a.remarks,
+                    CONCAT(b.lastName,', ',b.firstName,' ',IFNULL(b.middleName,'')) AS fullName,
+                    a.dateCreated
+                FROM
+                    omg_gbp_notification a 
+                INNER JOIN
+                    omg_registration b 
+                ON
+                    a.fromID = b.id 
+                INNER JOIN
+                    omg_colleges c 
+                ON 
+                    b.collegeID = c.id
+                WHERE
+                    a.parentFolderID IN (SELECT parentFolderID FROM omg_gbp_parent WHERE createdBy = $id)
+                ORDER BY
+                    a.dateCreated DESC
+            ";
+            return builder($con,$sql);
             
         break;
     }

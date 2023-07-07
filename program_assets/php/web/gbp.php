@@ -1167,10 +1167,20 @@
             if ($stmt = mysqli_prepare($con, $query)) {
                 mysqli_stmt_bind_param($stmt,"ss",$remarks,$parentFolderID);
                 mysqli_stmt_execute($stmt);
+                
+                $subject      = "For Submission of GBP for 2023";
+                $notifRemarks = "Your GBP created has been submitted and will be reviewed.";
+                $fromID       = $_SESSION["id"];
+                $notifDate    = $global_date;
+                
+                $query = "INSERT INTO omg_gbp_notification (parenteFolderID,subject,remarks,fromID,dateCreated) VALUES (?,?,?,?,?)";
+                $stmt  = mysqli_prepare($con, $query);
+                mysqli_stmt_bind_param($stmt,"sssss",$parentFolderID,$subject,$notifRemarks,$fromID,$notifDate);
+                mysqli_stmt_execute($stmt);
                
                 $error   = false;
                 $color   = "green";
-                $message = "GBP has been sent for approval"; 
+                $message = "GBP has been sent for approval";
                
             } else {
                 $error   = true;

@@ -95,6 +95,28 @@
                     }
                 }
                 
+                $subject      = "";
+                $notifRemarks = "";
+                
+                if ($status == "Draft") {
+                    $subject = "For Revision of GBP for 2023";
+                    $notifRemarks = "Your GBP created has been returned to you.";
+                }
+                
+                if ($status == "Endorse") {
+                    $subject = "For Endorse of GBP for 2023";
+                    $notifRemarks = "Your GBP created has been endorse as AR.";
+                }
+                
+
+                $fromID       = $_SESSION["id"];
+                $notifDate    = $global_date;
+                
+                $query = "INSERT INTO omg_gbp_notification (parenteFolderID,subject,remarks,fromID,dateCreated) VALUES (?,?,?,?,?)";
+                $stmt  = mysqli_prepare($con, $query);
+                mysqli_stmt_bind_param($stmt,"sssss",$parentFolderID,$subject,$notifRemarks,$fromID,$notifDate);
+                mysqli_stmt_execute($stmt);
+                
                 //if ($status == "Re  Endorse") {
                 //    $query = "UPDATE omg_gbp_parent SET dateEndorse = ? WHERE parentFolderID = ? AND dateEndorse IS NULL";
                 //    if ($stmt = mysqli_prepare($con, $query)) {
@@ -116,6 +138,141 @@
             );
             echo json_encode($json);
             
+        break;
+    
+        case "save_ann" :
+            
+            $subject = $_POST["subject"];
+            $description = $_POST["description"];
+            $annID = $_POST["annID"];
+            $oldSubject = $_POST["oldSubject"];
+            $isNewAnnouncement = $_POST["isNewAnnouncement"];
+            
+            if ($annID == 0) {
+                $find_query = mysqli_query($con,"SELECT * FROM omg_announcement WHERE `subject` = '$subject' AND isDeleted = 0");
+                if (mysqli_num_rows($find_query) == 0) {
+                    mysqli_next_result($con);
+                   
+                    $query = "INSERT INTO omg_announcement (subject,description,dateCreated) VALUES (?,?,?)";
+                    if ($stmt = mysqli_prepare($con, $query)) {
+                        mysqli_stmt_bind_param($stmt,"sss",$subject,$description,$global_date);
+                        mysqli_stmt_execute($stmt);
+                       
+                        $error   = false;
+                        $color   = "green";
+                        $message = "Announcement has been saved"; 
+                       
+                    } else {
+                        $error   = true;
+                        $color   = "red";
+                        $message = "Error saving announcement"; 
+                    }
+                   
+                } else {
+                    $error   = true;
+                    $color   = "red";
+                    $message = "Announcement already exist"; 
+                }
+            } else {
+                
+                if ($subject != $oldSubject) {
+                    $find_query = mysqli_query($con,"SELECT * FROM omg_announcement WHERE `subject` = '$subject' AND isDeleted = 0");
+                    if (mysqli_num_rows($find_query) == 0) {
+                        mysqli_next_result($con);
+                       
+                        $query = "UPDATE omg_announcement SET `subject` = ?,description = ? WHERE id = ?";
+                        if ($stmt = mysqli_prepare($con, $query)) {
+                            mysqli_stmt_bind_param($stmt,"sss",$subject,$description,$annID);
+                            mysqli_stmt_execute($stmt);
+                           
+                            $error   = false;
+                            $color   = "green";
+                            $message = "Announcement has been updated"; 
+                           
+                        } else {
+                            $error   = true;
+                            $color   = "red";
+                            $message = "Error updating announcement"; 
+                        }
+                       
+                    } else {
+                        $error   = true;
+                        $color   = "red";
+                        $message = "Announcement already exist"; 
+                    }
+                } else {
+                    $query = "UPDATE omg_announcement SET `subject` = ?,description = ? WHERE id = ?";
+                    if ($stmt = mysqli_prepare($con, $query)) {
+                        mysqli_stmt_bind_param($stmt,"sss",$subject,$description,$annID);
+                        mysqli_stmt_execute($stmt);
+                       
+                        $error   = false;
+                        $color   = "green";
+                        $message = "Announcement has been updated"; 
+                       
+                    } else {
+                        $error   = true;
+                        $color   = "red";
+                        $message = "Error updating announcement"; 
+                    }
+                }
+                
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+            
+        break;
+    
+        case "load_ann" :
+            
+            $sql = "
+                SELECT
+                    a.id,
+                    a.`subject`,
+                    a.description,
+                    DATE_FORMAT(a.dateCreated,'%m/%d/%Y') AS dateCreated
+                FROM
+                    omg_announcement a
+                WHERE
+                    a.isDeleted = 0
+                ORDER BY
+                    a.dateCreated DESC;
+            ";
+            return builder($con,$sql);
+            
+        break;
+    
+        case "delete_ann" :
+        
+            $annID = $_POST["annID"];
+            
+            $query = "UPDATE omg_announcement SET isDeleted = 1 WHERE id = ?";
+            if ($stmt = mysqli_prepare($con, $query)) {
+                mysqli_stmt_bind_param($stmt,"s",$annID);
+                mysqli_stmt_execute($stmt);
+               
+                $error   = false;
+                $color   = "green";
+                $message = "Announcement has been deleted"; 
+               
+            } else {
+                $error   = true;
+                $color   = "red";
+                $message = "Error deleting announcement"; 
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+        
         break;
     }
     
