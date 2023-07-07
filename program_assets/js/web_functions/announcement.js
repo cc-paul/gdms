@@ -49,10 +49,11 @@ function loadNotifications() {
             { mData: 'fullName'},
             { mData: 'dateCreated',
                 render: function (data,type,row) {
-                    const timestamp = new Date(row.dateCreaterd);
-                    const formattedTimeAgo = formatTimeAgo(timestamp);
+                    const dateString = row.dateCreated;
+                    const date = new Date(dateString);
+                    const timeAgoString = timeAgo(date);
                     
-                    return '<span style="white-space:normal">' + row.dateCreated + "<br>" + formattedTimeAgo + "</span>";
+                    return '<span style="white-space:normal">' + row.dateCreated + "<br>" + timeAgoString + "</span>";
                 }
             }
         ],
@@ -86,28 +87,33 @@ function loadNotifications() {
     });
 }
 
-function formatTimeAgo(timestamp) {
-  const date = new Date(timestamp);
-  const now = new Date();
-  const diff = Math.abs(now - date) / 1000; // Time difference in seconds
+function timeAgo(date) {
+  const seconds = Math.floor((new Date() - date) / 1000);
+  let interval = Math.floor(seconds / 31536000);
 
-  // Define time intervals in seconds
-  const intervals = {
-    year: 31536000,
-    month: 2592000,
-    week: 604800,
-    day: 86400,
-    hour: 3600,
-    minute: 60,
-  };
-
-  // Find the appropriate time interval
-  for (let interval in intervals) {
-    if (diff >= intervals[interval]) {
-      const timeAgo = Math.floor(diff / intervals[interval]);
-      return `${timeAgo} ${interval}${timeAgo !== 1 ? 's' : ''} ago`;
-    }
+  if (interval >= 1) {
+    return interval === 1 ? "1 year ago" : `${interval} years ago`;
   }
 
-  return 'Just now'; // If the date is within a minute
+  interval = Math.floor(seconds / 2592000);
+  if (interval >= 1) {
+    return interval === 1 ? "1 month ago" : `${interval} months ago`;
+  }
+
+  interval = Math.floor(seconds / 86400);
+  if (interval >= 1) {
+    return interval === 1 ? "1 day ago" : `${interval} days ago`;
+  }
+
+  interval = Math.floor(seconds / 3600);
+  if (interval >= 1) {
+    return interval === 1 ? "1 hour ago" : `${interval} hours ago`;
+  }
+
+  interval = Math.floor(seconds / 60);
+  if (interval >= 1) {
+    return interval === 1 ? "1 minute ago" : `${interval} minutes ago`;
+  }
+
+  return "Just now";
 }
