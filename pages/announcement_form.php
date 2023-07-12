@@ -223,6 +223,7 @@
 													<tr>
 														<th>Subject</th>
 														<th>Description</th>
+														<th>Type</th>
 														<th>Date Created</th>
 														<th></th>
 													</tr>
@@ -279,6 +280,17 @@
 								<label class="cust-label">Description</label>
 								<label class="cust-label text-danger">*</label>
 								<textarea id="txtDescription" name="txtDescription" rows="3" class="form-control cust-label cust-textbox" placeholder="Enter Description"></textarea>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-4 col-sm-12">
+								<label class="cust-label">Type</label>
+								<label class="cust-label text-danger">*</label>
+								<select id="cmbType" name="cmbType" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
+									<option value="1">Announcement</option>
+									<option value="0">Schedule</option>
+								</select>
 							</div>
 						</div>
 					</div>

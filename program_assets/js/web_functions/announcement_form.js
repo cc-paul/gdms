@@ -62,7 +62,8 @@ $("#btnSaveAnnouncement").click(function(){
                 description : description,
                 annID : annID,
                 oldSubject : oldSubject,
-                isNewAnnouncement :isNewAnnouncement
+                isNewAnnouncement :isNewAnnouncement,
+                isAnn : $("#cmbType").val()
             },
             type: 'post',
             success: function (data) {
@@ -114,6 +115,7 @@ function loadAnnouncement() {
         'aoColumns' : [
         	{ mData: 'subject'},
             { mData: 'description'},
+            { mData: 'type'},
             { mData: 'dateCreated'},
             { mData: 'id',
                 render: function (data,type,row) {
@@ -132,9 +134,9 @@ function loadAnnouncement() {
             }
         ],
         'aoColumnDefs': [
-        	{"className": "custom-center", "targets": [3]},
-        	{"className": "dt-center", "targets": [0,1,2]},
-        	{ "width": "1%", "targets": [2,3] },
+        	{"className": "custom-center", "targets": [4]},
+        	{"className": "dt-center", "targets": [0,1,2,3]},
+        	{ "width": "1%", "targets": [3,4] },
         //	{"className" : "hide_column", "targets": [9]} 
         ],
         "drawCallback": function() {  

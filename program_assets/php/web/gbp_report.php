@@ -147,15 +147,16 @@
             $annID = $_POST["annID"];
             $oldSubject = $_POST["oldSubject"];
             $isNewAnnouncement = $_POST["isNewAnnouncement"];
+            $isAnn = $_POST["isAnn"];
             
             if ($annID == 0) {
                 $find_query = mysqli_query($con,"SELECT * FROM omg_announcement WHERE `subject` = '$subject' AND isDeleted = 0");
                 if (mysqli_num_rows($find_query) == 0) {
                     mysqli_next_result($con);
                    
-                    $query = "INSERT INTO omg_announcement (subject,description,dateCreated) VALUES (?,?,?)";
+                    $query = "INSERT INTO omg_announcement (subject,description,dateCreated,isAnnouncement) VALUES (?,?,?,?)";
                     if ($stmt = mysqli_prepare($con, $query)) {
-                        mysqli_stmt_bind_param($stmt,"sss",$subject,$description,$global_date);
+                        mysqli_stmt_bind_param($stmt,"ssss",$subject,$description,$global_date,$isAnn);
                         mysqli_stmt_execute($stmt);
                        
                         $error   = false;
@@ -180,9 +181,9 @@
                     if (mysqli_num_rows($find_query) == 0) {
                         mysqli_next_result($con);
                        
-                        $query = "UPDATE omg_announcement SET `subject` = ?,description = ? WHERE id = ?";
+                        $query = "UPDATE omg_announcement SET `subject` = ?,description = ?,isAnnouncement=? WHERE id = ?";
                         if ($stmt = mysqli_prepare($con, $query)) {
-                            mysqli_stmt_bind_param($stmt,"sss",$subject,$description,$annID);
+                            mysqli_stmt_bind_param($stmt,"ssss",$subject,$description,$isAnn,$annID);
                             mysqli_stmt_execute($stmt);
                            
                             $error   = false;
@@ -201,9 +202,9 @@
                         $message = "Announcement already exist"; 
                     }
                 } else {
-                    $query = "UPDATE omg_announcement SET `subject` = ?,description = ? WHERE id = ?";
+                    $query = "UPDATE omg_announcement SET `subject` = ?,description = ?,isAnnouncement=? WHERE id = ?";
                     if ($stmt = mysqli_prepare($con, $query)) {
-                        mysqli_stmt_bind_param($stmt,"sss",$subject,$description,$annID);
+                        mysqli_stmt_bind_param($stmt,"ssss",$subject,$description,$isAnn,$annID);
                         mysqli_stmt_execute($stmt);
                        
                         $error   = false;
@@ -235,7 +236,9 @@
                     a.id,
                     a.`subject`,
                     a.description,
-                    DATE_FORMAT(a.dateCreated,'%m/%d/%Y') AS dateCreated
+                    IF(a.isAnnouncement = 1,'Announcement','Schedule') as type,
+                    DATE_FORMAT(a.dateCreated,'%m/%d/%Y') AS dateCreated,
+                    a.isAnnouncement
                 FROM
                     omg_announcement a
                 WHERE
