@@ -193,7 +193,7 @@
 				<!-- Main content -->
 				<section class="content col-md-12 col-xs-12">
 					<div class="row">
-						<div class="col-md-4 col-xs-12">
+						<div class="col-md-3 col-xs-12">
 							<div class="nav-tabs-custom">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">News and Announcement</a></li>
@@ -242,7 +242,7 @@
 							</div>
 						</div>
 						
-						<div class="col-md-4 col-xs-12">
+						<div class="col-md-3 col-xs-12">
 							<div class="nav-tabs-custom">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Schedule</a></li>
@@ -293,7 +293,7 @@
 							</div>
 						</div>
 						
-						<div class="col-md-4 col-xs-12">
+						<div class="col-md-6 col-xs-12">
 							<div class="nav-tabs-custom">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Important Notification</a></li>
@@ -337,11 +337,116 @@
 						<div class="col-md-12 col-xs-12">
 							<div class="nav-tabs-custom">
 								<ul class="nav nav-tabs">
-									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Graph</a></li>
+									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">GBP/AR College Submission Table</a></li>
 									<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
 								</ul>
+								
 								<div class="tab-content" style="height: 300px; overflow-y: auto; overflow-x: hidden;">
-									
+									<div class="row">
+										<div class="col-lg-10 col-xs-6">
+											<?php
+												$total_college = 0;
+												$sub_college = 0;
+											
+												$sql    = "
+													SELECT 
+														a.college,
+														IFNULL((
+															SELECT 
+																1
+															FROM
+																omg_gbp_parent c 
+															INNER JOIN
+																omg_registration d 
+															ON 
+																c.createdBy = d.id
+															WHERE
+																d.collegeID = a.id
+															LIMIT
+																1
+														),0) AS isSubmitted
+													FROM
+														omg_colleges a 
+													ORDER BY
+														a.college ASC
+												";
+												$result = mysqli_query($con,$sql);
+												
+										
+												while ($row  = mysqli_fetch_assoc($result)) {
+													
+													if ($row["isSubmitted"] == 1) {
+														$sub_college++;
+													}
+													
+													$total_college++;
+												}
+											?>
+										</div>
+										<div class="col-lg-2 col-xs-6">
+											<div class="small-box bg-yellow">
+												<div class="inner">
+													<h3>
+														<?php echo $sub_college."/".$total_college ?>
+													</h3>
+													<p>Completed Submission</p>
+												</div>
+												<div class="icon">
+													<i class="fa fa-copy" style="font-size:50px;"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<?php
+											$sql    = "
+												SELECT 
+													a.college,
+													IFNULL((
+														SELECT 
+															1
+														FROM
+															omg_gbp_parent c 
+														INNER JOIN
+															omg_registration d 
+														ON 
+															c.createdBy = d.id
+														WHERE
+															d.collegeID = a.id
+														LIMIT
+															1
+													),0) AS isSubmitted
+												FROM
+													omg_colleges a 
+												ORDER BY
+													a.college ASC
+											";
+											$result = mysqli_query($con,$sql);
+											
+								
+											while ($row  = mysqli_fetch_assoc($result)) {
+												$icon = "fa fa-check text-success";
+												
+												if ($row["isSubmitted"] == 0) {
+													$icon = "fa fa-times text-danger";
+												}
+												
+												?>
+													<div class="col-md-3 col-xs-6">
+														<div class="form-group">
+															<button  class="btn btn-block btn-default btn-sm cust-textbox">
+																<i class="<?php echo $icon; ?>"></i>
+																&nbsp;
+																<?php
+																	echo $row["college"]
+																?>
+															</button>
+														</div>
+													</div>
+												<?php
+											}
+										?>
+									</div>
 								</div>
 								<div class="box-footer">
 								</div>
