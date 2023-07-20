@@ -343,7 +343,29 @@
 								
 								<div class="tab-content" style="height: 300px; overflow-y: auto; overflow-x: hidden;">
 									<div class="row">
-										<div class="col-lg-10 col-xs-6">
+										<div class="col-lg-6 col-xs-12">
+											<div class="row">
+												<div class="col-md-3 col-xs-12">
+													<button class="btn btn-block btn-primary btn-sm cust-textbox">
+														&nbsp;
+														Submitted GBP
+													</button>
+												</div>
+												<div class="col-md-3 col-xs-12">
+													<button class="btn btn-block btn-success btn-sm cust-textbox">
+														&nbsp;
+														Submitted AR
+													</button>
+												</div>
+												<div class="col-md-3 col-xs-12">
+													<button class="btn btn-block btn-danger btn-sm cust-textbox">
+														&nbsp;
+														No Submission
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-4 col-xs-12">
 											<?php
 												$total_college = 0;
 												$sub_college = 0;
@@ -383,7 +405,7 @@
 												}
 											?>
 										</div>
-										<div class="col-lg-2 col-xs-6">
+										<div class="col-lg-2 col-xs-12">
 											<div class="small-box bg-yellow">
 												<div class="inner">
 													<h3>
@@ -415,7 +437,21 @@
 															d.collegeID = a.id
 														LIMIT
 															1
-													),0) AS isSubmitted
+													),0) AS isSubmitted,
+													IFNULL((
+														SELECT 
+															c.reportType
+														FROM
+															omg_gbp_parent c 
+														INNER JOIN
+															omg_registration d 
+														ON 
+															c.createdBy = d.id
+														WHERE
+															d.collegeID = a.id
+														LIMIT
+															1
+													),0) AS reportType
 												FROM
 													omg_colleges a 
 												ORDER BY
@@ -425,17 +461,20 @@
 											
 								
 											while ($row  = mysqli_fetch_assoc($result)) {
-												$icon = "fa fa-check text-success";
+												$button_color = "btn-default";
 												
-												if ($row["isSubmitted"] == 0) {
-													$icon = "fa fa-times text-danger";
+												if ($row["isSubmitted"] == 1 && $row["reportType"] != "GAD Plan and Budget (GPB)") {
+													$button_color = "btn-success";
+												} else if ($row["isSubmitted"] == 1 && $row["reportType"] == "GAD Plan and Budget (GPB)") {
+													$button_color = "btn-primary";
+												} else {
+													$button_color = "btn-danger";
 												}
 												
 												?>
 													<div class="col-md-3 col-xs-6">
 														<div class="form-group">
-															<button  class="btn btn-block btn-default btn-sm cust-textbox">
-																<i class="<?php echo $icon; ?>"></i>
+															<button  class="btn btn-block <?php echo $button_color; ?> btn-sm cust-textbox">
 																&nbsp;
 																<?php
 																	echo $row["college"]
