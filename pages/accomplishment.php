@@ -1136,7 +1136,7 @@
 			<div class="modal-dialog full_modal-dialog">
 				<div class="box box-default">
 					<div class="box-header with-border">
-						<label class="cust-label">View GBP</label>
+						<label class="cust-label">View AR</label>
 						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
 						</button>
 					</div>
@@ -1170,7 +1170,15 @@
 									<table id="table_name" name="table_name" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
 										<thead>
 											<tr>
-												<td colspan="4">
+												<td colspan="2">
+													<span class="cust-label">
+														<b>Reference:</b> 
+													</span>
+													<span id="spRef" class="cust-label">
+														
+													</span>
+												</td>
+												<td colspan="2">
 													<span class="cust-label">
 														<b>Organization:</b> 
 													</span>
@@ -1188,11 +1196,19 @@
 												</td>
 											</tr>
 											<tr>
-												<td colspan="5">
+												<td colspan="2">
 													<span class="cust-label">
 														<b>Organization Hierarchy:</b> 
 													</span>
 													<span id="spOrgHi" class="cust-label">
+														
+													</span>
+												</td>
+												<td colspan="3">
+													<span class="cust-label">
+														<b>Date Endorsed:</b> 
+													</span>
+													<span id="spDateEndorse2" class="cust-label">
 														
 													</span>
 												</td>
@@ -1233,7 +1249,7 @@
 												</td>
 											</tr>
 											<tr>
-												<td>
+												<td colspan="2">
 													<span class="cust-label">
 														<b>% of GAD Allocation</b> 
 													</span>
@@ -1242,6 +1258,32 @@
 													<span id="lblGADPercent" class="cust-label">
 														0.00%
 													</span>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="4">
+													<div class="row">
+														<div class="col-md-3 col-xs-12">
+															<label class="cust-label">Actual GAD Expenditure: </label>
+															<br>
+															<span id="spTotalExpenditure_mirror" class="cust-label">0</span>
+														</div>
+														<div class="col-md-3 col-xs-12">
+															<label class="cust-label">Original Budget: </label>
+															<br>
+															<span id="spOriginalBudget_mirror" class="cust-label">0</span>
+														</div>
+														<div class="col-md-3 col-xs-12">
+															<label class="cust-label">% of Util. of Budget: </label>
+															<br>
+															<span id="spUtilBudget_mirror" class="cust-label">0</span>
+														</div>
+														<div class="col-md-3 col-xs-12">
+															<label class="cust-label">% of GAD Exp.: </label>
+															<br>
+															<span id="spGADExp_mirror" class="cust-label">0%</span>
+														</div>
+													</div>
 												</td>
 											</tr>
 										</thead>
@@ -1288,6 +1330,11 @@
 															Performance Indicator / <br> Targets
 														</center>
 													</th>
+													<th style="vertical-align: middle; width:150px;">
+														<center>
+															Actual Result (Outcome)
+														</center>
+													</th>
 													<th style="vertical-align: middle; width:151px;">
 														<center>
 															GAD Budget
@@ -1298,16 +1345,6 @@
 															Source of Budget
 														</center>
 													</th>
-													<th style="vertical-align: middle; width:200px;">
-														<center>
-															Responsible Unit / <br> Offices
-														</center>
-													</th>
-													<th style="vertical-align: middle; width:150px;">
-														<center>
-															Actual Result (Outcome)
-														</center>
-													</th>
 													<th style="vertical-align: middle; width:150px;">
 														<center>
 															Actual Cost / Expenditure
@@ -1316,6 +1353,11 @@
 													<th style="vertical-align: middle; width:150px;">
 														<center>
 															Variance / Remarks
+														</center>
+													</th>
+													<th style="vertical-align: middle; width:200px;">
+														<center>
+															Responsible Unit / <br> Offices
 														</center>
 													</th>
 													<th style="vertical-align: middle; width:150px;">

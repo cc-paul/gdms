@@ -124,7 +124,21 @@
                     d.approvedByPosition,
                     d.preparedBy,
                     d.preparedByPosition,
-                    b.email
+                    b.email,
+                    CONCAT(
+                        'Endorsed GBP #',
+                        a.`year`,
+                        '-00',
+                        LPAD(EXTRACT(MINUTE FROM a.dateEndorse), 2, '0'),
+                        LPAD(EXTRACT(SECOND FROM a.dateEndorse), 2, '0')
+                    ) as ref,
+                    CONCAT(
+                        DATE_FORMAT(a.dateEndorse, '%b'),
+                        ' ',
+                        LPAD(EXTRACT(DAY FROM a.dateEndorse), 2, '0'),
+                        ', ',
+                        EXTRACT(YEAR FROM a.dateEndorse)
+                    ) AS dateEndorse
                 FROM
                     omg_gbp_parent a 
                 INNER JOIN 
@@ -162,7 +176,9 @@
                     'approvedByPosition'          => $row["approvedByPosition"],
                     'preparedBy'          => $row["preparedBy"],
                     'preparedByPosition'          => $row["preparedByPosition"],
-                    'email'          => $row["email"]
+                    'email'          => $row["email"],
+                    'ref'          => $row["ref"],
+                    'dateEndorse'          => $row["dateEndorse"]
                 );
             }
             echo json_encode($json);

@@ -28,7 +28,14 @@ $("#btnViewGBP").click(function(){
 				$("#lblPreparedByName").text(data[i].preparedBy);
 				$("#lblPreparedByPosition").text(data[i].preparedByPosition);
 				$("#lblDocReq").text(data[i].status);
+				$("#spRef").text(data[i].ref);
+				$("#spDateEndorse2").text(data[i].dateEndorse);
 			}
+			
+			$("#spTotalExpenditure_mirror").text($("#spTotalExpenditure").text());
+			$("#spOriginalBudget_mirror").text($("#spOriginalBudget").text());
+			$("#spUtilBudget_mirror").text($("#spUtilBudget").text());
+			$("#spGADExp_mirror").text($("#spGADExp").text());
 		}
 	});
 	
@@ -255,6 +262,12 @@ function showGBPView(parentFolderID) {
                             <br>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col6-row${countRows}')">Comments</a>
                         </td>
+						<td>
+							${data[i].actualResult}
+							<br>
+                            <br>
+                            <a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
+						</td>
                         <td colspan="2">
                             <table id="tbNotThis" style="width:100%;">
                                 <tbody>
@@ -265,18 +278,6 @@ function showGBPView(parentFolderID) {
                             <br>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col7-row${countRows}')">Comments</a>
                         </td>
-                        <td>
-                            ${office}
-                            <br>
-                            <br>
-                            <a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows}')">Comments</a>
-                        </td>
-						<td>
-							${data[i].actualResult}
-							<br>
-                            <br>
-                            <a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
-						</td>
 						<td>
 							${actualCostText}
 							<br>
@@ -289,6 +290,12 @@ function showGBPView(parentFolderID) {
                             <br>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows}')">Comments</a>
 						</td>
+						<td>
+                            ${office}
+                            <br>
+                            <br>
+                            <a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows}')">Comments</a>
+                        </td>
                         <td>
                             ${files}
                             <br>
@@ -507,6 +514,12 @@ function showGBPView(parentFolderID) {
 								<br>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col6-row${countRows}')">Comments</a>
 							</td>
+							<td>
+								${data[i].actualResult}
+								<br>
+								<br>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
+							</td>
 							<td colspan="2">
 								<table id="tbNotThis" style="width:100%;">
 									<tbody>
@@ -516,18 +529,6 @@ function showGBPView(parentFolderID) {
 								<br>
 								<br>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col7-row${countRows}')">Comments</a>
-							</td>
-							<td>
-								${office}
-								<br>
-								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows}')">Comments</a>
-							</td>
-							<td>
-								${data[i].actualResult}
-								<br>
-								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
 							</td>
 							<td>
 								${actualCostText}
@@ -540,6 +541,12 @@ function showGBPView(parentFolderID) {
 								<br>
 								<br>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows}')">Comments</a>
+							</td>
+							<td>
+								${office}
+								<br>
+								<br>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows}')">Comments</a>
 							</td>
 							<td>
 								${files}
