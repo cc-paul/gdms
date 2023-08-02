@@ -85,7 +85,7 @@
                
                 $error   = false;
                 $color   = "green";
-                $message = "GBP Status has been updated.";
+                $message = "GPB Status has been updated.";
                 
                 if ($status == "Endorse") {
                     $query = "UPDATE omg_gbp_parent SET dateEndorse = ?,reportType='GAD Plan and Budget (GPB)' WHERE parentFolderID = ?";
@@ -99,13 +99,13 @@
                 $notifRemarks = "";
                 
                 if ($status == "Draft") {
-                    $subject = "For Revision of GBP for 2023";
-                    $notifRemarks = "Your GBP created has been returned to you.";
+                    $subject = "For Revision of GPB for 2023";
+                    $notifRemarks = "Your GPB created has been returned to you.";
                 }
                 
                 if ($status == "Endorse") {
-                    $subject = "For Endorse of GBP for 2023";
-                    $notifRemarks = "Your GBP created has been endorse as AR.";
+                    $subject = "For Endorse of GPB for 2023";
+                    $notifRemarks = "Your GPB created has been endorse as AR.";
                 }
                 
 
@@ -128,7 +128,7 @@
             } else {
                 $error   = true;
                 $color   = "red";
-                $message = "Error updating GBP Status" . mysqli_error($con); 
+                $message = "Error updating GPB Status" . mysqli_error($con); 
             }
             
             $json[] = array(

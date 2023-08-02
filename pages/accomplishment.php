@@ -232,7 +232,7 @@
 				<section class="content col-md-10 col-sm-12">
 					<div class="nav-tabs-custom">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Endorsed GBP</a></li>
+							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Endorsed GPB</a></li>
 							<!--<li class=""><a href="#gender" data-toggle="tab" aria-expanded="true" class="cust-label">Gender Issues</a></li>-->
 						</ul>
 						<div class="tab-content">
@@ -479,7 +479,7 @@
 			<div class="modal-dialog modal-custom">
 				<div class="box box-default">
 					<div class="box-header with-border">
-						<label class="cust-label">GBP Activity Form</label>
+						<label class="cust-label">GPB Activity Form</label>
 						<button id="btnCloseGBP" type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
 						</button>
 					</div>
@@ -1154,7 +1154,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<center>
-									<label class="cust-label">ANNUAL GENDER AND DEVELOPMENT (GAD) PLAN AND BUDGET</label>
+									<label class="cust-label">ANNUAL GENDER AND DEVELOPMENT (GAD) ACCOMPLISHMENT REPORT</label>
 									<br>
 									<label class="cust-label">FY</label>
 									<label id="lblFY" class="cust-label" style="margin-left:10px;">0000</label>

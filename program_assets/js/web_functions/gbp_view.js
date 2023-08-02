@@ -2,6 +2,10 @@ var totalPrimarySource;
 var totalOtherSource;
 var generalCommentParentID;
 
+$("#btnPDF").click(function(){
+	window.open('../pdf/gbp.php?ref=' + generalCommentParentID, '_blank');
+});
+
 $("#btnViewGBP").click(function(){
 	showParentGBP();
 });

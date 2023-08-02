@@ -126,7 +126,7 @@
                     d.preparedByPosition,
                     b.email,
                     CONCAT(
-                        'Endorsed GBP #',
+                        'Endorsed GPB #',
                         a.`year`,
                         '-00',
                         LPAD(EXTRACT(MINUTE FROM a.dateEndorse), 2, '0'),

@@ -190,12 +190,12 @@
                    
                     $error   = false;
                     $color   = "green";
-                    $message = "GBP has been added successfully"; 
+                    $message = "GPB has been added successfully"; 
                    
                 } else {
                     $error   = true;
                     $color   = "red";
-                    $message = "Error adding GBP"; 
+                    $message = "Error adding GPB"; 
                 }
                
             } else {
@@ -206,12 +206,12 @@
                    
                     $error   = false;
                     $color   = "green";
-                    $message = "GBP has been updated successfully"; 
+                    $message = "GPB has been updated successfully"; 
                    
                 } else {
                     $error   = true;
                     $color   = "red";
-                    $message = "Error adding GBP"; 
+                    $message = "Error adding GPB"; 
                 }
             }
             
@@ -270,12 +270,12 @@
                    
                     $error   = false;
                     $color   = "green";
-                    $message = "GBP has been updated successfully"; 
+                    $message = "GPB has been updated successfully"; 
                    
                 } else {
                     $error   = true;
                     $color   = "red";
-                    $message = "Error adding GBP"; 
+                    $message = "Error adding GPB"; 
                 }
             }
             
@@ -861,12 +861,12 @@
                    
                     $error   = false;
                     $color   = "green";
-                    $message = "GBP has been saved as Draft. You can still edit it or refresh the page to create a new one"; 
+                    $message = "GPB has been saved as Draft. You can still edit it or refresh the page to create a new one"; 
                    
                 } else {
                     $error   = true;
                     $color   = "red";
-                    $message = "Error saving GBP"; 
+                    $message = "Error saving GPB"; 
                 }
                
             } else {
@@ -877,7 +877,7 @@
                    
                     $error   = false;
                     $color   = "green";
-                    $message = "GBP has been updated successfully. You can still edit it or refresh the page to create a new one"; 
+                    $message = "GPB has been updated successfully. You can still edit it or refresh the page to create a new one"; 
                    
                 } else {
                     $error   = true;
@@ -1168,8 +1168,8 @@
                 mysqli_stmt_bind_param($stmt,"ss",$remarks,$parentFolderID);
                 mysqli_stmt_execute($stmt);
                 
-                $subject      = "For Submission of GBP for 2023";
-                $notifRemarks = "Your GBP created has been submitted and will be reviewed.";
+                $subject      = "For Submission of GPB for 2023";
+                $notifRemarks = "Your GPB created has been submitted and will be reviewed.";
                 $fromID       = $_SESSION["id"];
                 $notifDate    = $global_date;
                 
@@ -1180,12 +1180,12 @@
                
                 $error   = false;
                 $color   = "green";
-                $message = "GBP has been sent for approval";
+                $message = "GPB has been sent for approval";
                
             } else {
                 $error   = true;
                 $color   = "red";
-                $message = "Error submitting GBP"; 
+                $message = "Error submitting GPB"; 
             }
             
             $json[] = array(

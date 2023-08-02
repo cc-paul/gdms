@@ -336,7 +336,7 @@
 			<div class="modal-dialog full_modal-dialog">
 				<div class="box box-default">
 					<div class="box-header with-border">
-						<label class="cust-label">View GBP</label>
+						<label class="cust-label">View GPB</label>
 						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
 						</button>
 					</div>

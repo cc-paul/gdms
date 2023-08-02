@@ -1,0 +1,12 @@
+[03-Aug-2023 01:19:08 Asia/Manila] PHP Warning:  fopen(logo.png): failed to open stream: No such file or directory in /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/fpdf.php on line 1274
+[03-Aug-2023 01:19:08 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: logo.png in /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/fpdf.php:267
+Stack trace:
+#0 /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/fpdf.php(1276): FPDF->Error('Can't open imag...')
+#1 /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/fpdf.php(890): FPDF->_parsepng('logo.png')
+#2 /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/mc_table.php(134): FPDF->Image('logo.png', 10, 192.00155555556, 25)
+#3 /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/fpdf.php(304): PDF_MC_Table->Footer()
+#4 /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/mc_table.php(51): FPDF->AddPage('L')
+#5 /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/mc_table.php(27): PDF_MC_Table->CheckPageBreak(170)
+#6 /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/gbp.php(231): PDF_MC_Table->Row(Array, 'L')
+#7 {main}
+ in /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/fpdf.php on line 267

@@ -226,7 +226,7 @@
 				<section class="content col-md-10 col-sm-12">
 					<div class="nav-tabs-custom">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Prepare GBP</a></li>
+							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Prepare GPB</a></li>
 						</ul>
 						<div class="tab-content" style="height: 600px; overflow-x: hidden;">
 							<div class="tab-pane active" id="admin">
@@ -237,7 +237,7 @@
 												&nbsp;
 												<i class="fa fa-eye"></i>
 												&nbsp;
-												View GBP
+												View GPB
 												&nbsp;
 											</button>
 											<button id="btnViewReportFilter" type="button" class="btn btn-default cust-label">
@@ -265,7 +265,7 @@
 												&nbsp;
 												<i class="fa fa-send"></i>
 												&nbsp;
-												Submit GBP
+												Submit GPB
 												&nbsp;
 											</button>
 										</div>
@@ -564,7 +564,7 @@ Development Resource Center for review and may not be edited until it has been r
 			<div class="modal-dialog modal-custom">
 				<div class="box box-default">
 					<div class="box-header with-border">
-						<label class="cust-label">GBP Activity Form</label>
+						<label class="cust-label">GPB Activity Form</label>
 						<button id="btnCloseGBP" type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
 						</button>
 					</div>
@@ -1261,7 +1261,7 @@ Development Resource Center for review and may not be edited until it has been r
 			<div class="modal-dialog full_modal-dialog">
 				<div class="box box-default">
 					<div class="box-header with-border">
-						<label class="cust-label">View GBP</label>
+						<label class="cust-label">View GPB</label>
 						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
 						</button>
 					</div>
@@ -1270,7 +1270,7 @@ Development Resource Center for review and may not be edited until it has been r
 							<div class="col-md-12 col-xs-12">
 								<div class="btn-group">
 									<button type="button" class="btn btn-default"><i class="fa fa-file-excel-o"></i></button>
-									<button type="button" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></button>
+									<button id="btnPDF" type="button" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></button>
 									<button type="button" class="btn btn-default"><i class="fa fa-file-word-o"></i></button>
 								</div>
 							</div>
@@ -1879,7 +1879,7 @@ Development Resource Center for review and may not be edited until it has been r
 			<div class="modal-dialog modal-md">
 				<div class="box box-default">
 					<div class="box-header with-border">
-						<label class="cust-label">GBP Approval</label>
+						<label class="cust-label">GPB Approval</label>
 						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
 						</button>
 					</div>
@@ -1913,7 +1913,7 @@ Development Resource Center for review and may not be edited until it has been r
 			<div class="modal-dialog modal-lg">
 				<div class="box box-default">
 					<div class="box-header with-border">
-						<label class="cust-label">GBP Filter</label>
+						<label class="cust-label">GPB Filter</label>
 						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
 						</button>
 					</div>

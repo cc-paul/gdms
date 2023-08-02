@@ -337,7 +337,7 @@
 						<div class="col-md-12 col-xs-12">
 							<div class="nav-tabs-custom">
 								<ul class="nav nav-tabs">
-									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">GBP/AR College Submission Table</a></li>
+									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">GPB/AR College Submission Table</a></li>
 									<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
 								</ul>
 								
@@ -348,7 +348,7 @@
 												<div class="col-md-3 col-xs-12">
 													<button class="btn btn-block btn-primary btn-sm cust-textbox">
 														&nbsp;
-														Submitted GBP
+														Submitted GPB
 													</button>
 												</div>
 												<div class="col-md-3 col-xs-12">
