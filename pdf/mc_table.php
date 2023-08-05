@@ -128,10 +128,10 @@ class PDF_MC_Table extends FPDF
 
     function Footer() {
         // Position at 1.5 cm from bottom
-        $this->SetY(-18);
+        $this->SetY(-25);
 
         // Add image in the first column
-        $this->Image('logo.PNG', 10, $this->GetY(), 25);
+        $this->Image('logo.png', 10, $this->GetY(), 25);
 
         // Set font for the footer
         $this->SetFont('Arial', '', 8);
@@ -139,8 +139,8 @@ class PDF_MC_Table extends FPDF
         // Column 2
         $col2X = 40; // Adjust the X position
         $col2Y = $this->GetY();
-        $this->SetXY($col2X, $col2Y);
-        $this->MultiCell(100, 5, "THIS IS TO CERTIFY THAT THIS DOCUMENT HAS BEEN\nREVIEWED AND ENDORSED THROUGH THE GMMS", 0, 'L');
+        $this->SetXY($col2X, -16);
+        $this->MultiCell(100, 5, "THIS IS TO CERTIFY THAT THIS DOCUMENT HAS BEEN\nREVIEWED AND ENDORSED THROUGH THE GADRCMS", 0, 'L');
 
         // Determine the height of the column 2 content
         $col2Height = $this->GetY() - $col2Y;
@@ -150,22 +150,22 @@ class PDF_MC_Table extends FPDF
 
         // Column 3
         $col3Content = "SUSAN G. TAN, PHD\nDIRECTOR, GADRC";
-        $this->SetXY(120, $col2Y); // Adjust the X position
+        $this->SetXY(120, -16); // Adjust the X position
         $this->MultiCell(70, 5, $col3Content, 0, 'L'); // Use MultiCell to allow line breaks
 
         // Column 4
         $col4Content = "DR. HERNANDO D. ROBLES,\nCEO VI\nUNIVERSITY PRESIDENT";
-        $this->SetXY(160, $col2Y); // Adjust the X position
+        $this->SetXY(160, -16); // Adjust the X position
         $this->MultiCell(70, 5, $col4Content, 0, 'L'); // Use MultiCell to allow line breaks
 
         // Column 5
-        $this->Image('qr.PNG', 200, $col2Y - 5, 20);
+        $this->Image('qr.PNG', 200, $col2Y + 4, 20);
         
         // Column 6 with image
         $page_number = $this->PageNo();
         $footer_text = "PAGE $page_number OF {nb}";
         $col5Content = "REPORT GENERATED:" . date('m/d/Y') . "\n" . $footer_text;
-        $this->SetXY(230, $col2Y); // Adjust the X position
+        $this->SetXY(230, $col2Y + 9); // Adjust the X position
         $this->MultiCell(70, 5, $col5Content, 0, 'L'); // Use MultiCell to allow line breaks
     }
 }

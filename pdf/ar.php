@@ -9,12 +9,12 @@ require dirname(__FILE__,2) . '/program_assets/php/connection/conn.php';
 if(!isset($_SESSION)) { session_start(); } 
 
 
-$ref = $_GET["ref"];
+$pref = $_GET["ref"];
 $id = $_SESSION["id"];
 $pdf = new PDF_MC_Table();
 $pdf->AliasNbPages(); 
 $pdf->AddPage('L');
-$pdf->addWord("ANNUAL GENDER AND DEVELOPMENT (GAD) PLAN AND BUDGET", 9, 'C');
+$pdf->addWord("ANNUAL GENDER AND DEVELOPMENT (GAD) ACCOMPLISHMENT REPORT", 9, 'C');
 $pdf->SetY($pdf->GetY() - 5);
 $pdf->addWord("FY 2023", 9, 'C');
 
@@ -27,6 +27,8 @@ $approvedByPosition = "";
 $preparedBy = "";
 $preparedByPosition = "";
 $dateEndorse = "";
+$dateEndorse_format = "";
+$ref = "";
 
 $sql = "
     SELECT 
@@ -37,7 +39,21 @@ $sql = "
         c.approvedByPosition,
         c.preparedBy,
         c.preparedByPosition,
-        DATE_FORMAT(a.dateEndorse, '%m/%d/%Y') AS dateEndorse
+        DATE_FORMAT(a.dateEndorse, '%m/%d/%Y') AS dateEndorse,
+        CONCAT(
+            'Endorsed GPB #',
+            a.`year`,
+            '-00',
+            LPAD(EXTRACT(MINUTE FROM a.dateEndorse), 2, '0'),
+            LPAD(EXTRACT(SECOND FROM a.dateEndorse), 2, '0')
+        ) as ref,
+        CONCAT(
+            DATE_FORMAT(a.dateEndorse, '%b'),
+            ' ',
+            LPAD(EXTRACT(DAY FROM a.dateEndorse), 2, '0'),
+            ', ',
+            EXTRACT(YEAR FROM a.dateEndorse) 
+        ) AS dateEndorse_format
     FROM
         omg_gbp_parent a 
     INNER JOIN
@@ -49,7 +65,7 @@ $sql = "
     ON 
         a.parentFolderID = c.parentFolderID
     WHERE
-        a.parentFolderID = '$ref'
+        a.parentFolderID = '$pref'
     ORDER BY
         a.id DESC 
     LIMIT 1
@@ -62,6 +78,8 @@ while ($row  = mysqli_fetch_assoc($result)) {
     $preparedBy = $row["preparedBy"];
     $preparedByPosition =$row["preparedByPosition"];
     $dateEndorse = $row["dateEndorse"];
+    $dateEndorse_format = $row["dateEndorse_format"];
+    $ref = $row["ref"];
 }
 
 $sql = "
@@ -91,7 +109,7 @@ $sql = "
     WHERE
         a.isRemoved = 0
     AND
-        a.parentFolderID = 'DYTJ4Z8SL1'
+        a.parentFolderID = '$pref'
     GROUP BY
         a.folderID
 ";
@@ -108,13 +126,22 @@ $percentageRemoved = ($amountRemoved / str_replace(',', "", $total)) * 100;
 
 $pdf->SetFont('Arial', '', 9);
 $pdf->SetWidths(array(140, 140));
+$pdf->Row(array('Reference: '.$ref, 'Date Endorsed: '.$dateEndorse_format));
+$pdf->SetWidths(array(140, 140));
 $pdf->Row(array('Organization: '.$_SESSION["college"], 'Organization Category: State Universities and Colleges, State University or College (Main Campus)'));
 $pdf->SetWidths(array(280));
 $pdf->Row(array('Organization Hierarchy: '.$_SESSION["college"]));
-$pdf->SetWidths(array(280));
-$pdf->SetWidths(array(70, 70, 70, 70));
-$pdf->Row(array('Total GAD Budget: ' . number_format($specAmount, 2, '.', ','),'Primary Sources: '.number_format($primarySource, 2, '.', ','),'Other Sources: ' . number_format($otherSource, 2, '.', ','), '% of GAD Allocation: '.number_format($percentageRemoved,2).'%'));
-$pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
+$pdf->SetWidths(array(56, 56, 56, 56, 56));
+
+$pdf->Row(array(
+    "Total Budget/GAA of Organization: \n" . $_SESSION["total_gaa"],
+    "Actual GAD Expenditure: \n".$_SESSION["act_gad"],
+    "Original Budget: \n" . $_SESSION["orig_bud"],
+    "% Utilization of Budget: \n".$_SESSION["util_bud"].'%',
+    "% of GAD Expenditure: \n".$_SESSION["per_gad"].'%'
+));
+
+$pdf->SetWidths(array(8, 23, 23, 23, 23, 23, 23, 42, 23, 23, 23, 23));
 $pdf->Row(array(
     '',
     'Gender Issue/GAD Mandate', 
@@ -123,11 +150,13 @@ $pdf->Row(array(
     'Relevant Organization MFO/PAP or PPA',
     'GAD Activity',
     'Performance Indicators/Targets',
-    'GAD Budget',
-    'Source of Budget',
-    'Responsible Unit/Office'
+    'Actual Result (Outputs/Outcomes)',
+    'Total Agency Approved Budget',
+    'Actual Cost/Expenditure',
+    'Responsible Unit/Office',
+    'Variance/Remarks'
 ));
-$pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
+$pdf->SetWidths(array(8, 42, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23));
 $pdf->Row(array(
     '',
     '1', 
@@ -138,7 +167,9 @@ $pdf->Row(array(
     '6',
     '7',
     '8',
-    '9'
+    '9',
+    '10',
+    '11'
 ),'C');
 
 
@@ -153,6 +184,7 @@ $sql    = "
         IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.gadID),' - ') AS gad,
         d.performanceIndicator,
         FORMAT(SUM(e.budget),2) budget,
+        actualResult,
         IFNULL((
                 SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',REPLACE(FORMAT(budget,2),'.00','')) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
         ),'') AS arrBudget,
@@ -199,7 +231,7 @@ $sql    = "
     AND 
         a.tab = 1
     AND
-        a.parentFolderID = '$ref'
+        a.parentFolderID = '$pref'
     GROUP BY
         a.folderID
 ";
@@ -211,12 +243,12 @@ if ($total_count != 0) {
     $pdf->SetWidths(array(280));
     $pdf->Row(array('CLIENT FOCUSED'),'C');
 }
-
+//
 while ($row  = mysqli_fetch_assoc($result)) {
     $row_count++;
 
     $pdf->SetFont('Arial', '', 7);
-    $pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
+    $pdf->SetWidths(array(8, 42, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23));
     $pdf->Row(array(
         $row_count,
         $row["gender"], 
@@ -225,9 +257,11 @@ while ($row  = mysqli_fetch_assoc($result)) {
         str_replace('~', "\n", $row["arrMFO"]), 
         $row["gadActivity"], 
         str_replace('~', "\n", $row["arrPerformanceIndicator"]), 
+        $row["actualResult"], 
         str_replace('~', "\n", $row["arrBudget"]), 
-        $row["budgetSource"], 
-        str_replace('~', "\n", $row["arrOffices"])
+        str_replace('~', "\n", $row["actualCost"]),
+        str_replace('~', "\n", $row["arrOffices"]),
+        str_replace('~', "\n", $row["varianceRemarks"])
     ), 'L');
 }
 
@@ -243,6 +277,7 @@ $sql    = "
         IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.gadID),' - ') AS gad,
         d.performanceIndicator,
         FORMAT(SUM(e.budget),2) budget,
+        actualResult,
         IFNULL((
                 SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',REPLACE(FORMAT(budget,2),'.00','')) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
         ),'') AS arrBudget,
@@ -289,23 +324,24 @@ $sql    = "
     AND 
         a.tab = 2
     AND
-        a.parentFolderID = '$ref'
+        a.parentFolderID = '$pref'
     GROUP BY
         a.folderID
 ";
 $result = mysqli_query($con,$sql);
 $total_count2 = mysqli_num_rows($result);
+$row_count = 0;
 
 if ($total_count2 != 0) {
     $pdf->SetWidths(array(280));
     $pdf->Row(array('ORGANIZATIONAL FOCUSED'),'C');
 }
-
+//
 while ($row  = mysqli_fetch_assoc($result)) {
     $row_count++;
 
     $pdf->SetFont('Arial', '', 7);
-    $pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
+    $pdf->SetWidths(array(8, 42, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23));
     $pdf->Row(array(
         $row_count,
         $row["gender"], 
@@ -314,9 +350,11 @@ while ($row  = mysqli_fetch_assoc($result)) {
         str_replace('~', "\n", $row["arrMFO"]), 
         $row["gadActivity"], 
         str_replace('~', "\n", $row["arrPerformanceIndicator"]), 
+        $row["actualResult"], 
         str_replace('~', "\n", $row["arrBudget"]), 
-        $row["budgetSource"], 
-        str_replace('~', "\n", $row["arrOffices"])
+        str_replace('~', "\n", $row["actualCost"]),
+        str_replace('~', "\n", $row["arrOffices"]),
+        str_replace('~', "\n", $row["varianceRemarks"])
     ), 'L');
 }
 
@@ -372,7 +410,7 @@ $sql = "
     WHERE
         a.isRemoved = 0
     AND
-        a.parentFolderID = '$ref'
+        a.parentFolderID = '$pref'
     AND
         a.tab = 0
     GROUP BY
@@ -390,7 +428,7 @@ while ($row  = mysqli_fetch_assoc($result)) {
     $row_count++;
 
     $pdf->SetFont('Arial', '', 7);
-    $pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
+    $pdf->SetWidths(array(8, 42, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23));
     $pdf->Row(array(
         $row_count,
         "", 
@@ -398,10 +436,12 @@ while ($row  = mysqli_fetch_assoc($result)) {
         "", 
         "", 
         $row["gadActivity"], 
-        "", 
+        "",
+        "",
         str_replace('~', "\n", $row["arrBudget"]), 
-        "", 
-        ""
+        str_replace('~', "\n", $row["actualCost"]),
+        str_replace('~', "\n", $row["arrOffices"]),
+        str_replace('~', "\n", $row["varianceRemarks"])
     ), 'L');
 }
 

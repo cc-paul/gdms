@@ -504,6 +504,22 @@
             return builder($con,$sql);
             
         break;
+    
+        case "pdf_acc" :
+            
+            $total_gaa = $_POST["total_gaa"];
+            $act_gad = $_POST["act_gad"];
+            $orig_bud = $_POST["orig_bud"];
+            $util_bud = $_POST["util_bud"];
+            $per_gad = $_POST["per_gad"];
+            
+            $_SESSION["total_gaa"] = $total_gaa;
+            $_SESSION["act_gad"] = $act_gad;
+            $_SESSION["orig_bud"] = $orig_bud;
+            $_SESSION["util_bud"] = $util_bud;
+            $_SESSION["per_gad"] = $per_gad;
+            
+        break;
     }
     
     mysqli_close($con);

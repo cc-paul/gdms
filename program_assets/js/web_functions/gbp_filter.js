@@ -176,3 +176,4 @@ $('#tblGBPTable tbody').on('click', '.gbp-table-edit', function (){
     $("#btnAddActivity").prop("disabled", false);
     $("#btnDeleteActivity").prop("disabled", false);
 });
+

@@ -10,3 +10,229 @@ Stack trace:
 #6 /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/gbp.php(231): PDF_MC_Table->Row(Array, 'L')
 #7 {main}
  in /home/u546582562/domains/project4teen.online/public_html/paul/gdms/pdf/fpdf.php on line 267
+[05-Aug-2023 13:17:06 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\pdf\ar.php on line 72
+[05-Aug-2023 13:17:06 Asia/Manila] PHP Warning:  Division by zero in C:\xampp\htdocs\gdms\pdf\ar.php on line 120
+[05-Aug-2023 13:17:06 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(452): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:06:13 Asia/Manila] PHP Notice:  Undefined offset: 10 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:06:13 Asia/Manila] PHP Notice:  Undefined offset: 11 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:06:13 Asia/Manila] PHP Notice:  Undefined offset: 10 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:06:13 Asia/Manila] PHP Notice:  Undefined offset: 11 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:06:13 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(467): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:06:21 Asia/Manila] PHP Notice:  Undefined offset: 10 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:06:21 Asia/Manila] PHP Notice:  Undefined offset: 11 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:06:21 Asia/Manila] PHP Notice:  Undefined offset: 10 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:06:21 Asia/Manila] PHP Notice:  Undefined offset: 11 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:06:21 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(467): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:06:22 Asia/Manila] PHP Notice:  Undefined offset: 10 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:06:22 Asia/Manila] PHP Notice:  Undefined offset: 11 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:06:22 Asia/Manila] PHP Notice:  Undefined offset: 10 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:06:22 Asia/Manila] PHP Notice:  Undefined offset: 11 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:06:22 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(467): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:06:45 Asia/Manila] PHP Notice:  Undefined offset: 10 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:06:45 Asia/Manila] PHP Notice:  Undefined offset: 11 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:06:45 Asia/Manila] PHP Notice:  Undefined offset: 10 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:06:45 Asia/Manila] PHP Notice:  Undefined offset: 11 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:06:45 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(467): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:09:18 Asia/Manila] PHP Notice:  Undefined offset: 10 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:09:18 Asia/Manila] PHP Notice:  Undefined offset: 11 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:09:18 Asia/Manila] PHP Notice:  Undefined offset: 10 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:09:18 Asia/Manila] PHP Notice:  Undefined offset: 11 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:09:18 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(467): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:11:55 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:11:55 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:11:55 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(470): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:12:02 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:12:02 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:12:02 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(470): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:12:02 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:12:02 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:12:02 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(470): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:12:03 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:12:03 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:12:03 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(470): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:12:25 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:12:25 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:12:25 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(470): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:12:25 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:12:25 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:12:25 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(470): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:12:25 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:12:25 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:12:25 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(470): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:12:26 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:12:26 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:12:26 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(470): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:27:51 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(473): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:29:36 Asia/Manila] PHP Notice:  Undefined variable: pref in C:\xampp\htdocs\gdms\pdf\ar.php on line 68
+[05-Aug-2023 15:29:36 Asia/Manila] PHP Notice:  Undefined variable: pref in C:\xampp\htdocs\gdms\pdf\ar.php on line 112
+[05-Aug-2023 15:29:36 Asia/Manila] PHP Warning:  Division by zero in C:\xampp\htdocs\gdms\pdf\ar.php on line 124
+[05-Aug-2023 15:29:36 Asia/Manila] PHP Notice:  Undefined variable: pref in C:\xampp\htdocs\gdms\pdf\ar.php on line 234
+[05-Aug-2023 15:29:36 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(472): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:34:32 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:34:32 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:34:33 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(477): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:34:52 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:34:52 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:34:52 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(477): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:35:14 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:35:14 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:35:14 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(477): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(477): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(477): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(477): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(477): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 24
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Notice:  Undefined offset: 12 in C:\xampp\htdocs\gdms\pdf\mc_table.php on line 31
+[05-Aug-2023 15:35:15 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(477): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267

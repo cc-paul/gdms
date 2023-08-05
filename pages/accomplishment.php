@@ -1141,16 +1141,16 @@
 						</button>
 					</div>
 					<div class="box-body">
-						<!--<div class="row">
+						<div class="row">
 							<div class="col-md-12 col-xs-12">
 								<div class="btn-group">
 									<button type="button" class="btn btn-default"><i class="fa fa-file-excel-o"></i></button>
-									<button type="button" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></button>
+									<button id="btnPDF2" type="button" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></button>
 									<button type="button" class="btn btn-default"><i class="fa fa-file-word-o"></i></button>
 								</div>
 							</div>
 						</div>
-						<br>-->
+						<br>
 						<div class="row">
 							<div class="col-md-12">
 								<center>
