@@ -9,12 +9,12 @@ require dirname(__FILE__,2) . '/program_assets/php/connection/conn.php';
 if(!isset($_SESSION)) { session_start(); } 
 
 
-$pref = $_GET["ref"];
+$ref = $_GET["ref"];
 $id = $_SESSION["id"];
 $pdf = new PDF_MC_Table();
 $pdf->AliasNbPages(); 
 $pdf->AddPage('L');
-$pdf->addWord("ANNUAL GENDER AND DEVELOPMENT (GAD) ACCOMPLISHMENT REPORT", 9, 'C');
+$pdf->addWord("ANNUAL GENDER AND DEVELOPMENT (GAD) PLAN AND BUDGET", 9, 'C');
 $pdf->SetY($pdf->GetY() - 5);
 $pdf->addWord("FY 2023", 9, 'C');
 
@@ -27,8 +27,6 @@ $approvedByPosition = "";
 $preparedBy = "";
 $preparedByPosition = "";
 $dateEndorse = "";
-$dateEndorse_format = "";
-$ref = "";
 
 $sql = "
     SELECT 
@@ -39,21 +37,7 @@ $sql = "
         c.approvedByPosition,
         c.preparedBy,
         c.preparedByPosition,
-        DATE_FORMAT(a.dateEndorse, '%m/%d/%Y') AS dateEndorse,
-        CONCAT(
-            'Endorsed GPB #',
-            a.`year`,
-            '-00',
-            LPAD(EXTRACT(MINUTE FROM a.dateEndorse), 2, '0'),
-            LPAD(EXTRACT(SECOND FROM a.dateEndorse), 2, '0')
-        ) as ref,
-        CONCAT(
-            DATE_FORMAT(a.dateEndorse, '%b'),
-            ' ',
-            LPAD(EXTRACT(DAY FROM a.dateEndorse), 2, '0'),
-            ', ',
-            EXTRACT(YEAR FROM a.dateEndorse) 
-        ) AS dateEndorse_format
+        DATE_FORMAT(a.dateEndorse, '%m/%d/%Y') AS dateEndorse
     FROM
         omg_gbp_parent a 
     INNER JOIN
@@ -65,7 +49,7 @@ $sql = "
     ON 
         a.parentFolderID = c.parentFolderID
     WHERE
-        a.parentFolderID = '$pref'
+        a.parentFolderID = '$ref'
     ORDER BY
         a.id DESC 
     LIMIT 1
@@ -78,8 +62,6 @@ while ($row  = mysqli_fetch_assoc($result)) {
     $preparedBy = $row["preparedBy"];
     $preparedByPosition =$row["preparedByPosition"];
     $dateEndorse = $row["dateEndorse"];
-    $dateEndorse_format = $row["dateEndorse_format"];
-    $ref = $row["ref"];
 }
 
 $sql = "
@@ -109,7 +91,7 @@ $sql = "
     WHERE
         a.isRemoved = 0
     AND
-        a.parentFolderID = '$pref'
+        a.parentFolderID = 'DYTJ4Z8SL1'
     GROUP BY
         a.folderID
 ";
@@ -126,22 +108,42 @@ $percentageRemoved = ($amountRemoved / str_replace(',', "", $total)) * 100;
 
 $pdf->SetFont('Arial', '', 9);
 $pdf->SetWidths(array(140, 140));
-$pdf->Row(array('Reference: '.$ref, 'Date Endorsed: '.$dateEndorse_format));
-$pdf->SetWidths(array(140, 140));
 $pdf->Row(array('Organization: '.$_SESSION["college"], 'Organization Category: State Universities and Colleges, State University or College (Main Campus)'));
 $pdf->SetWidths(array(280));
 $pdf->Row(array('Organization Hierarchy: '.$_SESSION["college"]));
-$pdf->SetWidths(array(56, 56, 56, 56, 56));
+$pdf->SetWidths(array(280));
+$pdf->SetWidths(array(70, 70, 70, 70));
+$pdf->Row(array('Total GAD Budget: ' . number_format($specAmount, 2, '.', ','),'Primary Sources: '.number_format($primarySource, 2, '.', ','),'Other Sources: ' . number_format($otherSource, 2, '.', ','), '% of GAD Allocation: '.number_format($percentageRemoved,2).'%'));
 
-$pdf->Row(array(
-    "Total Budget/GAA of Organization: \n" . $_SESSION["total_gaa"],
-    "Actual GAD Expenditure: \n".$_SESSION["act_gad"],
-    "Original Budget: \n" . $_SESSION["orig_bud"],
-    "% Utilization of Budget: \n".$_SESSION["util_bud"].'%',
-    "% of GAD Expenditure: \n".$_SESSION["per_gad"].'%'
-));
 
-$pdf->SetWidths(array(8, 35, 23, 23, 23, 23, 23, 30, 23, 23, 23, 23));
+$sql    = "
+   SELECT
+        a.`comment`,
+        DATE_FORMAT(a.dateCreated, '%M %d, %Y') AS dateCreated,
+        'Name in General Comments will be changed to Gender and Development Resource Center (GADRC)' AS college
+    FROM
+        omg_comments a
+    WHERE
+        a.commentMotherID = '".$ref."-generalcomment'
+    ORDER BY
+        a.dateCreated DESC;
+";
+$result = mysqli_query($con,$sql);
+$count_comment = 0;
+
+while ($row  = mysqli_fetch_assoc($result)) {
+    $count_comment++;
+    if ($count_comment == 1) {
+        $pdf->SetWidths(array(280));
+        $pdf->Row(array('General Comments'));
+    }
+    
+	$pdf->SetWidths(array(100, 180));
+    $pdf->Row(array($row["college"] ."\n". $row["dateCreated"],$row["comment"]));
+}
+
+
+$pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
 $pdf->Row(array(
     '',
     'Gender Issue/GAD Mandate', 
@@ -150,13 +152,11 @@ $pdf->Row(array(
     'Relevant Organization MFO/PAP or PPA',
     'GAD Activity',
     'Performance Indicators/Targets',
-    'Actual Result (Outputs/Outcomes)',
-    'Total Agency Approved Budget',
-    'Actual Cost/Expenditure',
-    'Responsible Unit/Office',
-    'Variance/Remarks'
+    'GAD Budget',
+    'Source of Budget',
+    'Responsible Unit/Office'
 ));
-$pdf->SetWidths(array(8, 35, 23, 23, 23, 23, 23, 30, 23, 23, 23, 23));
+$pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
 $pdf->Row(array(
     '',
     '1', 
@@ -167,9 +167,7 @@ $pdf->Row(array(
     '6',
     '7',
     '8',
-    '9',
-    '10',
-    '11'
+    '9'
 ),'C');
 
 
@@ -184,7 +182,6 @@ $sql    = "
         IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.gadID),' - ') AS gad,
         d.performanceIndicator,
         FORMAT(SUM(e.budget),2) budget,
-        actualResult,
         IFNULL((
                 SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',REPLACE(FORMAT(budget,2),'.00','')) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
         ),'') AS arrBudget,
@@ -231,7 +228,7 @@ $sql    = "
     AND 
         a.tab = 1
     AND
-        a.parentFolderID = '$pref'
+        a.parentFolderID = '$ref'
     GROUP BY
         a.folderID
 ";
@@ -243,12 +240,14 @@ if ($total_count != 0) {
     $pdf->SetWidths(array(280));
     $pdf->Row(array('CLIENT FOCUSED'),'C');
 }
-//
+
 while ($row  = mysqli_fetch_assoc($result)) {
     $row_count++;
+    $row_count2 = $row_count - 1;
+    
 
     $pdf->SetFont('Arial', '', 7);
-    $pdf->SetWidths(array(8, 35, 23, 23, 23, 23, 23, 30, 23, 23, 23, 23));
+    $pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
     $pdf->Row(array(
         $row_count,
         $row["gender"], 
@@ -257,12 +256,55 @@ while ($row  = mysqli_fetch_assoc($result)) {
         str_replace('~', "\n", $row["arrMFO"]), 
         $row["gadActivity"], 
         str_replace('~', "\n", $row["arrPerformanceIndicator"]), 
-        $row["actualResult"], 
         str_replace('~', "\n", $row["arrBudget"]), 
-        str_replace('~', "\n", $row["actualCost"]),
-        str_replace('~', "\n", $row["arrOffices"]),
-        str_replace('~', "\n", $row["varianceRemarks"])
+        $row["budgetSource"], 
+        str_replace('~', "\n", $row["arrOffices"])
     ), 'L');
+    
+    
+    $sql_comment_header    = "
+        SELECT
+            CONCAT(SUBSTRING_INDEX(a.commentMotherID, '-', 1),'-',SUBSTRING_INDEX(a.commentMotherID, '-', -1)) AS ref
+        FROM
+            omg_comments a
+        WHERE 
+            a.commentMotherID NOT LIKE '%generalcomment%' 
+        AND 
+            CONCAT(SUBSTRING_INDEX(a.commentMotherID, '-', 1),'-',SUBSTRING_INDEX(a.commentMotherID, '-', -1))  = CONCAT('".$ref."','-row$row_count2')
+        ORDER BY
+            a.dateCreated DESC
+        LIMIT 1;
+    ";
+    $result_comment_header = mysqli_query($con,$sql_comment_header);
+    while ($row_comment_header  = mysqli_fetch_assoc($result_comment_header)) {
+        $pdf->SetWidths(array(280));
+        $pdf->Row(array('Comments'));
+    }
+    
+    $sql_comment_details= "
+        SELECT
+            REPLACE(SUBSTRING_INDEX(SUBSTRING_INDEX(a.commentMotherID, '-', 2), '-', -1),'col','Collumn ') AS ref,
+            CONCAT(b.lastName,', ',b.firstName,' ',IFNULL(b.middleName,'')) AS fullName,
+            DATE_FORMAT(a.dateCreated, '[%b %d %Y %h:%i:%s %p]:') AS dateCreated,
+            a.comment
+        FROM
+            omg_comments a 
+        INNER JOIN
+            omg_registration b 
+        ON 
+            a.createdBy = b.id
+        WHERE 
+            a.commentMotherID NOT LIKE '%generalcomment%' 
+        AND 
+        	CONCAT(SUBSTRING_INDEX(a.commentMotherID, '-', 1),'-',SUBSTRING_INDEX(a.commentMotherID, '-', -1))  = CONCAT('".$ref."','-row$row_count2')
+        ORDER BY
+            a.dateCreated DESC;
+    ";
+    $result_comment_details = mysqli_query($con,$sql_comment_details);
+    while ($row_comment_details  = mysqli_fetch_assoc($result_comment_details)) {
+        $pdf->SetWidths(array(20,20,240));
+        $pdf->Row(array($row_comment_details["ref"] ."\n". $row_comment_details["fullName"],$row_comment_details["dateCreated"],$row_comment_details["comment"]));
+    }
 }
 
 
@@ -277,7 +319,6 @@ $sql    = "
         IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.gadID),' - ') AS gad,
         d.performanceIndicator,
         FORMAT(SUM(e.budget),2) budget,
-        actualResult,
         IFNULL((
                 SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',REPLACE(FORMAT(budget,2),'.00','')) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
         ),'') AS arrBudget,
@@ -324,24 +365,24 @@ $sql    = "
     AND 
         a.tab = 2
     AND
-        a.parentFolderID = '$pref'
+        a.parentFolderID = '$ref'
     GROUP BY
         a.folderID
 ";
 $result = mysqli_query($con,$sql);
 $total_count2 = mysqli_num_rows($result);
-$row_count = 0;
 
 if ($total_count2 != 0) {
     $pdf->SetWidths(array(280));
     $pdf->Row(array('ORGANIZATIONAL FOCUSED'),'C');
 }
-//
+
 while ($row  = mysqli_fetch_assoc($result)) {
     $row_count++;
+    $row_count2 = $row_count - 2;
 
     $pdf->SetFont('Arial', '', 7);
-    $pdf->SetWidths(array(8, 35, 23, 23, 23, 23, 23, 30, 23, 23, 23, 23));
+    $pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
     $pdf->Row(array(
         $row_count,
         $row["gender"], 
@@ -350,12 +391,54 @@ while ($row  = mysqli_fetch_assoc($result)) {
         str_replace('~', "\n", $row["arrMFO"]), 
         $row["gadActivity"], 
         str_replace('~', "\n", $row["arrPerformanceIndicator"]), 
-        $row["actualResult"], 
         str_replace('~', "\n", $row["arrBudget"]), 
-        str_replace('~', "\n", $row["actualCost"]),
-        str_replace('~', "\n", $row["arrOffices"]),
-        str_replace('~', "\n", $row["varianceRemarks"])
+        $row["budgetSource"], 
+        str_replace('~', "\n", $row["arrOffices"])
     ), 'L');
+    
+    $sql_comment_header    = "
+        SELECT
+            CONCAT(SUBSTRING_INDEX(a.commentMotherID, '-', 1),'-',SUBSTRING_INDEX(a.commentMotherID, '-', -1)) AS ref
+        FROM
+            omg_comments a
+        WHERE 
+            a.commentMotherID NOT LIKE '%generalcomment%' 
+        AND 
+            CONCAT(SUBSTRING_INDEX(a.commentMotherID, '-', 1),'-',SUBSTRING_INDEX(a.commentMotherID, '-', -1))  = CONCAT('".$ref."','-row$row_count2')
+        ORDER BY
+            a.dateCreated DESC
+        LIMIT 1;
+    ";
+    $result_comment_header = mysqli_query($con,$sql_comment_header);
+    while ($row_comment_header  = mysqli_fetch_assoc($result_comment_header)) {
+        $pdf->SetWidths(array(280));
+        $pdf->Row(array('Comments'));
+    }
+    
+    $sql_comment_details= "
+        SELECT
+            REPLACE(SUBSTRING_INDEX(SUBSTRING_INDEX(a.commentMotherID, '-', 2), '-', -1),'col','Collumn ') AS ref,
+            CONCAT(b.lastName,', ',b.firstName,' ',IFNULL(b.middleName,'')) AS fullName,
+            DATE_FORMAT(a.dateCreated, '[%b %d %Y %h:%i:%s %p]:') AS dateCreated,
+            a.comment
+        FROM
+            omg_comments a 
+        INNER JOIN
+            omg_registration b 
+        ON 
+            a.createdBy = b.id
+        WHERE 
+            a.commentMotherID NOT LIKE '%generalcomment%' 
+        AND 
+        	CONCAT(SUBSTRING_INDEX(a.commentMotherID, '-', 1),'-',SUBSTRING_INDEX(a.commentMotherID, '-', -1))  = CONCAT('".$ref."','-row$row_count2')
+        ORDER BY
+            a.dateCreated DESC;
+    ";
+    $result_comment_details = mysqli_query($con,$sql_comment_details);
+    while ($row_comment_details  = mysqli_fetch_assoc($result_comment_details)) {
+        $pdf->SetWidths(array(20,20,240));
+        $pdf->Row(array($row_comment_details["ref"] ."\n". $row_comment_details["fullName"],$row_comment_details["dateCreated"],$row_comment_details["comment"]));
+    }
 }
 
 $sql = "
@@ -410,7 +493,7 @@ $sql = "
     WHERE
         a.isRemoved = 0
     AND
-        a.parentFolderID = '$pref'
+        a.parentFolderID = '$ref'
     AND
         a.tab = 0
     GROUP BY
@@ -426,9 +509,10 @@ if ($total_count3 != 0) {
 
 while ($row  = mysqli_fetch_assoc($result)) {
     $row_count++;
+    $row_count2 = $row_count - 3;
 
     $pdf->SetFont('Arial', '', 7);
-    $pdf->SetWidths(array(8, 35, 23, 23, 23, 23, 23, 30, 23, 23, 23, 23));
+    $pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
     $pdf->Row(array(
         $row_count,
         "", 
@@ -436,13 +520,55 @@ while ($row  = mysqli_fetch_assoc($result)) {
         "", 
         "", 
         $row["gadActivity"], 
-        "",
-        "",
+        "", 
         str_replace('~', "\n", $row["arrBudget"]), 
-        str_replace('~', "\n", $row["actualCost"]),
-        str_replace('~', "\n", $row["arrOffices"]),
-        str_replace('~', "\n", $row["varianceRemarks"])
+        "", 
+        ""
     ), 'L');
+    
+    $sql_comment_header    = "
+        SELECT
+            CONCAT(SUBSTRING_INDEX(a.commentMotherID, '-', 1),'-',SUBSTRING_INDEX(a.commentMotherID, '-', -1)) AS ref
+        FROM
+            omg_comments a
+        WHERE 
+            a.commentMotherID NOT LIKE '%generalcomment%' 
+        AND 
+            CONCAT(SUBSTRING_INDEX(a.commentMotherID, '-', 1),'-',SUBSTRING_INDEX(a.commentMotherID, '-', -1))  = CONCAT('".$ref."','-row$row_count2')
+        ORDER BY
+            a.dateCreated DESC
+        LIMIT 1;
+    ";
+    $result_comment_header = mysqli_query($con,$sql_comment_header);
+    while ($row_comment_header  = mysqli_fetch_assoc($result_comment_header)) {
+        $pdf->SetWidths(array(280));
+        $pdf->Row(array('Comments'));
+    }
+    
+    $sql_comment_details= "
+        SELECT
+            REPLACE(SUBSTRING_INDEX(SUBSTRING_INDEX(a.commentMotherID, '-', 2), '-', -1),'col','Collumn ') AS ref,
+            CONCAT(b.lastName,', ',b.firstName,' ',IFNULL(b.middleName,'')) AS fullName,
+            DATE_FORMAT(a.dateCreated, '[%b %d %Y %h:%i:%s %p]:') AS dateCreated,
+            a.comment
+        FROM
+            omg_comments a 
+        INNER JOIN
+            omg_registration b 
+        ON 
+            a.createdBy = b.id
+        WHERE 
+            a.commentMotherID NOT LIKE '%generalcomment%' 
+        AND 
+        	CONCAT(SUBSTRING_INDEX(a.commentMotherID, '-', 1),'-',SUBSTRING_INDEX(a.commentMotherID, '-', -1))  = CONCAT('".$ref."','-row$row_count2')
+        ORDER BY
+            a.dateCreated DESC;
+    ";
+    $result_comment_details = mysqli_query($con,$sql_comment_details);
+    while ($row_comment_details  = mysqli_fetch_assoc($result_comment_details)) {
+        $pdf->SetWidths(array(20,20,240));
+        $pdf->Row(array($row_comment_details["ref"] ."\n". $row_comment_details["fullName"],$row_comment_details["dateCreated"],$row_comment_details["comment"]));
+    }
 }
 
 $pdf->SetWidths(array(200, 80));

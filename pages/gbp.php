@@ -1271,7 +1271,7 @@ Development Resource Center for review and may not be edited until it has been r
 								<div class="btn-group">
 									<button type="button" class="btn btn-default"><i class="fa fa-file-excel-o"></i></button>
 									<button id="btnPDF" type="button" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></button>
-									<button type="button" class="btn btn-default"><i class="fa fa-file-word-o"></i></button>
+									<button id="btnPDF_comment" type="button" class="btn btn-default"><i class="fa fa-file-word-o"></i></button>
 								</div>
 							</div>
 						</div>
