@@ -544,7 +544,7 @@ while ($row  = mysqli_fetch_assoc($result)) {
         $pdf->SetWidths(array(280));
         $pdf->Row(array('Comments'));
     }
-    
+       
     $sql_comment_details= "
         SELECT
             REPLACE(SUBSTRING_INDEX(SUBSTRING_INDEX(a.commentMotherID, '-', 2), '-', -1),'col','Collumn ') AS ref,

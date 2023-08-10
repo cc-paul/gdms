@@ -18,7 +18,7 @@ $("#aGeneralComments").click(function(){
 	openCommentModal(`${generalCommentParentID}-generalcomment`);
 });
 
-function showParentGBP() {
+function showParentGBP() { 
     totalPrimarySource = 0;
     totalOtherSource = 0;
     

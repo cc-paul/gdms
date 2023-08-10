@@ -1275,7 +1275,7 @@ Development Resource Center for review and may not be edited until it has been r
 								</div>
 							</div>
 						</div>
-						<br>
+						<br>  
 						<div class="row">
 							<div class="col-md-12">
 								<center>
