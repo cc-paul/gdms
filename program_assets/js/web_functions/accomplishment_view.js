@@ -988,3 +988,43 @@ $("#btnPDF2").click(function(){
         }
     });
 });
+
+$("#btnPDF3").click(function(){
+	$.ajax({
+        url: "../program_assets/php/web/accomplishment",
+        data: {
+            command   : 'pdf_acc',
+            total_gaa : $("#lblGAABudget2").text(),
+            act_gad : $("#spTotalExpenditure_mirror").text(),
+            orig_bud : $("#spOriginalBudget_mirror").text(),
+            util_bud : $("#spUtilBudget_mirror").text(),
+            per_gad : $("#spGADExp_mirror").text()
+        },
+        type: 'post',
+        success: function (data) {
+            
+            window.open('../pdf/ar_comment.php?ref=' + selectParentFolderID, '_blank');
+        }
+    });
+});
+
+$("#btnExcel_AR").click(function(){
+	$.ajax({
+        url: "../program_assets/php/web/accomplishment",
+        data: {
+            command   : 'pdf_acc',
+            total_gaa : $("#lblGAABudget2").text(),
+            act_gad : $("#spTotalExpenditure_mirror").text(),
+            orig_bud : $("#spOriginalBudget_mirror").text(),
+            util_bud : $("#spUtilBudget_mirror").text(),
+            per_gad : $("#spGADExp_mirror").text()
+        },
+        type: 'post',
+        success: function (data) {
+            
+            window.open('../excel/ar.php?ref=' + selectParentFolderID, '_blank');
+        }
+    });
+});
+
+

@@ -323,3 +323,10 @@ Stack trace:
 #2 C:\xampp\htdocs\gdms\pdf\gbp_comment.php(603): FPDF->Output()
 #3 {main}
   thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[17-Aug-2023 09:52:43 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar_comment.php(507): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267

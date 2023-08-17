@@ -1144,9 +1144,9 @@
 						<div class="row">
 							<div class="col-md-12 col-xs-12">
 								<div class="btn-group">
-									<button type="button" class="btn btn-default"><i class="fa fa-file-excel-o"></i></button>
+									<button id="btnExcel_AR" type="button" class="btn btn-default"><i class="fa fa-file-excel-o"></i></button>
 									<button id="btnPDF2" type="button" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></button>
-									<button type="button" class="btn btn-default"><i class="fa fa-file-word-o"></i></button>
+									<button id="btnPDF3" type="button" class="btn btn-default"><i class="fa fa-file-word-o"></i></button>
 								</div>
 							</div>
 						</div>

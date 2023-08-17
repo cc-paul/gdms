@@ -1269,7 +1269,7 @@ Development Resource Center for review and may not be edited until it has been r
 						<div class="row">
 							<div class="col-md-12 col-xs-12">
 								<div class="btn-group">
-									<button type="button" class="btn btn-default"><i class="fa fa-file-excel-o"></i></button>
+									<button id="btn_excel_gbp" type="button" class="btn btn-default"><i class="fa fa-file-excel-o"></i></button>
 									<button id="btnPDF" type="button" class="btn btn-default"><i class="fa fa-file-pdf-o"></i></button>
 									<button id="btnPDF_comment" type="button" class="btn btn-default"><i class="fa fa-file-word-o"></i></button>
 								</div>

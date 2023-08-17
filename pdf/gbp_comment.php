@@ -91,7 +91,7 @@ $sql = "
     WHERE
         a.isRemoved = 0
     AND
-        a.parentFolderID = 'DYTJ4Z8SL1'
+        a.parentFolderID = '$ref'
     GROUP BY
         a.folderID
 ";

@@ -1,0 +1,449 @@
+[17-Aug-2023 06:13:37 Europe/Berlin] PHP Warning:  require(fpdf.php): failed to open stream: No such file or directory in C:\xampp\htdocs\gdms\excel\gbp.php on line 6
+[17-Aug-2023 06:13:37 Europe/Berlin] PHP Fatal error:  require(): Failed opening required 'fpdf.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\gdms\excel\gbp.php on line 6
+[17-Aug-2023 12:19:13 Asia/Manila] PHP Notice:  Undefined variable: ref in C:\xampp\htdocs\gdms\excel\gbp.php on line 47
+[17-Aug-2023 12:19:13 Asia/Manila] PHP Notice:  Undefined variable: percentageRemoved in C:\xampp\htdocs\gdms\excel\gbp.php on line 68
+[17-Aug-2023 12:20:00 Asia/Manila] PHP Notice:  Undefined variable: ref in C:\xampp\htdocs\gdms\excel\gbp.php on line 47
+[17-Aug-2023 12:20:00 Asia/Manila] PHP Notice:  Undefined variable: ref in C:\xampp\htdocs\gdms\excel\gbp.php on line 90
+[17-Aug-2023 12:20:00 Asia/Manila] PHP Warning:  Division by zero in C:\xampp\htdocs\gdms\excel\gbp.php on line 102
+[17-Aug-2023 12:31:43 Asia/Manila] PHP Notice:  A non well formed numeric value encountered in C:\xampp\htdocs\gdms\excel\gbp.php on line 110
+[17-Aug-2023 12:52:20 Asia/Manila] PHP Warning:  Use of undefined constant numbering - assumed 'numbering' (this will throw an Error in a future version of PHP) in C:\xampp\htdocs\gdms\excel\gbp.php on line 115
+[17-Aug-2023 12:52:20 Asia/Manila] PHP Warning:  Illegal offset type in C:\xampp\htdocs\gdms\excel\gbp.php on line 108
+[17-Aug-2023 12:52:34 Asia/Manila] PHP Warning:  Illegal offset type in C:\xampp\htdocs\gdms\excel\gbp.php on line 108
+[17-Aug-2023 13:10:56 Asia/Manila] PHP Notice:  Undefined variable: ref in C:\xampp\htdocs\gdms\excel\gbp.php on line 165
+[17-Aug-2023 13:10:56 Asia/Manila] PHP Notice:  Undefined variable: con in C:\xampp\htdocs\gdms\excel\gbp.php on line 169
+[17-Aug-2023 13:10:56 Asia/Manila] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in C:\xampp\htdocs\gdms\excel\gbp.php on line 169
+[17-Aug-2023 13:10:56 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in C:\xampp\htdocs\gdms\excel\gbp.php on line 172
+[17-Aug-2023 13:11:30 Asia/Manila] PHP Notice:  Undefined variable: rowCount in C:\xampp\htdocs\gdms\excel\gbp.php on line 176
+[17-Aug-2023 13:11:30 Asia/Manila] PHP Notice:  Undefined variable: rowCount in C:\xampp\htdocs\gdms\excel\gbp.php on line 177
+[17-Aug-2023 13:52:10 Asia/Manila] PHP Warning:  fopen(gbp.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 13:52:10 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "gbp.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('gbp.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('gbp.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), 'gbp.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\gbp.php(238): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('gbp_template.xl...', 'gbp.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 14:06:19 Asia/Manila] PHP Notice:  Undefined index: budgetSource in C:\xampp\htdocs\gdms\excel\gbp.php on line 275
+[17-Aug-2023 14:06:19 Asia/Manila] PHP Notice:  Undefined index: budgetSource in C:\xampp\htdocs\gdms\excel\gbp.php on line 275
+[17-Aug-2023 14:18:11 Asia/Manila] PHP Warning:  fopen(gbp.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 14:18:11 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "gbp.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('gbp.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('gbp.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), 'gbp.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\gbp.php(318): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('gbp_template.xl...', 'gbp.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 14:52:53 Asia/Manila] PHP Warning:  fopen(gbp.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 14:52:53 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "gbp.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('gbp.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('gbp.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), 'gbp.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\gbp.php(314): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('gbp_template.xl...', 'gbp.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 15:16:31 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\params\ExcelParam::__construct() must be of the type string, array given, called in C:\xampp\htdocs\gdms\excel\gbp.php on line 316 and defined in C:\xampp\htdocs\gdms\excel\src\params\ExcelParam.php:27
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\gbp.php(316): alhimik1986\PhpExcelTemplator\params\ExcelParam->__construct(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\src\params\ExcelParam.php on line 27
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\gbp.php on line 247
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\gbp.php on line 250
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\gbp.php on line 247
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\gbp.php on line 250
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\gbp.php on line 247
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\gbp.php on line 250
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\gbp.php on line 247
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\gbp.php on line 250
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\gbp.php on line 247
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\gbp.php on line 250
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\gbp.php on line 247
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\gbp.php on line 250
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\gbp.php on line 247
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\gbp.php on line 250
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\gbp.php on line 247
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\gbp.php on line 250
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\gbp.php on line 247
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\gbp.php on line 250
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\gbp.php on line 247
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\gbp.php on line 250
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Warning:  fopen(gbp.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 16:30:14 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "gbp.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('gbp.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('gbp.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), 'gbp.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\gbp.php(336): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('gbp_template.xl...', 'gbp.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 16:31:29 Asia/Manila] PHP Notice:  Undefined index: budgetSource in C:\xampp\htdocs\gdms\excel\gbp.php on line 345
+[17-Aug-2023 16:31:29 Asia/Manila] PHP Notice:  Undefined index: budgetSource in C:\xampp\htdocs\gdms\excel\gbp.php on line 345
+[17-Aug-2023 16:31:29 Asia/Manila] PHP Warning:  fopen(gbp.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 16:31:29 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "gbp.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('gbp.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('gbp.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), 'gbp.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\gbp.php(396): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('gbp_template.xl...', 'gbp.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 16:31:55 Asia/Manila] PHP Warning:  fopen(gbp.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 16:31:55 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "gbp.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('gbp.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('gbp.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), 'gbp.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\gbp.php(397): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('gbp_template.xl...', 'gbp.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 16:42:20 Asia/Manila] PHP Warning:  fopen(gbp.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 16:42:20 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "gbp.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('gbp.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('gbp.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), 'gbp.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\gbp.php(400): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('gbp_template.xl...', 'gbp.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 149
+[17-Aug-2023 18:43:42 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 152
+[17-Aug-2023 18:49:58 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:50:06 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:50:33 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:51:13 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:52:28 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:53:50 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:54:24 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:54:28 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:54:29 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:54:30 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:54:30 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:54:50 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:58:18 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 18:59:01 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:00:25 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:00:27 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:01:04 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:01:48 Asia/Manila] PHP Fatal error:  Uncaught Error: Object of class mysqli_result could not be converted to string in C:\xampp\htdocs\gdms\excel\ar.php:220
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\ar.php(287): getData('client', 'q2')
+#1 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\ar.php on line 220
+[17-Aug-2023 19:02:07 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:02:41 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:02:49 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:02:51 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:02:51 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:02:51 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:02:51 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:02:51 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:02:52 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:02:52 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:03:12 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:03:13 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:03:14 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:03:14 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:04:19 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:04:40 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:04:41 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:04:42 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:04:42 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:04:42 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:04:42 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:05:11 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:05:37 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:05:40 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:05:40 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:05:41 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:05:41 Asia/Manila] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial::_validateValue() must be of the type array, null given, called in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 24 and defined in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php:61
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php(24): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->_validateValue(NULL)
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(260): alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial->setCellValue(Object(alhimik1986\PhpExcelTemplator\params\SetterParam), Object(alhimik1986\PhpExcelTemplator\InsertedCells))
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(91): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::insertParams(Object(PhpOffice\PhpSpreadsheet\Worksheet\Worksheet), Array, Array)
+#3 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php in C:\xampp\htdocs\gdms\excel\src\setters\CellSetterArrayValueSpecial.php on line 61
+[17-Aug-2023 19:08:30 Asia/Manila] PHP Warning:  mysqli_query(): Empty query in C:\xampp\htdocs\gdms\excel\ar.php on line 151
+[17-Aug-2023 19:08:30 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in C:\xampp\htdocs\gdms\excel\ar.php on line 155
+[17-Aug-2023 19:13:48 Asia/Manila] PHP Warning:  fopen(./ar.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 19:13:48 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "./ar.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('./ar.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('./ar.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), './ar.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\ar.php(310): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('./ar_template.x...', './ar.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 19:15:51 Asia/Manila] PHP Warning:  fopen(./ar.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 19:15:51 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "./ar.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('./ar.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('./ar.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), './ar.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\ar.php(308): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('./ar_template.x...', './ar.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 19:16:41 Asia/Manila] PHP Warning:  fopen(./ar.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 19:16:41 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "./ar.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('./ar.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('./ar.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), './ar.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\ar.php(309): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('./ar_template.x...', './ar.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 19:17:25 Asia/Manila] PHP Warning:  fopen(./ar.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 19:17:25 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "./ar.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('./ar.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('./ar.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), './ar.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\ar.php(309): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('./ar_template.x...', './ar.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130
+[17-Aug-2023 19:17:55 Asia/Manila] PHP Warning:  fopen(./ar.xlsx): failed to open stream: Resource temporarily unavailable in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 128
+[17-Aug-2023 19:17:55 Asia/Manila] PHP Fatal error:  Uncaught PhpOffice\PhpSpreadsheet\Writer\Exception: Could not open file "./ar.xlsx" for writing. in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php:130
+Stack trace:
+#0 C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\Xlsx.php(546): PhpOffice\PhpSpreadsheet\Writer\BaseWriter->openFileHandle('./ar.xlsx')
+#1 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(173): PhpOffice\PhpSpreadsheet\Writer\Xlsx->save('./ar.xlsx')
+#2 C:\xampp\htdocs\gdms\excel\src\PhpExcelTemplator.php(58): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveSpreadsheetToFile(Object(PhpOffice\PhpSpreadsheet\Spreadsheet), './ar.xlsx', Array)
+#3 C:\xampp\htdocs\gdms\excel\ar.php(309): alhimik1986\PhpExcelTemplator\PhpExcelTemplator::saveToFile('./ar_template.x...', './ar.xlsx', Array)
+#4 {main}
+  thrown in C:\xampp\htdocs\gdms\excel\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 130

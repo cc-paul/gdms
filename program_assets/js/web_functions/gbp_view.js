@@ -10,6 +10,10 @@ $("#btnPDF_comment").click(function(){
 	window.open('../pdf/gbp_comment.php?ref=' + generalCommentParentID, '_blank');
 });
 
+$("#btn_excel_gbp").click(function(){
+	window.open('../excel/gbp.php?ref=' + generalCommentParentID, '_blank');
+});
+
 $("#btnViewGBP").click(function(){
 	showParentGBP();
 });
