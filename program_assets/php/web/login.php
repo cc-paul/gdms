@@ -18,13 +18,19 @@
 			DATE_FORMAT( a.dateCreated, '%m/%d/%Y' ) AS member_since,
 			a.isPasswordChange,
 			a.accountStatus,
-			b.college
+			b.college,
+			c.position,
+			c.id
 		FROM
 			omg_registration a
 		INNER JOIN
-			omg_colleges b
+			omg_colleges b 
 		ON
 			a.collegeID = b.id
+		INNER JOIN 
+			omg_positions c 
+		ON 
+			a.positionID = c.id
 		WHERE
 			a.username = '$username' 
 		AND 
@@ -43,6 +49,8 @@
 			$_SESSION['date_created']     = $row[3];
 			$_SESSION['isPasswordChange'] = $row[4];
 			$_SESSION['college']          = $row[6];
+			$_SESSION['position']         = $row[7];
+			$_SESSION['positionID']       = $row[8];
 			
 			switch ($row[5]) {
 				case "For Approval" :

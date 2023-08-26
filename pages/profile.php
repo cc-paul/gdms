@@ -45,7 +45,7 @@
 	
 	<!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 	<!-- the fixed layout is not compatible with sidebar-mini -->
-	<body class="hold-transition skin-black-light fixed sidebar-mini">
+	<body class="hold-transition skin-green-light fixed sidebar-mini">
 		<!-- Site wrapper -->
 		<div class="wrapper">
 			<header class="main-header">

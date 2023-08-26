@@ -118,7 +118,13 @@ function loadAttr() {
         	}    
         },
         'aoColumns' : [
-        	{ mData: 'program'},
+			 { mData: 'program',
+                render: function (data,type,row) {
+                    return `
+                        <span style="white-space:normal"><b>Gender Issue : </b>${row.program}</span>
+                    `;
+                }
+            },
             { mData: 'budget'},
             { mData: 'source',
                 render: function (data,type,row) {

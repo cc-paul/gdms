@@ -1,5 +1,5 @@
 var tblAccTable;
-var cur_parentFolderID;
+var cur_parentFolderID = 0;
 var tblBudget_attrID = 0;
 var tblFiles_attrID = 0;
 var curfolderID;    
@@ -102,7 +102,7 @@ function getTotalUtils() {
   });
 }
 
-function selectTab(tabID) {
+function selectTab(tabID = 0) {
     selectedTab = tabID;
     console.log(selectedTab);
     

@@ -45,7 +45,8 @@
 				b.detail_menu_name,
 				b.detail_menu_icon,
 				b.php_page,
-				b.description
+				b.description,
+				b.id
 			FROM
 				omg_menu_build a
 			INNER JOIN
@@ -66,10 +67,38 @@
 			$detail_file   = $row_detail[2];
 			$detail_desc   = $row_detail[3];
 			$li_id_name    = strtolower(str_replace(" ","_",$detail_menu));
+			$menu_id       = $row_detail[4];
+			$positionID    = $_SESSION['positionID'];
 			
-			echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
-			echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
-			echo '</li>';
+			if ($positionID == 1) {
+				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 4 || $menu_id == 7) {
+					echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
+					echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
+					echo '</li>';
+				}
+			}
+			
+			if ($positionID == 3) {
+				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 9 || $menu_id == 4 || $menu_id == 7 || $menu_id == 6) {
+					echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
+					echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
+					echo '</li>';
+				}
+			}
+			
+			if ($positionID == 4) {
+				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 6) {
+					echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
+					echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
+					echo '</li>';
+				}
+			}
+			
+			if ($positionID == 2) {
+				echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
+				echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
+				echo '</li>';
+			}
 
 			$assigned_menus[] = $detail_file;
 		}

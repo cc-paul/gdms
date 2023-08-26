@@ -6,7 +6,7 @@
 	}
 
 	if ($to_display == "branch") {
-		echo "Administrator";
+		echo $_SESSION['position'];
 	}
 
 	if ($to_display == "date_created") {

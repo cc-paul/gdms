@@ -9,7 +9,7 @@ use alhimik1986\PhpExcelTemplator\params\ExcelParam;
 use alhimik1986\PhpExcelTemplator\params\CallbackParam;
 use alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial;
 
-require( __DIR__ . '\samples\Bootstrap.php');
+require( __DIR__ . '/samples/Bootstrap.php');
 
 
 //PhpExcelTemplator::saveToFile('./template.xlsx', './exported_file.xlsx', [
@@ -405,11 +405,4 @@ PhpExcelTemplator::outputToFile('gbp_template.xlsx', 'gbp_'.$seconds.'.xlsx', [
     '{footer_position1}' => $preparedByPosition,
     '{footer_position2}' => $approvedByPosition
 ]);
-
-
-
- //to download the file from web page
-//PhpExcelTemplator::outputToFile('gbp_template.xlsx', 'gbp.xlsx', [
-//	'{current_date}' => date('d-m-Y'),
-//	'{department}' => 'Sales department',
-//]);
+?>

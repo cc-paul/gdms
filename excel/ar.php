@@ -9,7 +9,7 @@ use alhimik1986\PhpExcelTemplator\params\ExcelParam;
 use alhimik1986\PhpExcelTemplator\params\CallbackParam;
 use alhimik1986\PhpExcelTemplator\setters\CellSetterArrayValueSpecial;
 
-require( __DIR__ . '\samples\Bootstrap.php');
+require( __DIR__ . '/samples/Bootstrap.php');
 define('SPECIAL_ARRAY_TYPE', CellSetterArrayValueSpecial::class);
 
 $pref = $_GET["ref"];

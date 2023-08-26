@@ -112,7 +112,7 @@
                 $fromID       = $_SESSION["id"];
                 $notifDate    = $global_date;
                 
-                $query = "INSERT INTO omg_gbp_notification (parenteFolderID,subject,remarks,fromID,dateCreated) VALUES (?,?,?,?,?)";
+                $query = "INSERT INTO omg_gbp_notification (parentFolderID,`subject`,remarks,fromID,dateCreated) VALUES (?,?,?,?,?)";
                 $stmt  = mysqli_prepare($con, $query);
                 mysqli_stmt_bind_param($stmt,"sssss",$parentFolderID,$subject,$notifRemarks,$fromID,$notifDate);
                 mysqli_stmt_execute($stmt);

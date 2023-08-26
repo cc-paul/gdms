@@ -48,17 +48,47 @@
       height: auto;
       background: #ffffff;
     }
+    
+    .image-container {
+    display: flex;
+    align-items: center;
+  }
+  .image-container img {
+    max-width: 200px; /* Adjust as needed */
+    margin-right: 10px; /* Space between image and text */
+  }
   </style>
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo" style="margin-bottom: 0px;">
-    <img src="../images/sex.png" style="width: 100%; border-style: solid;" alt="User Image" onerror="this.onerror=null; this.src='./../profile/Default.png'">
+   
+<div class="login-box" style="width:700px;">
+  <center>
+    <!--<div class="image-container" style="margin-left: 68px;">
+      <img src="../images/logo.png" alt="logo">
+      <p>GENDER AND DEVELOPMENT (GAD) RESOURCE</p>
+      <p>CENTER MONITORING SYSTEM</p>
+    </div>-->
+    <div class="row">
+      <div class="col-md-1 col-xs-12"></div>
+      <div class="col-md-4 col-xs-12">
+        <img src="../images/logo.png" alt="logo">
+      </div>
+      <div class="col-md-7 col-xs-12">
+        <br>
+        <br>
+        <br>
+        <br>
+        <b style="font-size: 19px;">GENDER AND DEVELOPMENT (GAD) RESOURCE</b>
+        <b style="font-size: 19px;">CENTER MONITORING SYSTEM</b>
+        <p>Cavite State University - Main Campus</p>
+      </div>
+    </div>
     <br>
     <br>
-  </div>
+  </center>
   <!-- /.login-logo -->
-  <div class="login-box-body">
+  <center>
+    <div class="login-box-body" style="width:400px;">
     <p class="login-box-msg">Sign in to start your session</p>
 
     
@@ -111,6 +141,7 @@
   </div>
   <!-- /.login-box-body -->
 </div>
+  </center>
 <!-- /.login-box -->
 
 <!-- NO INTERNET MODAL -->

@@ -1,6 +1,14 @@
 var parentFolderIDtoSubmit = "";
 
 $("#btnSubmitGBPFinal").click(function(){
+	var year = $("#cmbYear").val();
+	var amount = $("#txtAllottedBudget").val();
+	
+	if (year == null || year == "" || amount == "") {
+		JAlert("Please add year and total budget","red");
+		return;
+    }
+	
 	showRemarks();
 });
 
@@ -30,7 +38,7 @@ function showRemarks() {
 $("#btnProceedSubmit").click(function(){
 	var parentFolderID = parentFolderIDtoSubmit;
     var remarks      = $("#txtGBPRemarks").val();
-    
+	
     $.ajax({
         url: "../program_assets/php/web/gbp",
         data: {

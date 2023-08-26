@@ -3,7 +3,7 @@ var read_ids;
 /* footer company name */
 $('#footer-cname').text('');
 /* logo system name lg */
-$(".logo-lg").html("<b>Gender Manage</b>");
+$(".logo-lg").html("<b style='font-size:14px;'>GAD Monitoring System</b>");
 /* logo system name sh */
 $(".logo-mini").html("GDM");
 
