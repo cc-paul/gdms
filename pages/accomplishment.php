@@ -297,7 +297,7 @@
 									</div>
 								</div>
 								<br>
-								<div class="row">
+								<div id="row1" class="row">
 									<div class="col-md-3 col-xs-12">
 										<label class="cust-label">Reference: </label>
 										<span class="cust-label">No Reference ID</span>
@@ -307,19 +307,19 @@
 										<span id="spDateEndorse" class="cust-label"></span>
 									</div>
 								</div>
-								<div class="row">
+								<div id="row2" class="row">
 									<div class="col-md-12 col-xs-12">
 										<label class="cust-label">Organization: </label>
 										<span id="spCollege" class="cust-label"></span>
 									</div>
 								</div>
-								<div class="row">
+								<div id="row3" class="row">
 									<div class="col-md-12 col-xs-12">
 										<label class="cust-label">Total Budget/GAA of Organization: </label>
 										<span id="spTotalGAA" class="cust-label"></span>
 									</div>
 								</div>
-								<div class="row">
+								<div id="row4" class="row">
 									<div class="col-md-3 col-xs-12">
 										<label class="cust-label">Actual GAD Expenditure: </label>
 										<br>
@@ -343,7 +343,7 @@
 								</div>
 								<br>
 								<br>
-								<div class="row">
+								<div id="row5" class="row">
 									<div class="col-md-12 col-xs-12">
 										<div class="nav-tabs-custom">
 											<ul class="nav nav-tabs">
@@ -449,6 +449,15 @@
 													</div>
 												</div>
 											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row" id="dvReminder" hidden>
+									<div class="col-md-12 col-xs-12">
+										<div class="alert alert-info alert-dismissible">
+											<h4><i class="icon fa fa-info"></i> Alert!</h4>
+											<!--Unable to create GBP. There is an ongoing approval. You can create/edit once it is returned to you.-->
+											The 2023 Accomplishment Report has been submitted to Gender and Development Resource Center
 										</div>
 									</div>
 								</div>

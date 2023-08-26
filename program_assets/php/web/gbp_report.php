@@ -32,7 +32,7 @@
             $q_year   = $year   == '-' ? '' : " OR a.`year` = '$year' ";
             $q_status = $status == '-' ? '' : " OR a.`status` = '$status' ";
             $q_status = $status == '-' ? '' : " OR a.`status` = '$status' ";
-            $q_college = $college == '-' ? '' : " OR c.`collegeID` = '$college' ";
+            $q_college = $college == '-' ? '' : " OR c.`id` = '$college' ";
             
             $sql = "
                 SELECT 

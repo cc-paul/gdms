@@ -1209,19 +1209,23 @@
             $q_status = $status == '-' ? '' : " OR a.`status` = '$status' ";
             
             $sql = "
-                SELECT 
-                    a.parentFolderID,
-                    a.reportType,
-                    a.`year`,
-                    a.`status`,
-                    FORMAT(a.totalAmount,2) AS totalAmount,
-                    a.remarks,
-                    a.id
-                FROM
-                    omg_gbp_parent a
-                WHERE
-                    a.createdBy = $id $q_report $q_year $q_status
+                SELECT a.* FROM (
+                    SELECT 
+                        a.parentFolderID,
+                        a.reportType,
+                        a.`year`,
+                        a.`status`,
+                        FORMAT(a.totalAmount,2) AS totalAmount,
+                        a.remarks,
+                        a.id,
+                        a.createdBy
+                    FROM
+                        omg_gbp_parent a
+                    WHERE
+                        a.createdBy = $id $q_report $q_year $q_status
+                ) a WHERE a.createdBy = $id
             ";
+            
             return builder($con,$sql);
             
         break;

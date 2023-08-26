@@ -52,6 +52,17 @@ $('#tblAccTable tbody').on('click', 'td button', function (){
   
   getTotalUtils();
   
+  if (data.status == "Endorse") {
+    $("#btnSubmitGBPFinal").prop("disabled", true);
+    $("#row1").hide();
+    $("#row2").hide();
+    $("#row3").hide();
+    $("#row4").hide();
+    $("#row5").hide();
+    $("#dvReminder").show();
+  }
+  
+  
   //$("#mdViewGBP").modal();
 });
 

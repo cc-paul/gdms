@@ -70,10 +70,10 @@
     </div>-->
     <div class="row">
       <div class="col-md-1 col-xs-12"></div>
-      <div class="col-md-4 col-xs-12">
+      <div class="col-md-3 col-xs-12">
         <img src="../images/logo.png" alt="logo">
       </div>
-      <div class="col-md-7 col-xs-12">
+      <div class="col-md-8 col-xs-12">
         <br>
         <br>
         <br>
