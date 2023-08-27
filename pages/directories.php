@@ -191,320 +191,67 @@
 					<ol class="breadcrumb page-order"></ol>
 				</section>
 				<!-- Main content -->
-				<section class="content col-md-12 col-xs-12">
-					<div class="row">
-						<div class="col-md-3 col-xs-12">
-							<div class="nav-tabs-custom">
-								<ul class="nav nav-tabs">
-									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">News and Announcement</a></li>
-									<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
-								</ul>
-								<div class="tab-content" style="height: 300px; overflow-y: auto; overflow-x: hidden;">
-									<?php
-										include dirname(__FILE__,2) . '/program_assets/php/connection/conn.php';
-										
-										$sql    = "
-											SELECT
-												a.id,
-												a.`subject`,
-												a.description,
-												DATE_FORMAT(a.dateCreated,'%m/%d/%Y') AS dateCreated
-											FROM
-												omg_announcement a
-											WHERE
-												a.isDeleted = 0
-											AND
-												a.isAnnouncement = 1
-											ORDER BY
-												a.dateCreated DESC;
-										";
-										$result = mysqli_query($con,$sql);
-									?>
-									
-									<div class="tab-pane active" id="admin">
-										<?php
-											while ($row  = mysqli_fetch_assoc($result)) {
-												?>
-												<label class="cust-label"><?php echo $row["subject"]; ?></label>
-												<br>
-												<span class="cust-label"><?php echo $row["description"]; ?></span>
-												<br>
-												<span class="cust-label"><?php echo $row["dateCreated"]; ?></span>
-												<br>
-												<br>
-												<?php
-											}
-										?>
+				<section class="content col-md-10 col-xs-12">
+					<div class="nav-tabs-custom">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Account Contacts</a></li>
+							<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="admin">
+								<div class="row">
+									<div class="col-md-10 col-xs-12">
+										<div class="form-group">
+											<input id="txtSearchAccount" class="form-control input-sm cust-label" type="text" placeholder="Search account here...">
+										</div>
 									</div>
-								</div>
-								<div class="box-footer">
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-md-3 col-xs-12">
-							<div class="nav-tabs-custom">
-								<ul class="nav nav-tabs">
-									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Schedule</a></li>
-									<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
-								</ul>
-								<div class="tab-content" style="height: 300px; overflow-y: auto; overflow-x: hidden;">
-									<div class="tab-pane active" id="admin">
-										<?php
-											include dirname(__FILE__,2) . '/program_assets/php/connection/conn.php';
-											
-											$sql    = "
-												SELECT
-													a.id,
-													a.`subject`,
-													a.description,
-													DATE_FORMAT(a.dateCreated,'%m/%d/%Y') AS dateCreated
-												FROM
-													omg_announcement a
-												WHERE
-													a.isDeleted = 0
-												AND
-													a.isAnnouncement = 0
-												ORDER BY
-													a.dateCreated DESC;
-											";
-											$result = mysqli_query($con,$sql);
-										?>
-										
-										<div class="tab-pane active" id="admin">
-											<?php
-												while ($row  = mysqli_fetch_assoc($result)) {
-													?>
-													<label class="cust-label"><?php echo $row["subject"]; ?></label>
-													<br>
-													<span class="cust-label"><?php echo $row["description"]; ?></span>
-													<br>
-													<span class="cust-label"><?php echo $row["dateCreated"]; ?></span>
-													<br>
-													<br>
-													<?php
-												}
-											?>
+									<div class="col-md-2 col-xs-6">
+										<div class="form-group">
+											<button id="btnExportAccount" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
+												<i class="fa fa-file-excel-o"></i>
+												&nbsp;
+												Export to Excel
+											</button>
 										</div>
 									</div>
 								</div>
-								<div class="box-footer">
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-md-6 col-xs-12">
-							<div class="nav-tabs-custom">
-								<ul class="nav nav-tabs">
-									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Important Notification</a></li>
-									<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
-								</ul>
-								<div class="tab-content" style="height: 300px; overflow-y: auto; overflow-x: hidden;">
-									<div class="tab-pane active" id="admin">
-										<div class="row">
-											<div class="col-md-12 col-xs-12">
-												<div class="form-group">
-													<input id="txtSearchNotification" class="form-control input-sm cust-label" type="text" placeholder="Search notification here...">
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12 col-sm-12">
-												<div class="table-container">
-													<table id="tblNotifications" name="tblNotifications" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
-														<thead>
-															<tr>
-																<th>Subject</th>
-																<th>Remarks</th>
-																<th>From</th>
-																<th>Time</th>
-															</tr>
-														</thead>
-														<tbody></tbody>
-													</table>
-												</div>
-											</div>
+								<div class="row">
+									<div class="col-md-12 col-sm-12">
+										<div class="table-container">
+											<table id="tblAccount" name="tblAccount" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+												<thead>
+													<tr>
+														<th>First Name</th>
+														<th>Middle Name</th>
+														<th>Last Name</th>
+														<th>Position</th>
+														<th>College</th>
+														<th>Email Address</th>
+														<th>Sex</th>
+														<th>Mobile Number</th>
+														<th>Date Registered</th>
+													</tr>
+												</thead>
+												<tbody></tbody>
+											</table>
 										</div>
 									</div>
-								</div>
-								<div class="box-footer">
 								</div>
 							</div>
 						</div>
 					</div>
-					
-					<div class="row">
-						<div class="col-md-12 col-xs-12">
-							<div class="nav-tabs-custom">
-								<ul class="nav nav-tabs">
-									<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">GPB/AR College Submission Table</a></li>
-									<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
-								</ul>
-								
-								<div class="tab-content" style="height: 300px; overflow-y: auto; overflow-x: hidden;">
-									<div class="row">
-										<div class="col-lg-6 col-xs-12">
-											<div class="row">
-												<div class="col-md-3 col-xs-12">
-													<button class="btn btn-block btn-primary btn-sm cust-textbox">
-														&nbsp;
-														Submitted GPB
-													</button>
-												</div>
-												<div class="col-md-3 col-xs-12">
-													<button class="btn btn-block btn-success btn-sm cust-textbox">
-														&nbsp;
-														Submitted AR
-													</button>
-												</div>
-												<div class="col-md-3 col-xs-12">
-													<button class="btn btn-block btn-danger btn-sm cust-textbox">
-														&nbsp;
-														No Submission
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-4 col-xs-12">
-											<?php
-												$total_college = 0;
-												$sub_college = 0;
-											
-												$sql    = "
-													SELECT 
-														a.college,
-														IFNULL((
-															SELECT 
-																1
-															FROM
-																omg_gbp_parent c 
-															INNER JOIN
-																omg_registration d 
-															ON 
-																c.createdBy = d.id
-															WHERE
-																d.collegeID = a.id
-															LIMIT
-																1
-														),0) AS isSubmitted
-													FROM
-														omg_colleges a
-													WHERE
-														a.isActive = 1
-													ORDER BY
-														a.college ASC
-												";
-												$result = mysqli_query($con,$sql);
-												
-										
-												while ($row  = mysqli_fetch_assoc($result)) {
-													
-													if ($row["isSubmitted"] == 1) {
-														$sub_college++;
-													}
-													
-													$total_college++;
-												}
-											?>
-										</div>
-										<div class="col-lg-2 col-xs-12">
-											<div class="small-box bg-yellow">
-												<div class="inner">
-													<h3>
-														<?php echo $sub_college."/".$total_college ?>
-													</h3>
-													<p>Completed Submission</p>
-												</div>
-												<div class="icon">
-													<i class="fa fa-copy" style="font-size:50px;"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<?php
-											$sql    = "
-												SELECT 
-													a.college,
-													IFNULL((
-														SELECT 
-															1
-														FROM
-															omg_gbp_parent c 
-														INNER JOIN
-															omg_registration d 
-														ON 
-															c.createdBy = d.id
-														WHERE
-															d.collegeID = a.id
-														LIMIT
-															1
-													),0) AS isSubmitted,
-													IFNULL((
-														SELECT 
-															c.reportType
-														FROM
-															omg_gbp_parent c 
-														INNER JOIN
-															omg_registration d 
-														ON 
-															c.createdBy = d.id
-														WHERE
-															d.collegeID = a.id
-														LIMIT
-															1
-													),0) AS reportType
-												FROM
-													omg_colleges a
-												WHERE
-													a.isActive = 1
-												ORDER BY
-													a.college ASC
-											";
-											$result = mysqli_query($con,$sql);
-											
-								
-											while ($row  = mysqli_fetch_assoc($result)) {
-												$button_color = "btn-default";
-												
-												if ($row["isSubmitted"] == 1 && $row["reportType"] != "GAD Plan and Budget (GPB)") {
-													$button_color = "btn-success";
-												} else if ($row["isSubmitted"] == 1 && $row["reportType"] == "GAD Plan and Budget (GPB)") {
-													$button_color = "btn-primary";
-												} else {
-													$button_color = "btn-danger";
-												}
-												
-												?>
-													<div class="col-md-3 col-xs-6">
-														<div class="form-group">
-															<button  class="btn btn-block <?php echo $button_color; ?> btn-sm cust-textbox">
-																&nbsp;
-																<?php
-																	echo $row["college"]
-																?>
-															</button>
-														</div>
-													</div>
-												<?php
-											}
-										?>
-									</div>
-								</div>
-								<div class="box-footer">
-								</div>
-							</div>
-						</div>
-					</div>
+				</div>
 				</section>
-				
-				
-				
-				
 				<!-- /.content -->
 			</div>
 			<!-- /.content-wrapper -->
-			
+			<footer class="main-footer">
+				<div class="pull-right hidden-xs">
+					<!-- Version or anything -->
+				</div>
+				<strong class="cust-label">Program created by: <a id="footer-cname" name="footer-cname" href="#">CompanyName</a> </strong> 
+				<span class="cust-label">IT Department.</span>
+			</footer>
 			<!-- Add the sidebar's background. This div must be placed
 			immediately after the control sidebar -->
 			<div class="control-sidebar-bg"></div>
@@ -681,7 +428,7 @@
 		<!-- StartUp Custom JS (do not remove)  -->
 		<script src="../program_assets/js/site_essentials/sidebar.js?random=<?php echo uniqid(); ?>"></script>
 		<script src="../program_assets/js/site_essentials/others.js?random=<?php echo uniqid(); ?>"></script>
-		<script src="../program_assets/js/web_functions/announcement.js?random=<?php echo uniqid(); ?>"></script>
+		<script src="../program_assets/js/web_functions/directories.js?random=<?php echo uniqid(); ?>"></script>
 		
 	</body>
 </html>

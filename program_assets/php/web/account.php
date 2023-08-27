@@ -143,13 +143,18 @@
                     DATE_FORMAT(a.dateCreated,'%m/%d/%Y') AS dateCreated,
                     DATE_FORMAT(a.birthDate,'%m/%d/%Y') AS fBirthDate,
                     b.position,
-                    b.id AS positionID
+                    b.id AS positionID,
+                    c.college
                 FROM
                     omg_registration a 
                 LEFT JOIN
                     omg_positions b 
                 ON 
                     a.positionID = b.id
+                INNER JOIN
+                    omg_colleges c 
+                ON 
+                    a.collegeID = c.id
                 ORDER BY
                     a.dateCreated DESC;
             ";
