@@ -9,7 +9,13 @@ $("#btnSubmitGBPFinal").click(function(){
 		return;
     }
 	
-	showRemarks();
+	
+	$("#btnSaveDraft").click();
+	
+	setTimeout(function() {
+		showRemarks();
+	}, 1500);
+	
 });
 
 function showRemarks() {

@@ -168,7 +168,7 @@
 </div>
 
 <!-- Modal Name  -->
-<div class="modal fade" id="mdRegister" name="mdRegister">
+<div class="modal fade" id="mdRegister" name="mdRegister" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-md">
     <div class="box box-default">
         <div class="box-header with-border">

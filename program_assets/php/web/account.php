@@ -166,22 +166,56 @@
             
             $userID        = $_POST["userID"];
             $accountStatus = $_POST["accountStatus"];
-            $position = $_POST["position"];
+            $position      = $_POST["position"];
+            $fName = $_POST["fName"];
+			$mName = $_POST["mName"];
+			$lName = $_POST["lName"];
+			$bDate = $_POST["bDate"];
+			$gender = $_POST["gender"];
+			$mobileNumber = $_POST["mobileNumber"];
+			$emailAddress = $_POST["emailAddress"];
+			$username = $_POST["username"];
+            $oldEmail = $_POST["oldEmail"];
+            $oldUsername = $_POST["oldUsername"];
+            $arr_exist    = array();
             
-            $query = "UPDATE omg_registration SET accountStatus = ?,positionID = ? WHERE id = ?";
-            if ($stmt = mysqli_prepare($con, $query)) {
-                mysqli_stmt_bind_param($stmt,"sss",$accountStatus,$position,$userID);
-                mysqli_stmt_execute($stmt);
-               
-                $error   = false;
-                $color   = "green";
-                $message = "Account has been updated"; 
-               
-            } else {
+            if ($oldEmail != $emailAddress) {
+                $find_email = mysqli_query($con,"SELECT * FROM omg_registration WHERE email = '$emailAddress'");
+                if (mysqli_num_rows($find_email) != 0) {
+                    mysqli_next_result($con);
+                    array_push($arr_exist,"Email");
+                }
+            }
+            
+            if ($oldUsername != $username) {
+                 $find_user = mysqli_query($con,"SELECT * FROM omg_registration WHERE username = '$username'");
+                if (mysqli_num_rows($find_user) != 0) {
+                    mysqli_next_result($con);
+                    array_push($arr_exist,"Username");
+                }
+            }
+            
+            if (count($arr_exist) != 0) {
                 $error   = true;
                 $color   = "red";
-                $message = "Error updating account"; 
+                $message = implode(" and ",$arr_exist) . " already exist";
+            } else {
+                $query = "UPDATE omg_registration SET firstName=?,middleName=?,lastName=?,email=?,username=?,mobileNumber=?,birthDate=?,sex=?,accountStatus = ?,positionID = ? WHERE id = ?";
+                if ($stmt = mysqli_prepare($con, $query)) {
+                    mysqli_stmt_bind_param($stmt,"sssssssssss",$fName,$mName,$lName,$emailAddress,$username,$mobileNumber,$bDate,$gender,$accountStatus,$position,$userID);
+                    mysqli_stmt_execute($stmt);
+                   
+                    $error   = false;
+                    $color   = "green";
+                    $message = "Account has been updated"; 
+                   
+                } else {
+                    $error   = true;
+                    $color   = "red";
+                    $message = "Error updating account"; 
+                }
             }
+        
             
             $json[] = array(
                 'error' => $error,

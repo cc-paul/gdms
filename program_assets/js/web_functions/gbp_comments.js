@@ -9,6 +9,23 @@ function openCommentModal(commentID) {
     $("#mdComments").modal();
     $("#dvComments").html(null);
     loadComments();
+    
+    
+    $.ajax({
+        url: "../program_assets/php/web/gbp",
+        data: {
+            command   : 'read_comment',
+            commentMotherID : commentID
+        },
+        type: 'post',
+        success: function (data) {
+            var data = jQuery.parseJSON(data);
+            
+            if (!data[0].error) {
+                $("#" + commentID).hide();
+            }
+        }
+    });
 }
 
 function loadComments() {
@@ -60,6 +77,8 @@ function loadComments() {
         }
     });
 }
+
+
 
 $("#btnSaveComment").click(function(){
 	var comment = $("#txtComment").val();

@@ -336,7 +336,7 @@
 			<div class="modal-dialog full_modal-dialog">
 				<div class="box box-default">
 					<div class="box-header with-border">
-						<label class="cust-label">View GPB</label>
+						<label id="lblModalTitle" class="cust-label">View Accomplishment Report</label>
 						<button type="submit" class="btn btn-default btn-xs pull-right" data-dismiss="modal"><i class="fa fa-close"></i>
 						</button>
 					</div>
@@ -354,12 +354,15 @@
 						<div class="row">
 							<div class="col-md-12">
 								<center>
-									<label class="cust-label">ANNUAL GENDER AND DEVELOPMENT (GAD) PLAN AND BUDGET</label>
+									<label id="lblModalHeader" class="cust-label">ANNUAL GENDER AND DEVELOPMENT (GAD) ACCOMPLISHMENT REPORT</label>
 									<br>
 									<label class="cust-label">FY</label>
 									<label id="lblFY" class="cust-label" style="margin-left:10px;">0000</label>
 									<br>
-									<a id="aGeneralComments" href="#" class="cust-label">General Comments</a>
+									<a id="aGeneralComments" href="#" class="cust-label" >
+										General Comments
+										<small  class="label bg-red comment-count-general comment-count">0</small>
+									</a>
 								</center>
 							</div>
 						</div>
@@ -858,7 +861,8 @@
 									<option value="Draft">Draft</option>
 									<option value="For Review">For Review</option>
 									<option value="Endorse">Endorse</option>
-									<option value="Endorse">Re-Endorse</option>
+									<option value="Revision">Revision</option>
+									<option value="Complete">Complete</option>
 								</select>
 							</div>
 							<div class="col-md-1 col-xs-12">

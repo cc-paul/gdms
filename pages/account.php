@@ -262,7 +262,7 @@
 
 		
 		
-		<div class="modal fade" id="mdRegister" name="mdRegister">
+		<div class="modal fade" id="mdRegister" name="mdRegister" data-backdrop="static" data-keyboard="false">
 			<div class="modal-dialog modal-md">
 			  <div class="box box-default">
 				  <div class="box-header with-border">
@@ -283,19 +283,21 @@
 					  <div class="col-md-4 col-sm-12">
 						<div class="form-group">
 						  <label for="txtFirstName" class="cust-label">First Name</label>
-						  <input type="text" class="form-control cust-label cust-textbox" id="txtFirstName" name="txtFirstName"  placeholder="Enter First Name" disabled>
+						  <label  class="cust-label text-danger">*</label>
+						  <input type="text" class="form-control cust-label cust-textbox" id="txtFirstName" name="txtFirstName"  placeholder="Enter First Name">
 						</div>
 					  </div>
 					  <div class="col-md-4 col-sm-12">
 						<div class="form-group">
 						  <label for="txtMiddleName" class="cust-label">Middle Name</label>
-						  <input type="text" class="form-control cust-label cust-textbox" id="txtMiddleName" name="txtMiddleName"  placeholder="" disabled>
+						  <input type="text" class="form-control cust-label cust-textbox" id="txtMiddleName" name="txtMiddleName"  placeholder="">
 						</div>
 					  </div>
 					  <div class="col-md-4 col-sm-12">
 						<div class="form-group">
 						  <label for="txtLastName" class="cust-label">Last Name</label>
-						  <input type="text" class="form-control cust-label cust-textbox" id="txtLastName" name="txtLastName"  placeholder="Enter Last Name" disabled>
+						  <label  class="cust-label text-danger">*</label>
+						  <input type="text" class="form-control cust-label cust-textbox" id="txtLastName" name="txtLastName"  placeholder="Enter Last Name" >
 						</div>
 					  </div>
 					</div>
@@ -303,14 +305,15 @@
 					  <div class="col-md-4 col-sm-12">
 						<div class="form-group">
 						  <label for="txtBirthDate" class="cust-label">Birthday</label>
-						  <input type="date" class="form-control cust-label cust-textbox" id="txtBirthDate" name="txtBirthDate"  placeholder="Enter Birthdate" style="height: 30px !important;" disabled>
+						  <label  class="cust-label text-danger">*</label>
+						  <input type="date" class="form-control cust-label cust-textbox" id="txtBirthDate" name="txtBirthDate"  placeholder="Enter Birthdate" style="height: 30px !important;">
 						</div>
 					  </div>
 					  <div class="col-md-4 col-sm-12">
 						<div class="form-group">
 						  <label for="cmbGender" class="cust-label">Sex</label>
-						  <select id="cmbGender" name="cmbGender" class="form-control select2 cust-label cust-textbox" style="width: 100%;" disabled>
-							<option value="" selected disabled>Please select gender</option>
+						  <label  class="cust-label text-danger">*</label>
+						  <select id="cmbGender" name="cmbGender" class="form-control select2 cust-label cust-textbox" style="width: 100%;">
 							<option value="Male">Male</option>
 							<option value="Female">Female</option>
 						  </select>
@@ -319,7 +322,8 @@
 					  <div class="col-md-4 col-sm-12">
 						<div class="form-group">
 						  <label for="txtMobileNumber" class="cust-label">Mobile Number</label>
-						  <input type="text" class="form-control cust-label cust-textbox" id="txtMobileNumber" name="txtMobileNumber"  placeholder="Enter Mobile (09XXXXXXXXX)" maxlength="11" onkeyup="numOnly(this)" disabled>
+						  <label  class="cust-label text-danger">*</label>
+						  <input type="text" class="form-control cust-label cust-textbox" id="txtMobileNumber" name="txtMobileNumber"  placeholder="Enter Mobile (09XXXXXXXXX)" maxlength="11" onkeyup="numOnly(this)">
 						</div>
 					  </div>
 					</div>
@@ -335,13 +339,15 @@
 					  <div class="col-md-8 col-sm-12">
 						<div class="form-group">
 						  <label for="txtEmailAddress" class="cust-label">Email Address</label>
-						  <input type="text" class="form-control cust-label cust-textbox" id="txtEmailAddress" name="txtEmailAddress"  placeholder="Enter Email Address" disabled>
+						  <label  class="cust-label text-danger">*</label>
+						  <input type="text" class="form-control cust-label cust-textbox" id="txtEmailAddress" name="txtEmailAddress"  placeholder="Enter Email Address">
 						</div>
 					  </div>
 					  <div class="col-md-4 col-sm-12">
 						<div class="form-group">
 						  <label for="txtUsername" class="cust-label">Username</label>
-						  <input type="text" class="form-control cust-label cust-textbox" id="txtUsername" name="txtUsername"  placeholder="Enter Username" disabled>
+						  <label  class="cust-label text-danger">*</label>
+						  <input type="text" class="form-control cust-label cust-textbox" id="txtUsername" name="txtUsername"  placeholder="Enter Username">
 						</div>
 					  </div>
 					</div>

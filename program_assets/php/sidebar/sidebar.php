@@ -71,22 +71,22 @@
 			$positionID    = $_SESSION['positionID'];
 			
 			if ($positionID == 1) {
-				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 4 || $menu_id == 7) {
+				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 4 || $menu_id == 7 || $menu_id == 10) {
 					echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
 					echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
 					echo '</li>';
 				}
 			}
 			
-			if ($positionID == 3) {
-				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 9 || $menu_id == 4 || $menu_id == 7 || $menu_id == 6) {
-					echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
-					echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
-					echo '</li>';
-				}
-			}
+			//if ($positionID == 3) {
+			//	if ($menu_id == 8 || $menu_id == 2 || $menu_id == 9 || $menu_id == 4 || $menu_id == 7 || $menu_id == 6) {
+			//		echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
+			//		echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
+			//		echo '</li>';
+			//	}
+			//}
 			
-			if ($positionID == 4) {
+			if ($positionID == 4 || $menu_id == 10) {
 				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 6) {
 					echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
 					echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
@@ -94,7 +94,7 @@
 				}
 			}
 			
-			if ($positionID == 2) {
+			if ($positionID == 2 || $positionID == 3) {
 				echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
 				echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
 				echo '</li>';

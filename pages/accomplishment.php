@@ -249,8 +249,8 @@
 										</button>
 									</div>
 								</div>
-								<div class="row" hidden>
-									<div class="col-md-12 col-sm-12">
+								<div class="row" >
+									<div class="col-md-12 col-sm-12" hidden>
 										<div class="table-container">
 											<table id="tblAccTable" name="tblAccTable" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
 												<thead>
@@ -457,7 +457,7 @@
 										<div class="alert alert-info alert-dismissible">
 											<h4><i class="icon fa fa-info"></i> Alert!</h4>
 											<!--Unable to create GBP. There is an ongoing approval. You can create/edit once it is returned to you.-->
-											The 2023 Accomplishment Report has been submitted to Gender and Development Resource Center
+											<span id="spMessage"></span>
 										</div>
 									</div>
 								</div>

@@ -25,12 +25,15 @@ $(document).ready(function(){
       var row = tblAccTable.row(0);
       var button = row.node().querySelector('.gbp-acc-view');
       button.click();
+      
+      
+      
     }
     catch(err) {
       $("#btnViewGBP").prop("disabled", true);
       $("#btnSubmitGBPFinal").prop("disabled", true);
     }
-  }, 1000);
+  }, 1500);
 });
 
 $('#tblAccTable tbody').on('click', 'td button', function (){
@@ -52,7 +55,7 @@ $('#tblAccTable tbody').on('click', 'td button', function (){
   
   getTotalUtils();
   
-  if (data.status == "Endorse") {
+  if (data.status == "For Review" || data.status == "Complete") {
     $("#btnSubmitGBPFinal").prop("disabled", true);
     $("#row1").hide();
     $("#row2").hide();
@@ -62,6 +65,24 @@ $('#tblAccTable tbody').on('click', 'td button', function (){
     $("#dvReminder").show();
   }
   
+                 //AND
+                 //   a.status IN ('Revision','Endorse','Completed')
+  
+  //if (data.status == "For Review" && data.reportType == "Accomplishment Report") {
+  //  $("#btnSubmitGBPFinal").prop("disabled", true);
+  //  $("#row1").hide();
+  //  $("#row2").hide();
+  //  $("#row3").hide();
+  //  $("#row4").hide();
+  //  $("#row5").hide();
+  //  $("#dvReminder").show();
+  //}
+  
+  if (data.status == "For Review") {
+    $("#spMessage").text("The 2023 Accomplishment Report has been submitted to Gender and Development Resource Center for review and may not be edited until it has been returned to you.");
+  } else if (data.status == "Complete") {
+    $("#spMessage").text("The 2023 Accomplishment Report has been endorsed by Gender and Development Resource Center.");
+  }
   
   //$("#mdViewGBP").modal();
 });
@@ -202,7 +223,16 @@ function loadAcc() {
         //	}
         //},
         "fnInitComplete": function (oSettings, json) {
-            console.log('DataTables has finished its initialisation.');
+            if (Number(tblAccTable.data().count()) == 0) {
+              $("#btnSubmitGBPFinal").prop("disabled", true);
+              $("#row1").hide();
+              $("#row2").hide();
+              $("#row3").hide();
+              $("#row4").hide();
+              $("#row5").hide();
+              $("#dvReminder").hide();
+            }
+            //$("#spMessage").text("The 2023 Accomplishment Report has been submitted to Gender and Development Resource Center for review and may not be edited until it has been returned to you.");
         }
     }).on('user-select', function (e, dt, type, cell, originalEvent) {
         if ($(cell.node()).parent().hasClass('selected')) {

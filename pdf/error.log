@@ -330,3 +330,14 @@ Stack trace:
 #2 C:\xampp\htdocs\gdms\pdf\ar_comment.php(507): FPDF->Output()
 #3 {main}
   thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[29-Aug-2023 09:12:32 Asia/Manila] PHP Notice:  Undefined index: id in C:\xampp\htdocs\gdms\pdf\gbp_comment.php on line 13
+[29-Aug-2023 09:12:32 Asia/Manila] PHP Warning:  Division by zero in C:\xampp\htdocs\gdms\pdf\gbp_comment.php on line 106
+[29-Aug-2023 09:12:32 Asia/Manila] PHP Notice:  Undefined index: college in C:\xampp\htdocs\gdms\pdf\gbp_comment.php on line 111
+[29-Aug-2023 09:12:32 Asia/Manila] PHP Notice:  Undefined index: college in C:\xampp\htdocs\gdms\pdf\gbp_comment.php on line 113
+[29-Aug-2023 09:12:32 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\gbp_comment.php(604): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267

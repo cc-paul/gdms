@@ -1,5 +1,7 @@
 var tblAccount;
 var userID;
+var oldEmail;
+var oldUsername;
 
 loadAccount();
 
@@ -98,14 +100,36 @@ $('#tblAccount tbody').on('click', 'td button', function (){
     $("#cmbStatus").val(data.accountStatus).trigger("change");
 	$("#cmbPosition").val(data.positionID).trigger("change");
     userID = data.id;
+	oldUsername = data.username;
+	oldEmail = data.email;
     
     $("#mdRegister").modal();
 });
 
 $("#btnSaveAccount").click(function(){
 	var position = $("#cmbPosition").val();
+	var fName = $("#txtFirstName").val();
+	var mName = $("#txtMiddleName").val();
+	var lName = $("#txtLastName").val();
+	var bDate = $("#txtBirthDate").val();
+	var gender = $("#cmbGender").val();
+	var mobileNumber = $("#txtMobileNumber").val();
+	var emailAddress = $("#txtEmailAddress").val();
+	var username = $("#txtUsername").val();
+    var status = $("#cmbStatus").val();
+	var positionID = $("#cmbPosition").val();
 	
-	if (position == "" || position == null) {
+	if (fName == "" || lName == "" || bDate == "" || gender == "" || mobileNumber == "" || emailAddress == "" || username == "" || status == "") {
+		JAlert("Please fill in required fields","red");
+		return;
+    }
+	
+	if (mobileNumber.length != 11) {
+		JAlert("Mobile Number must be 11 digit","red");
+		return;
+    }
+	
+	if (positionID == "" || positionID == null) {
 		JAlert("Please add a position","red");
 		return;
     }
@@ -116,7 +140,17 @@ $("#btnSaveAccount").click(function(){
             command   : 'update_user',
             userID : userID,
             accountStatus : $("#cmbStatus").val(),
-			position : position
+			position : positionID,
+			fName : fName,
+			mName : mName,
+			lName : lName,
+			bDate : bDate,
+			gender : gender,
+			mobileNumber : mobileNumber,
+			emailAddress : emailAddress,
+			username : username,
+			oldEmail : oldEmail,
+			oldUsername : oldUsername
         },
         type: 'post',
         success: function (data) {

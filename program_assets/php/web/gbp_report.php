@@ -88,7 +88,7 @@
                 $message = "GPB Status has been updated.";
                 
                 if ($status == "Endorse") {
-                    $query = "UPDATE omg_gbp_parent SET dateEndorse = ?,reportType='GAD Plan and Budget (GPB)' WHERE parentFolderID = ?";
+                    $query = "UPDATE omg_gbp_parent SET dateEndorse = ?,reportType='Accomplishment Report' WHERE parentFolderID = ?";
                     if ($stmt = mysqli_prepare($con, $query)) {
                         mysqli_stmt_bind_param($stmt,"ss",$global_date,$parentFolderID);
                         mysqli_stmt_execute($stmt);

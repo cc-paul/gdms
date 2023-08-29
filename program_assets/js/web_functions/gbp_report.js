@@ -4,6 +4,7 @@ var totalOtherSource = 0;
 var commentMotherID = "";
 var selectParentFolderID = "";
 var creatorEmail = "";
+var arrCommentIDS = [];
 
 loadGBPTable();
 
@@ -33,6 +34,15 @@ $('#tblGBPTable tbody').on('click', '.gbp-table-view', function (){
 	$("#lblDocReq").text(data.status);
 	$("#cmbFinalStatus").val(data.status).trigger("change");
 	creatorEmail = data.email;
+	
+	if (data.reportType == "Accomplishment Report") {
+		$("#lblModalTitle").text("View Accomplishment Report");
+		$("#lblModalHeader").text("ANNUAL GENDER AND DEVELOPMENT (GAD) ACCOMPLISHMENT REPORT");	
+    } else {
+		$("#lblModalTitle").text("View GBP");
+		$("#lblModalHeader").text("ANNUAL GENDER AND DEVELOPMENT (GAD) PLAN AND BUDGET");	
+	}
+	
 	
 	$("#mdViewGBP").modal();
 	
@@ -94,6 +104,8 @@ function showGBPView(parentFolderID) {
 	const tableBody_org = document.querySelector('#tblViewOrgFocus tbody');
 	tableBody_org.innerHTML = '';
 	
+	$('.comment-count-general').attr('id', parentFolderID + "-generalcomment");
+	arrCommentIDS = [];
 	
     $.ajax({
         url: "../program_assets/php/web/gbp",
@@ -267,36 +279,42 @@ function showGBPView(parentFolderID) {
                             <b>GAD Mandate : </b> ${data[i].gad}
                             <br>
                             <br>
+							<small id="${parentFolderID}-col1-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col1-row${countRows}')">Comments</a>
                         </td>
                         <td>
                             ${causeGender}
                             <br>
                             <br>
+							<small id="${parentFolderID}-col2-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col2-row${countRows}')">Comments</a>
                         </td>
                         <td>
                             ${gadResult}
                             <br>
                             <br>
+							<small id="${parentFolderID}-col3-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col3-row${countRows}')">Comments</a>
                         </td>
                         <td>
                             ${relevantOrg}
                             <br>
                             <br>
+							<small id="${parentFolderID}-col4-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col4-row${countRows}')">Comments</a>
                         </td>
                         <td>
                             ${ data[i].gadActivity }
                             <br>
                             <br>
+							<small id="${parentFolderID}-col5-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col5-row${countRows}')">Comments</a>
                         </td>
                         <td>
                             ${performanceIndicator}
                             <br>
                             <br>
+							<small id="${parentFolderID}-col6-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col6-row${countRows}')">Comments</a>
                         </td>
                         <td colspan="2">
@@ -307,36 +325,42 @@ function showGBPView(parentFolderID) {
                             </table>
                             <br>
                             <br>
+							<small id="${parentFolderID}-col7-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col7-row${countRows}')">Comments</a>
                         </td>
                         <td>
                             ${office}
                             <br>
                             <br>
+							<small id="${parentFolderID}-col8-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows}')">Comments</a>
                         </td>
 						<td>
 							${data[i].actualResult}
 							<br>
                             <br>
+							<small id="${parentFolderID}-col9-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
 						</td>
 						<td>
 							${actualCostText}
 							<br>
                             <br>
+							<small id="${parentFolderID}-col10-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col10-row${countRows}')">Comments</a>
 						</td>
 						<td>
 							${strVariance}
 							<br>
                             <br>
+							<small id="${parentFolderID}-col11-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows}')">Comments</a>
 						</td>
                         <td>
                             ${files}
                             <br>
                             <br>
+							<small id="${parentFolderID}-col12-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col12-row${countRows}')">Comments</a>
                         </td>
                         <td>
@@ -346,9 +370,23 @@ function showGBPView(parentFolderID) {
                         </td>
                     </tr>
                 `;
+				
+				arrCommentIDS.push("'" + `${parentFolderID}-col1-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col2-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col3-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col4-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col5-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col6-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col7-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col8-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col9-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col10-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col11-row${countRows}` + "'");
+				arrCommentIDS.push("'" + `${parentFolderID}-col12-row${countRows}` + "'");
             }
             
             $("#tblViewClientFocus tbody").append(newContent);
+			$(".comment-count").hide();
 			countRows++;
         }
     });
@@ -519,37 +557,43 @@ function showGBPView(parentFolderID) {
 								<b>GAD Mandate : </b> ${data[i].gad}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col1-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col1-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col1-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${causeGender}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col2-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col2-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col2-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${gadResult}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col3-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col3-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col3-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${relevantOrg}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col4-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col4-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col4-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${ data[i].gadActivity }
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col5-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col5-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col5-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${performanceIndicator}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col6-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col6-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col6-row${countRows2}')">Comments</a>
 							</td>
 							<td colspan="2">
 								<table id="tbNotThis" style="width:100%;">
@@ -559,37 +603,43 @@ function showGBPView(parentFolderID) {
 								</table>
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col7-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col7-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col7-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${office}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col8-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${data[i].actualResult}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col9-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${actualCostText}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col10-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col10-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col10-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${strVariance}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col11-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${files}
 								<br>
 								<br>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col12-row${countRows}')">Comments</a>
+								<small id="${parentFolderID}-col12-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col12-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								<div class="btn-group" style="width: 100px;">
@@ -598,9 +648,24 @@ function showGBPView(parentFolderID) {
 							</td>
 						</tr>
 					`;
+					
+					
+					arrCommentIDS.push("'" + `${parentFolderID}-col1-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col2-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col3-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col4-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col5-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col6-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col7-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col8-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col9-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col10-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col11-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col12-row${countRows2}` + "'");
 				}
 				
 				$("#tblViewClientFocus tbody:first").append(newContent);
+				$(".comment-count").hide();
 				countRows2++;
 			}
 		});
@@ -784,6 +849,7 @@ function showGBPView(parentFolderID) {
 								${ data[i].gadActivity }
 								<br>
 								<br>
+								<small id="${parentFolderID}-col5-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col5-row${countRows2}')">Comments</a>
 							</td>
 							<td>
@@ -797,6 +863,7 @@ function showGBPView(parentFolderID) {
 								</table>
 								<br>
 								<br>
+								<small id="${parentFolderID}-col7-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col7-row${countRows2}')">Comments</a>
 							</td>
 							<td>
@@ -806,6 +873,7 @@ function showGBPView(parentFolderID) {
 								${data[i].actualResult}
 								<br>
 								<br>
+								<small id="${parentFolderID}-col9-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows2}')">Comments</a>
 							</td>
 							</td>
@@ -813,18 +881,21 @@ function showGBPView(parentFolderID) {
 								${actualCostText}
 								<br>
 								<br>
+								<small id="${parentFolderID}-col10-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col10-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${strVariance}
 								<br>
 								<br>
+								<small id="${parentFolderID}-col11-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${files}
 								<br>
 								<br>
+								<small id="${parentFolderID}-col12-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col12-row${countRows2}')">Comments</a>
 							</td>
 							<td>
@@ -834,11 +905,44 @@ function showGBPView(parentFolderID) {
 							</td>
 						</tr>
 					`;
+					
+					
+					arrCommentIDS.push("'" + `${parentFolderID}-col5-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col7-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col9-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col10-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col11-row${countRows2}` + "'");
+					arrCommentIDS.push("'" + `${parentFolderID}-col12-row${countRows2}` + "'");
 				}
-				
+				$(".comment-count").hide();
 				$("#tblViewClientFocus tbody:first").append(newContent);
 			}
 		});
+		
+		arrCommentIDS.push("'" + `${parentFolderID}-col5-generalcomment` + "'");
+		console.log(arrCommentIDS.join());
+		
+		
+		setTimeout(function() {
+			if (arrCommentIDS.length != 0) {
+				$.ajax({
+					url: "../program_assets/php/web/gbp",
+					data: {
+						command   : 'load_comment',
+						query_where : arrCommentIDS.join()
+					},
+					type: 'post',
+					success: function (data) {
+						var data = jQuery.parseJSON(data);
+						
+						for (var i = 0; i < data.length; i++) {
+							$("#" + data[i].commentMotherID).text(data[i].count);
+							$("#" + data[i].commentMotherID).show();
+						}
+					}
+				});
+			}
+		}, 1000);
 	}, 2000);
 	
 
@@ -960,6 +1064,23 @@ function openCommentModal(commentID) {
     $("#mdComments").modal();
     $("#dvComments").html(null);
     loadComments();
+	
+	
+	$.ajax({
+        url: "../program_assets/php/web/gbp",
+        data: {
+            command   : 'read_comment',
+            commentMotherID : commentID
+        },
+        type: 'post',
+        success: function (data) {
+            var data = jQuery.parseJSON(data);
+            
+            if (!data[0].error) {
+                $("#" + commentID).hide();
+            }
+        }
+    });
 }
 
 function loadComments() {

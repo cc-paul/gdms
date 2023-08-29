@@ -320,7 +320,7 @@
 		<!-- ./wrapper -->
 		
 		<!-- Modal Name  -->
-		<div class="modal fade" id="mdDetails" name="mdDetails">
+		<div class="modal fade" id="mdDetails" name="mdDetails" data-backdrop="static" data-keyboard="false">
 			<div class="modal-dialog modal-md">
 				<div class="box box-default">
 					<div class="box-header with-border">

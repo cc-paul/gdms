@@ -24,7 +24,7 @@
             
             $parentFolderID = $_POST["parentFolderID"];
              
-            $query = "UPDATE omg_gbp_parent SET reportType = 'Accomplishment Report' WHERE parentFolderID = ?";
+            $query = "UPDATE omg_gbp_parent SET reportType = 'Accomplishment Report',`status` = 'For Review' WHERE parentFolderID = ?";
             if ($stmt = mysqli_prepare($con, $query)) {
                 mysqli_stmt_bind_param($stmt,"s",$parentFolderID);
                 mysqli_stmt_execute($stmt);
@@ -93,14 +93,14 @@
                 ON 
                     a.parentFolderID = d.parentFolderID
                 WHERE
-                    a.`status` = 'Endorse'
-                AND
-                    a.reportType != 'Accomplishment Report'
+                    a.reportType = 'Accomplishment Report'
                 AND
                     a.createdBy = $id
                 ORDER BY
                     a.id DESC
+                LIMIT 1
             ";
+            
             
             return builder($con,$sql);
             
@@ -200,7 +200,7 @@
                     IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.genderID),' - ') AS gender,
                     IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.gadID),' - ') AS gad,
                     d.performanceIndicator,
-                    FORMAT(SUM(e.budget) / 2,2) budget,
+                    FORMAT(SUM(e.budget),2) budget,
                     actualResult,
                     IFNULL((
                         SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',budget) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
@@ -273,7 +273,7 @@
                     IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.genderID),' - ') AS gender,
                     IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.gadID),' - ') AS gad,
                     d.performanceIndicator,
-                    FORMAT(SUM(e.budget) / 2,2) budget,
+                    FORMAT(SUM(e.budget),2) budget,
                     actualResult,
                     IFNULL((
                         SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',budget) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID

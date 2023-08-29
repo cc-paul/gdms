@@ -303,7 +303,7 @@
                     IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.genderID),' - ') AS gender,
                     IFNULL((SELECT statement FROM omg_masterfile WHERE id = a.gadID),' - ') AS gad,
                     d.performanceIndicator,
-                    FORMAT(SUM(e.budget) / 2,2) budget,
+                    FORMAT(SUM(e.budget),2) budget,
                     IFNULL((
                             SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',budget) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
                     ),'') AS arrBudget,
@@ -653,7 +653,7 @@
                     b.statement AS gender,
                     c.statement AS gad,
                     d.performanceIndicator,
-                    FORMAT(SUM(e.budget) / 2,2) budget,
+                    FORMAT(SUM(e.budget),2) budget,
                     IFNULL((
                             SELECT GROUP_CONCAT(CONCAT(budgetSource,'~',budgetItem,'~',budget) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
                     ),'') AS arrBudget,
@@ -698,7 +698,7 @@
                 AND
                     a.parentFolderID = '$parentFolderID'
                 AND
-                    a.tab IN (1,2)
+                    a.tab = $tab
                 GROUP BY
                     a.folderID
             ";
@@ -1157,6 +1157,34 @@
             echo json_encode($json);
             
         break;
+    
+        case "read_comment" :
+            $commentMotherID = $_POST["commentMotherID"];
+            $id = $_SESSION["id"];
+            
+            $query = "UPDATE omg_comments SET isRead = 1 WHERE commentMotherID = ? AND createdBy != ?";
+            if ($stmt = mysqli_prepare($con, $query)) {
+                mysqli_stmt_bind_param($stmt,"ss",$commentMotherID,$id);
+                mysqli_stmt_execute($stmt);
+               
+                $error   = false;
+                $color   = "green";
+                $message = "Comment Read"; 
+               
+            } else {
+                $error   = true;
+                $color   = "red";
+                $message = "Error reading comment"; 
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+            
+        break;
         
         case "gbp_for_approval" :
             
@@ -1227,6 +1255,41 @@
             ";
             
             return builder($con,$sql);
+            
+        break;
+    
+        case "load_comment" :
+            
+            $query_where = $_POST["query_where"];
+            $id = $_SESSION["id"];
+            
+            if ($query_where != "") {
+                $sql    = "
+                    SELECT 
+                        a.commentMotherID,
+                        COUNT(a.commentMotherID) AS count 
+                    FROM
+                        omg_comments a 
+                    WHERE
+                        a.commentMotherID IN ($query_where)
+                    AND 
+                        a.isRead = 0
+                    AND
+                        a.createdBy != $id
+                    GROUP BY
+                        a.commentMotherID
+                ";
+                $result = mysqli_query($con,$sql);
+                
+                $json = array();
+                while ($row  = mysqli_fetch_assoc($result)) {
+                    $json[] = array(
+                        'commentMotherID' => $row["commentMotherID"],
+                        'count' => $row["count"]
+                    );
+                }
+                echo json_encode($json);
+            }
             
         break;
     }
