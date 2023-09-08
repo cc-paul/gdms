@@ -68,28 +68,27 @@
       <p>GENDER AND DEVELOPMENT (GAD) RESOURCE</p>
       <p>CENTER MONITORING SYSTEM</p>
     </div>-->
-    <div class="row">
-      <div class="col-md-1 col-xs-12"></div>
-      <div class="col-md-3 col-xs-12">
-        <img src="../images/logo.png" alt="logo">
-      </div>
-      <div class="col-md-8 col-xs-12">
-        <br>
-        <br>
-        <br>
-        <br>
-        <b style="font-size: 19px;">GENDER AND DEVELOPMENT (GAD) RESOURCE</b>
-        <b style="font-size: 19px;">CENTER MONITORING SYSTEM</b>
-        <p>Cavite State University - Main Campus</p>
-      </div>
-    </div>
+    
     <br>
     <br>
   </center>
   <!-- /.login-logo -->
   <center>
-    <div class="login-box-body" style="width:400px;">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <div class="login-box-body" style="width:400px; background: #DFF0D8; border-radius: 25px;">
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+        <img height="100px" src="../images/logo.png" alt="logo">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+        <br>
+        <b style="font-size: 13px;">GENDER AND DEVELOPMENT (GAD)</b>
+        <b style="font-size: 13px;">RESOURCE CENTER MONITORING SYSTEM</b>
+        <p>Cavite State University - Main Campus</p>
+        <p>Indang Cavite</p>
+      </div>
+    </div>
 
     
       <div class="form-group has-feedback">
