@@ -22,7 +22,7 @@ $("#btnViewGBP").click(function(){
 			for (var i = 0; i < data.length; i++) {
 				$("#spOrg").text(data[i].college);
 				$("#spOrgHi").text(data[i].college);
-				$("#lblGAABudget").text(0);
+				$("#lblGAABudget").text(data[i].totalAmount);
 				$("#lblFY").text(data[i].year);
 				$("#lblApprovedByName").text(data[i].approvedBy);
 				$("#lblApprovedByPosition").text(data[i].approvedByPosition);
@@ -917,7 +917,7 @@ function showGBPView(parentFolderID) {
         $("#lblOtherSource").text(totalOtherSource.toLocaleString('en-US', {maximumFractionDigits: 2}));
 		
 		var generalTotal = Number(totalPrimarySource + totalOtherSource);
-		$("#lblGAABudget").text(generalTotal.toLocaleString('en-US', {maximumFractionDigits: 2}));
+		//$("#lblGAABudget").text(generalTotal.toLocaleString('en-US', {maximumFractionDigits: 2}));
 		
 		$("#lblPrimarySource2").text($("#lblPrimarySource").text());
 		$("#lblOtherSource2").text($("#lblOtherSource").text());
@@ -965,11 +965,20 @@ function loadComments() {
             var data = jQuery.parseJSON(data);
             
             for (var i = 0; i < data.length; i++) {
+				
+				var color = "bg-gray";
+                var postion = data[i].position;
+                
+                if (postion == "Encoder") {
+                    color = "bg-primary";
+                } else {
+                    color = "bg-green";
+                }
                 
                 comments += `
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
-                            <div class="alert bg-gray cust-label">
+                            <div class="alert `+color+` cust-label">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>${data[i].fullName}</label>

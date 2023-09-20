@@ -957,17 +957,17 @@ Development Resource Center for review and may not be edited until it has been r
 					</div>
 					<div class="box-body">
 						<div class="row">
-							<div class="col-md-9 col-xs-6">
+							<div class="col-md-8 col-xs-6">
 								<div class="form-groupx">
 									<input id="txtSearchGAD" class="form-control input-sm cust-label" type="text" placeholder="Search GAD here...">
 								</div>
 							</div>
-							<div class="col-md-3 col-xs-6">
+							<div class="col-md-4 col-xs-6">
 								<div class="form-group">
 									<button id="btnAddGAD" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
 										<i class="fa fa-gear"></i>
 										&nbsp;
-										New GAD
+										New GAD Mandate
 									</button>
 								</div>
 							</div>
@@ -1022,17 +1022,17 @@ Development Resource Center for review and may not be edited until it has been r
 					</div>
 					<div class="box-body">
 						<div class="row">
-							<div class="col-md-9 col-xs-6">
+							<div class="col-md-8 col-xs-6">
 								<div class="form-groupx">
 									<input id="txtSearchGenderList" class="form-control input-sm cust-label" type="text" placeholder="Search Gender here...">
 								</div>
 							</div>
-							<div class="col-md-3 col-xs-6">
+							<div class="col-md-4 col-xs-6">
 								<div class="form-group">
 									<button id="btnAddGender" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
 										<i class="fa fa-transgender"></i>
 										&nbsp;
-										New Gender
+										New Gender Issue
 									</button>
 								</div>
 							</div>

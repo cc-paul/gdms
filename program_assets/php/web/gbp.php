@@ -1103,11 +1103,16 @@
                     a.dateCreated,
                     a.folderID,
                     a.fileName,
-                    a.id
+                    a.id,
+                    c.position
                 FROM
                     omg_comments a 
                 INNER JOIN
                     omg_registration b
+                INNER JOIN 
+                    omg_positions c
+                ON 
+                    b.positionID = c.id
                 ON
                     a.createdBy = b.id
                 WHERE
@@ -1125,7 +1130,8 @@
                     'dateCreated' => formatTimeAgo($row["dateCreated"]),
                     'folderID'    => $row["folderID"],
                     'fileName'    => $row["fileName"],
-                    'id'          => $row["id"]
+                    'id'          => $row["id"],
+                    'position'    => $row["position"]
                 );
             }
             echo json_encode($json);
@@ -1162,7 +1168,7 @@
             $commentMotherID = $_POST["commentMotherID"];
             $id = $_SESSION["id"];
             
-            $query = "UPDATE omg_comments SET isRead = 1 WHERE commentMotherID = ? AND createdBy != ?";
+            $query = "UPDATE omg_comments SET isRead = 1 WHERE commentMotherID = ? AND createdBy != ? AND id = -1";
             if ($stmt = mysqli_prepare($con, $query)) {
                 mysqli_stmt_bind_param($stmt,"ss",$commentMotherID,$id);
                 mysqli_stmt_execute($stmt);

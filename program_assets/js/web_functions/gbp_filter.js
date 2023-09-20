@@ -137,6 +137,7 @@ function showParentGBPFilter(cur_parentFolderID) {
             var data = jQuery.parseJSON(data);
             
             for (var i = 0; i < data.length; i++) {
+                generalCommentParentID = data[i].parentFolderID;
                 showGBPView(data[i].parentFolderID);
                 $("#mdGBPFilter").modal("hide");
                 $("#mdViewGBP").modal();

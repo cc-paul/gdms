@@ -1097,11 +1097,20 @@ function loadComments() {
             var data = jQuery.parseJSON(data);
             
             for (var i = 0; i < data.length; i++) {
+				
+				var color = "bg-gray";
+                var postion = data[i].position;
+                
+                if (postion == "Encoder") {
+                    color = "bg-primary";
+                } else {
+                    color = "bg-green";
+                }
                 
                 comments += `
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
-                            <div class="alert bg-gray cust-label">
+                            <div class="alert `+ color +` cust-label">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>${data[i].fullName}</label>
