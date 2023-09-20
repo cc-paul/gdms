@@ -4,6 +4,22 @@ var tblBudget_attrID = 0;
 var tblFiles_attrID = 0;
 var curfolderID;    
 var selectedTab = 1;
+var tblBudgetID_acc = 0;
+
+var tblVarianceID_acc = 0;
+var selectedFolderID = 0;
+
+var tblBudget_acc;
+var tblVariance_acc;
+
+
+var tblBudgetID_acc_ar = 0;
+
+var tblVarianceID_acc_ar = 0;
+var selectedFolderID_ar = 0;
+
+var tblBudget_acc_ar;
+var tblVariance_acc_ar;
 
 loadAcc();
 
@@ -310,6 +326,58 @@ $('#tblAttrMain tbody').on('click', '.view', function (){
               }
           }
         }
+        
+        selectedFolderID = data.folderID;
+        
+        //$("#mdAccForm").modal();
+        prepareAccForm2();
+        
+        $("#txtGADActivity_acc_ar").val(data.actualResult);
+        
+        if (data.actualCost != "" || data.actualCost != null) {
+            var arrData = data.actualCost.split('~~');
+            
+            if (arrData != '') {
+                for(var i = 0; i < arrData.length; i++) {
+                    var [source,item,expense] = arrData[i].split('~');
+                    
+                    
+                    tblBudget_acc_ar.row.add({
+                        "source" : source,
+                        "item" : item,
+                        "budget" : expense.replaceAll(",","").replaceAll(".00",""),
+                        "id" : i
+                    }).draw( false );
+                    
+                    $(`#cmbBudgetSource_acc_ar${i}`).val(source).trigger("change");
+                    $(`#cmbBudgetSource_acc_ar${i}`).select2();
+                }
+            }
+        } else {
+            $("#btnAddBudget_acc_ar").click();
+        }
+        
+        if (data.varianceRemarks != "" || data.varianceRemarks != null) {
+            var arrData = data.varianceRemarks.split('~~');
+            
+            if (arrData != '') {
+                for(var i = 0; i < arrData.length; i++) {
+        
+        
+                    var [variance,remarks] = arrData[i].split('~');
+                    
+                    
+                    tblVariance_acc_ar.row.add({
+                        "variance" : variance.replaceAll(",","").replaceAll(".00",""),
+                        "remarks" : remarks,
+                        "id" : i
+                    }).draw( false );
+                    
+                }
+            }
+        } else {
+            $("#btnAddVariance_acc_ar").click();
+        }
     }, 500);
 });
 
@@ -504,8 +572,10 @@ function openAttr() {
 $('#tblClientFocus tbody').on('click', '.view', function (){
     var data = tblClientFocus.row( $(this).parents('tr') ).data();
     var curfolderID = data.folderID;
+    selectedFolderID = data.folderID;
     
     prepareGBP();
+    prepareAccForm();
     
     setTimeout(function() {
         $("#txtGenderIssueAddress").val(data.gender);
@@ -628,7 +698,55 @@ $('#tblClientFocus tbody').on('click', '.view', function (){
             }
         }
         
+        $("#txtGADActivity_acc").val(data.actualResult);
+    
+        if (data.actualCost != "" || data.actualCost != null) {
+            var arrData = data.actualCost.split('~~');
+            
+            if (arrData != '') {
+                for(var i = 0; i < arrData.length; i++) {
+                    var [source,item,expense] = arrData[i].split('~');
+                    
+                    
+                    tblBudget_acc.row.add({
+                        "source" : source,
+                        "item" : item,
+                        "budget" : expense.replaceAll(",","").replaceAll(".00",""),
+                        "id" : i
+                    }).draw( false );
+                    
+                    $(`#cmbBudgetSource_acc${i}`).val(source).trigger("change");
+                    $(`#cmbBudgetSource_acc${i}`).select2();
+                }
+            }
+        } else {
+            $("#btnAddBudget_acc").click();
+        }
+        
+        if (data.varianceRemarks != "" || data.varianceRemarks != null) {
+            var arrData = data.varianceRemarks.split('~~');
+            
+            if (arrData != '') {
+                for(var i = 0; i < arrData.length; i++) {
+                    var [variance,remarks] = arrData[i].split('~');
+                    
+                    
+                    tblVariance_acc.row.add({
+                        "variance" : variance.replaceAll(",","").replaceAll(".00",""),
+                        "remarks" : remarks,
+                        "id" : i
+                    }).draw( false );
+                    
+                }
+            }
+        } else {
+            $("#btnAddVariance_acc").click();
+        }
+        
     }, 1500);
+    
+    
+    
 });
 
 

@@ -4,7 +4,23 @@ var generalCommentParentID;
 var arrCommentIDS = [];
 
 $("#btnPDF").click(function(){
-	window.open('../pdf/gbp.php?ref=' + generalCommentParentID, '_blank');
+	var status = $("#lblDocReq").text();
+	
+	if (status == "Complete") {
+        window.open('../pdf/gbp.php?ref=' + generalCommentParentID, '_blank');
+    } else {
+		$.ajax({
+			url: "../program_assets/php/web/sessioner.php",
+			data: {
+				command   : 'change_docu_status',
+				docu_status : status
+			},
+			type: 'post',
+			success: function (data) {
+				window.open('../pdf/gbp2.php?ref=' + generalCommentParentID, '_blank');
+			}
+		});
+	}
 });
 
 $("#btnPDF_comment").click(function(){

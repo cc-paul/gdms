@@ -714,6 +714,15 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12 col-sm-12">
+								<label class="cust-label">Actual Result (Outcome)</label>
+								<label class="cust-label text-danger">*</label>
+								<textarea id="txtGADActivity_acc" name="txtGADActivity_acc" rows="3" class="form-control cust-label cust-textbox" placeholder="Please Enter Actual Result"></textarea>
+								<div id="dvGADActivity_acc"></div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
 								<div class="table-containerx">
 									<table id="tblBudget" name="tblBudget" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
 										<thead>
@@ -741,6 +750,93 @@
 														</div>
 														<div class="col-md-6 col-xs-12">
 															<button style="visibility: hidden;" id="btnAddBudget" name="btnAddBudget" type="button" class="btn btn-default btn-sm cust-textbox pull-right">
+																&nbsp;&nbsp;
+																<i class="fa fa-plus"></i>
+																&nbsp;
+																Add Another
+																&nbsp;&nbsp;
+															</button>								
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div class="table-containerx">
+									<table id="tblBudget_acc" name="tblBudget_acc" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+										<thead>
+											<tr>
+												<th colspan="4">
+													<i class="fa fa-money"></i>&nbsp;
+													Actual Cost and Expenditure
+													<label class="cust-label text-danger">*</label>
+												</th>
+											</tr>
+											<tr>
+												<th>Expense Source</th>
+												<th>Expense Item</th>
+												<th>Expense</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+										<tfoot>
+											<tr>
+												<td colspan="4">
+													<div class="row">
+														<div class="col-md-6 col-xs-12">
+															<div id="dvBudget_acc"></div>								
+														</div>
+														<div class="col-md-6 col-xs-12">
+															<button id="btnAddBudget_acc" name="btnAddBudget_acc" type="button" class="btn btn-default btn-sm cust-textbox pull-right">
+																&nbsp;&nbsp;
+																<i class="fa fa-plus"></i>
+																&nbsp;
+																Add Another
+																&nbsp;&nbsp;
+															</button>								
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div class="table-containerx">
+									<table id="tblVariance_acc" name="tblVariance_acc" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+										<thead>
+											<tr>
+												<th colspan="3">
+													<i class="fa fa-minus"></i>&nbsp;
+													Variance and Remarks
+													<label class="cust-label text-danger">*</label>
+												</th>
+											</tr>
+											<tr>
+												<th>Variance</th>
+												<th>Remarks</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+										<tfoot>
+											<tr>
+												<td colspan="3">
+													<div class="row">
+														<div class="col-md-6 col-xs-12">
+															<div id="dvVariance_acc"></div>								
+														</div>
+														<div class="col-md-6 col-xs-12">
+															<button id="btnAddVariance_acc" name="btnAddVariance_acc" type="button" class="btn btn-default btn-sm cust-textbox pull-right">
 																&nbsp;&nbsp;
 																<i class="fa fa-plus"></i>
 																&nbsp;
@@ -856,6 +952,11 @@
 							<div class="col-md-9 col-xs-12">
 							</div>
 							<div class="col-md-3 col-xs-12">
+								<button id="btnSaveAcc" name="btnSaveAcc" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
+									<i class="fa fa-save"></i>
+									&nbsp;
+									Save All
+								</button>
 								<button style="visibility: hidden;" id="btnSaveGBP" name="btnSaveGBP" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
 									<i class="fa fa-save"></i>
 									&nbsp;
@@ -938,6 +1039,102 @@
 								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<label class="cust-label">Actual Result (Outcome)</label>
+								<label class="cust-label text-danger">*</label>
+								<textarea id="txtGADActivity_acc_ar" name="txtGADActivity_acc_ar" rows="3" class="form-control cust-label cust-textbox" placeholder="Please Enter Actual Result"></textarea>
+								<div id="dvGADActivity_acc_ar"></div>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div class="table-containerx">
+									<table id="tblBudget_acc_ar" name="tblBudget_acc_ar" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+										<thead>
+											<tr>
+												<th colspan="4">
+													<i class="fa fa-money"></i>&nbsp;
+													Actual Cost and Expenditure
+													<label class="cust-label text-danger">*</label>
+												</th>
+											</tr>
+											<tr>
+												<th>Expense Source</th>
+												<th>Expense Item</th>
+												<th>Expense</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+										<tfoot>
+											<tr>
+												<td colspan="4">
+													<div class="row">
+														<div class="col-md-6 col-xs-12">
+															<div id="dvBudget_acc_ar"></div>								
+														</div>
+														<div class="col-md-6 col-xs-12">
+															<button id="btnAddBudget_acc_ar" name="btnAddBudget_acc_ar" type="button" class="btn btn-default btn-sm cust-textbox pull-right">
+																&nbsp;&nbsp;
+																<i class="fa fa-plus"></i>
+																&nbsp;
+																Add Another
+																&nbsp;&nbsp;
+															</button>								
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div class="table-containerx">
+									<table id="tblVariance_acc_ar" name="tblVariance_acc_ar" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+										<thead>
+											<tr>
+												<th colspan="3">
+													<i class="fa fa-minus"></i>&nbsp;
+													Variance and Remarks
+													<label class="cust-label text-danger">*</label>
+												</th>
+											</tr>
+											<tr>
+												<th>Variance</th>
+												<th>Remarks</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+										<tfoot>
+											<tr>
+												<td colspan="3">
+													<div class="row">
+														<div class="col-md-6 col-xs-12">
+															<div id="dvVariance_acc_ar"></div>								
+														</div>
+														<div class="col-md-6 col-xs-12">
+															<button id="btnAddVariance_acc_ar" name="btnAddVariance_acc_ar" type="button" class="btn btn-default btn-sm cust-textbox pull-right">
+																&nbsp;&nbsp;
+																<i class="fa fa-plus"></i>
+																&nbsp;
+																Add Another
+																&nbsp;&nbsp;
+															</button>								
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
 						<br>
 						<div class="row">
 							<div class="col-md-7 col-sm-12">
@@ -999,6 +1196,11 @@
 							<div class="col-md-9 col-xs-12">
 							</div>
 							<div class="col-md-3 col-xs-12">
+								<button id="btnSaveAcc_ar" name="btnSaveAcc_ar" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
+									<i class="fa fa-save"></i>
+									&nbsp;
+									Save All
+								</button>
 								<button id="btnSaveGBP_attr" name="btnSaveGBP_attr" type="button" class="btn btn-block btn-default btn-sm cust-textbox" style="visibility:hidden;">
 									<i class="fa fa-save"></i>
 									&nbsp;
@@ -1023,114 +1225,21 @@
 						</button>
 					</div>
 					<div class="box-body">
-						<div class="row">
-							<div class="col-md-12 col-sm-12">
-								<label class="cust-label">Actual Result (Outcome)</label>
-								<label class="cust-label text-danger">*</label>
-								<textarea id="txtGADActivity_acc" name="txtGADActivity_acc" rows="3" class="form-control cust-label cust-textbox" placeholder="Please Enter Actual Result"></textarea>
-								<div id="dvGADActivity_acc"></div>
-							</div>
-						</div>
+						
+						
 						<br>
-						<div class="row">
-							<div class="col-md-12 col-sm-12">
-								<div class="table-containerx">
-									<table id="tblBudget_acc" name="tblBudget_acc" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
-										<thead>
-											<tr>
-												<th colspan="4">
-													<i class="fa fa-money"></i>&nbsp;
-													Actual Cost and Expenditure
-													<label class="cust-label text-danger">*</label>
-												</th>
-											</tr>
-											<tr>
-												<th>Expense Source</th>
-												<th>Expense Item</th>
-												<th>Expense</th>
-												<th>Action</th>
-											</tr>
-										</thead>
-										<tbody></tbody>
-										<tfoot>
-											<tr>
-												<td colspan="4">
-													<div class="row">
-														<div class="col-md-6 col-xs-12">
-															<div id="dvBudget_acc"></div>								
-														</div>
-														<div class="col-md-6 col-xs-12">
-															<button id="btnAddBudget_acc" name="btnAddBudget_acc" type="button" class="btn btn-default btn-sm cust-textbox pull-right">
-																&nbsp;&nbsp;
-																<i class="fa fa-plus"></i>
-																&nbsp;
-																Add Another
-																&nbsp;&nbsp;
-															</button>								
-														</div>
-													</div>
-												</td>
-											</tr>
-										</tfoot>
-									</table>
-								</div>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-md-12 col-sm-12">
-								<div class="table-containerx">
-									<table id="tblVariance_acc" name="tblVariance_acc" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
-										<thead>
-											<tr>
-												<th colspan="3">
-													<i class="fa fa-minus"></i>&nbsp;
-													Variance and Remarks
-													<label class="cust-label text-danger">*</label>
-												</th>
-											</tr>
-											<tr>
-												<th>Variance</th>
-												<th>Remarks</th>
-												<th>Action</th>
-											</tr>
-										</thead>
-										<tbody></tbody>
-										<tfoot>
-											<tr>
-												<td colspan="3">
-													<div class="row">
-														<div class="col-md-6 col-xs-12">
-															<div id="dvVariance_acc"></div>								
-														</div>
-														<div class="col-md-6 col-xs-12">
-															<button id="btnAddVariance_acc" name="btnAddVariance_acc" type="button" class="btn btn-default btn-sm cust-textbox pull-right">
-																&nbsp;&nbsp;
-																<i class="fa fa-plus"></i>
-																&nbsp;
-																Add Another
-																&nbsp;&nbsp;
-															</button>								
-														</div>
-													</div>
-												</td>
-											</tr>
-										</tfoot>
-									</table>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 					<div class="box-footer">
 						<div class="row">
 							<div class="col-md-9 col-xs-12">
 							</div>
 							<div class="col-md-3 col-xs-12">
-								<button id="btnSaveAcc" name="btnSaveAcc" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
+								<!--<button id="btnSaveAcc" name="btnSaveAcc" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
 									<i class="fa fa-save"></i>
 									&nbsp;
 									Save All
-								</button>
+								</button>-->
 							</div>
 						</div>
 					</div>

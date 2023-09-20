@@ -341,3 +341,78 @@ Stack trace:
 #2 C:\xampp\htdocs\gdms\pdf\gbp_comment.php(604): FPDF->Output()
 #3 {main}
   thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[20-Sep-2023 11:46:27 Asia/Manila] PHP Notice:  Undefined index: total_gaa in C:\xampp\htdocs\gdms\pdf\ar.php on line 137
+[20-Sep-2023 11:46:27 Asia/Manila] PHP Notice:  Undefined index: act_gad in C:\xampp\htdocs\gdms\pdf\ar.php on line 138
+[20-Sep-2023 11:46:27 Asia/Manila] PHP Notice:  Undefined index: orig_bud in C:\xampp\htdocs\gdms\pdf\ar.php on line 139
+[20-Sep-2023 11:46:27 Asia/Manila] PHP Notice:  Undefined index: util_bud in C:\xampp\htdocs\gdms\pdf\ar.php on line 140
+[20-Sep-2023 11:46:27 Asia/Manila] PHP Notice:  Undefined index: per_gad in C:\xampp\htdocs\gdms\pdf\ar.php on line 141
+[20-Sep-2023 11:46:27 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(478): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[20-Sep-2023 11:47:08 Asia/Manila] PHP Notice:  Undefined index: total_gaa in C:\xampp\htdocs\gdms\pdf\ar.php on line 137
+[20-Sep-2023 11:47:08 Asia/Manila] PHP Notice:  Undefined index: act_gad in C:\xampp\htdocs\gdms\pdf\ar.php on line 138
+[20-Sep-2023 11:47:08 Asia/Manila] PHP Notice:  Undefined index: orig_bud in C:\xampp\htdocs\gdms\pdf\ar.php on line 139
+[20-Sep-2023 11:47:08 Asia/Manila] PHP Notice:  Undefined index: util_bud in C:\xampp\htdocs\gdms\pdf\ar.php on line 140
+[20-Sep-2023 11:47:08 Asia/Manila] PHP Notice:  Undefined index: per_gad in C:\xampp\htdocs\gdms\pdf\ar.php on line 141
+[20-Sep-2023 11:47:09 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(478): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[20-Sep-2023 11:51:47 Asia/Manila] PHP Notice:  Undefined variable: col2Y in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 168
+[20-Sep-2023 11:51:47 Asia/Manila] PHP Notice:  Undefined variable: col2Y in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 168
+[20-Sep-2023 11:51:47 Asia/Manila] PHP Notice:  Undefined variable: col2Y in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 168
+[20-Sep-2023 11:51:47 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\gbp2.php(438): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[20-Sep-2023 11:52:57 Asia/Manila] PHP Notice:  Undefined variable: col2Y in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 168
+[20-Sep-2023 11:52:57 Asia/Manila] PHP Notice:  Undefined variable: col2Y in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 168
+[20-Sep-2023 11:52:57 Asia/Manila] PHP Notice:  Undefined variable: col2Y in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 168
+[20-Sep-2023 11:52:57 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\gbp2.php(438): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[20-Sep-2023 11:59:08 Asia/Manila] PHP Notice:  Undefined index: total_gaa in C:\xampp\htdocs\gdms\pdf\ar.php on line 137
+[20-Sep-2023 11:59:08 Asia/Manila] PHP Notice:  Undefined index: act_gad in C:\xampp\htdocs\gdms\pdf\ar.php on line 138
+[20-Sep-2023 11:59:08 Asia/Manila] PHP Notice:  Undefined index: orig_bud in C:\xampp\htdocs\gdms\pdf\ar.php on line 139
+[20-Sep-2023 11:59:08 Asia/Manila] PHP Notice:  Undefined index: util_bud in C:\xampp\htdocs\gdms\pdf\ar.php on line 140
+[20-Sep-2023 11:59:08 Asia/Manila] PHP Notice:  Undefined index: per_gad in C:\xampp\htdocs\gdms\pdf\ar.php on line 141
+[20-Sep-2023 11:59:08 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar.php(478): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[20-Sep-2023 13:31:38 Asia/Manila] PHP Notice:  Undefined index: docu_status in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 160
+[20-Sep-2023 13:31:38 Asia/Manila] PHP Notice:  Undefined index: docu_status in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 160
+[20-Sep-2023 13:31:38 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\ar2.php(478): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267
+[20-Sep-2023 16:26:41 Asia/Manila] PHP Notice:  Undefined index: docu_status in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 160
+[20-Sep-2023 16:26:41 Asia/Manila] PHP Notice:  Undefined index: docu_status in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 160
+[20-Sep-2023 16:26:41 Asia/Manila] PHP Notice:  Undefined index: docu_status in C:\xampp\htdocs\gdms\pdf\mc_table2.php on line 160
+[20-Sep-2023 16:26:41 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\gdms\pdf\fpdf.php:267
+Stack trace:
+#0 C:\xampp\htdocs\gdms\pdf\fpdf.php(1058): FPDF->Error('Some data has a...')
+#1 C:\xampp\htdocs\gdms\pdf\fpdf.php(1004): FPDF->_checkoutput()
+#2 C:\xampp\htdocs\gdms\pdf\gbp2.php(438): FPDF->Output()
+#3 {main}
+  thrown in C:\xampp\htdocs\gdms\pdf\fpdf.php on line 267

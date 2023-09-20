@@ -6,45 +6,91 @@ var selectParentFolderID = "";
 var creatorEmail = "";
 var arrCommentIDS = [];
 
-$("#btnViewGBP").click(function(){
-	showGBPView(cur_parentFolderID);
+loadGBPTable();
+
+$("#btnGenerateReport").click(function(){
+	loadGBPTable();
+});
+
+$("#btnExport").click(function(){
+	$(".btn-export-gbp").click();
+});
+
+$("#aGeneralComments").click(function(){
+	openCommentModal(`${selectParentFolderID}-generalcomment`);
+});
+
+$('#tblGBPTable tbody').on('click', '.gbp-table-view', function (){
+	var data = tblGBPTable.row( $(this).parents('tr') ).data();
+	
+	$("#spOrg").text(data.college);
+	$("#spOrgHi").text(data.college);
+	$("#lblGAABudget").text(0);
+	$("#lblFY").text(data.year);
+	$("#lblApprovedByName").text(data.approvedBy);
+	$("#lblApprovedByPosition").text(data.approvedByPosition);
+	$("#lblPreparedByName").text(data.preparedBy);
+	$("#lblPreparedByPosition").text(data.preparedByPosition);
+	$("#lblDocReq").text(data.status);
+	$("#cmbFinalStatus").val(data.status).trigger("change");
+	creatorEmail = data.email;
+	
+	if (data.reportType == "Accomplishment Report") {
+		$("#lblModalTitle").text("View Accomplishment Report");
+		$("#lblModalHeader").text("ANNUAL GENDER AND DEVELOPMENT (GAD) ACCOMPLISHMENT REPORT");	
+    } else {
+		$("#lblModalTitle").text("View GBP");
+		$("#lblModalHeader").text("ANNUAL GENDER AND DEVELOPMENT (GAD) PLAN AND BUDGET");	
+	}
+	
+	
+	$("#mdViewGBP").modal();
+	
+	showGBPView(data.parentFolderID);
+});
+
+$("#btnFinalize").click(function(){
+	var currentStatus = $("#cmbFinalStatus").val();
 	
 	$.ajax({
-		url: "../program_assets/php/web/accomplishment",
+		url: "../program_assets/php/web/gbp_report",
 		data: {
-			command   : 'load_acc_details',
-			parentFolderID : cur_parentFolderID
+			command   : 'change_status',
+			status    : currentStatus,
+			parentFolderID : selectParentFolderID
 		},
 		type: 'post',
 		success: function (data) {
 			var data = jQuery.parseJSON(data);
 			
-			for (var i = 0; i < data.length; i++) {
-				$("#spOrg").text(data[i].college);
-				$("#spOrgHi").text(data[i].college);
-				$("#lblGAABudget").text(data[i].totalAmount);
-				$("#lblFY").text(data[i].year);
-				$("#lblApprovedByName").text(data[i].approvedBy);
-				$("#lblApprovedByPosition").text(data[i].approvedByPosition);
-				$("#lblPreparedByName").text(data[i].preparedBy);
-				$("#lblPreparedByPosition").text(data[i].preparedByPosition);
-				$("#lblDocReq").text(data[i].status);
-				$("#spRef").text(data[i].ref);
-				$("#spDateEndorse2").text(data[i].dateEndorse);
-			}
+			JAlert(data[0].message,data[0].color);
 			
-			$("#spTotalExpenditure_mirror").text($("#spTotalExpenditure").text());
-			$("#spOriginalBudget_mirror").text($("#spOriginalBudget").text());
-			$("#spUtilBudget_mirror").text($("#spUtilBudget").text());
-			$("#spGADExp_mirror").text($("#spGADExp").text());
+			if (!data[0].error) {
+                loadGBPTable();
+				$("#mdViewGBP").modal("hide");
+				
+				$.ajax({
+					url: "https://apps.project4teen.online/email-service/send.php",
+					data: {
+						rEmail    : creatorEmail,
+						sEmail    : 'teamohmygad.system@gmail.com',
+						sName     : 'GDMS',
+						sPassword : 'bzecubyldgoctvtn',
+						sSubject  : 'GDMS Preparation Status',
+						sBody     : `The GBP you created has been changed to ${currentStatus}. Please check the details on the website.`
+					},
+					type: 'post',
+					success: function (data) {
+						var data = jQuery.parseJSON(data);
+						
+						if (data[0].error) {
+							JAlert(data[0].message,data[0].color);
+						} 
+					}
+				});
+            }
 		}
 	});
-	
-	$("#mdViewGBP").modal();
-});
-
-$("#aGeneralComments").click(function(){
-	openCommentModal(`${cur_parentFolderID}-generalcomment`);
 });
 
 function showGBPView(parentFolderID) {
@@ -271,13 +317,6 @@ function showGBPView(parentFolderID) {
 							<small id="${parentFolderID}-col6-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col6-row${countRows}')">Comments</a>
                         </td>
-						<td>
-							${data[i].actualResult}
-							<br>
-                            <br>
-							<small id="${parentFolderID}-col9-row${countRows}" class="label pull-right bg-red comment-count">0</small>
-                            <a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
-						</td>
                         <td colspan="2">
                             <table id="tbNotThis" style="width:100%;">
                                 <tbody>
@@ -289,6 +328,20 @@ function showGBPView(parentFolderID) {
 							<small id="${parentFolderID}-col7-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col7-row${countRows}')">Comments</a>
                         </td>
+                        <td>
+                            ${office}
+                            <br>
+                            <br>
+							<small id="${parentFolderID}-col8-row${countRows}" class="label pull-right bg-red comment-count">0</small>
+                            <a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows}')">Comments</a>
+                        </td>
+						<td>
+							${data[i].actualResult}
+							<br>
+                            <br>
+							<small id="${parentFolderID}-col9-row${countRows}" class="label pull-right bg-red comment-count">0</small>
+                            <a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows}')">Comments</a>
+						</td>
 						<td>
 							${actualCostText}
 							<br>
@@ -303,13 +356,6 @@ function showGBPView(parentFolderID) {
 							<small id="${parentFolderID}-col11-row${countRows}" class="label pull-right bg-red comment-count">0</small>
                             <a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows}')">Comments</a>
 						</td>
-						<td>
-                            ${office}
-                            <br>
-                            <br>
-							<small id="${parentFolderID}-col8-row${countRows}" class="label pull-right bg-red comment-count">0</small>
-                            <a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows}')">Comments</a>
-                        </td>
                         <td>
                             ${files}
                             <br>
@@ -546,15 +592,8 @@ function showGBPView(parentFolderID) {
 								${performanceIndicator}
 								<br>
 								<br>
-								<small id="${parentFolderID}-col6-row${countRows2}'" class="label pull-right bg-red comment-count">0</small>
+								<small id="${parentFolderID}-col6-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col6-row${countRows2}')">Comments</a>
-							</td>
-							<td>
-								${data[i].actualResult}
-								<br>
-								<br>
-								<small id="${parentFolderID}-col9-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows2}')">Comments</a>
 							</td>
 							<td colspan="2">
 								<table id="tbNotThis" style="width:100%;">
@@ -566,6 +605,20 @@ function showGBPView(parentFolderID) {
 								<br>
 								<small id="${parentFolderID}-col7-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col7-row${countRows2}')">Comments</a>
+							</td>
+							<td>
+								${office}
+								<br>
+								<br>
+								<small id="${parentFolderID}-col8-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows2}')">Comments</a>
+							</td>
+							<td>
+								${data[i].actualResult}
+								<br>
+								<br>
+								<small id="${parentFolderID}-col9-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
+								<a href="#" onclick="openCommentModal('${parentFolderID}-col9-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${actualCostText}
@@ -580,13 +633,6 @@ function showGBPView(parentFolderID) {
 								<br>
 								<small id="${parentFolderID}-col11-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
 								<a href="#" onclick="openCommentModal('${parentFolderID}-col11-row${countRows2}')">Comments</a>
-							</td>
-							<td>
-								${office}
-								<br>
-								<br>
-								<small id="${parentFolderID}-col8-row${countRows2}" class="label pull-right bg-red comment-count">0</small>
-								<a href="#" onclick="openCommentModal('${parentFolderID}-col8-row${countRows2}')">Comments</a>
 							</td>
 							<td>
 								${files}
@@ -868,9 +914,8 @@ function showGBPView(parentFolderID) {
 					arrCommentIDS.push("'" + `${parentFolderID}-col11-row${countRows2}` + "'");
 					arrCommentIDS.push("'" + `${parentFolderID}-col12-row${countRows2}` + "'");
 				}
-				
-				$("#tblViewClientFocus tbody:first").append(newContent);
 				$(".comment-count").hide();
+				$("#tblViewClientFocus tbody:first").append(newContent);
 			}
 		});
 		
@@ -897,7 +942,7 @@ function showGBPView(parentFolderID) {
 					}
 				});
 			}
-		}, 1000);		
+		}, 1000);
 	}, 2000);
 	
 
@@ -917,12 +962,240 @@ function showGBPView(parentFolderID) {
         $("#lblOtherSource").text(totalOtherSource.toLocaleString('en-US', {maximumFractionDigits: 2}));
 		
 		var generalTotal = Number(totalPrimarySource + totalOtherSource);
-		//$("#lblGAABudget").text(generalTotal.toLocaleString('en-US', {maximumFractionDigits: 2}));
+		$("#lblGAABudget").text(generalTotal.toLocaleString('en-US', {maximumFractionDigits: 2}));
 		
 		$("#lblPrimarySource2").text($("#lblPrimarySource").text());
 		$("#lblOtherSource2").text($("#lblOtherSource").text());
 		$("#lblGAABudget2").text($("#lblGAABudget").text());
     }, 3000);
+}
+
+function loadGBPTable() {
+    tblGBPTable = 
+    $('#tblGBPTable').DataTable({
+        'destroy'       : true,
+        'paging'        : true,
+        'lengthChange'  : false,
+        'pageLength'    : 15,
+        "order"         : [],
+        'info'          : true,
+        'autoWidth'     : false,
+        'select'        : true,
+        'sDom'			: 'Btp<"clear">',
+        //dom: 'Bfrtip',
+        buttons: [{
+            extend: "excel",
+            className: "btn btn-default btn-sm hide btn-export-gbp",
+            titleAttr: 'Export in Excel',
+            text: 'Export in Excel',
+            init: function(api, node, config) {
+               $(node).removeClass('dt-button buttons-excel buttons-html5')
+            }
+        }],
+        'fnRowCallback' : function( nRow, aData, iDisplayIndex ) {
+            $('td', nRow).attr('nowrap','nowrap');
+            return nRow;
+        },
+        'ajax'          : {
+        	'url'       : '../program_assets/php/web/gbp_report.php',
+        	'type'      : 'POST',
+        	'data'      : {
+        		command : 'load_gbp_table_filter',
+                report  : $("#cmbFilterReport").val(),
+                year    : $("#cmbFilterYear").val(),
+                status  : $("#cmbFilterStatus").val(),
+                college : $("#cmbFilterCollege").val()
+        	}    
+        },
+        'aoColumns' : [
+        	{ mData: 'reportType'},
+            { mData: 'remarks'},
+            { mData: 'year'},
+            { mData: 'status'},
+            { mData: 'totalAmount'},
+            { mData: 'fullName'},
+            { mData: 'id',
+                render: function (data,type,row) {
+                    var enableEdit = row.status == 'Draft' ? '' : ' disabled';
+                    var enableView = row.status != 'Draft' ? '' : ' disabled';
+                    
+                    //return '<div class="input-group">' + 
+                    //       '	<button id="list_' + row.id + '" name="list_' + row.id + '" type="submit" class="btn btn-default btn-xs dt-button list gbp-table-view" '+ enableView +'>' +
+                    //       '		<i class="fa fa-eye"></i>' +
+                    //       '	</button>' +
+                    //       '</div>';
+					
+					return `
+						<div class="btn-group">
+							<button type="button" class="btn btn-sm btn-default btn-row-pdf"><i class="fa fa-file-pdf-o"></i></button>
+						</div>
+					`;
+                }
+            }
+        ],
+        'aoColumnDefs': [
+        //	{"className": "custom-center", "targets": [8]},
+        	{"className": "dt-center", "targets": [0,1,2,3,4,5]},
+        	{ "width": "1%", "targets": [6] },
+        //	{"className" : "hide_column", "targets": [9]} 
+        ],
+        "drawCallback": function() {  
+            row_count = this.fnSettings().fnRecordsTotal();
+        },
+        //"fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+        //	console.log(aData["status"]);
+        //	
+        //	if (aData["status"] == "Pending") {
+        //		count_pending++;
+        //	} else if (aData["status"] == "Approved") {
+        //		count_approved++;
+        //	} else {
+        //		count_rejected++;
+        //	}
+        //},
+        "fnInitComplete": function (oSettings, json) {
+            console.log('DataTables has finished its initialisation.');
+        }
+    }).on('user-select', function (e, dt, type, cell, originalEvent) {
+        if ($(cell.node()).parent().hasClass('selected')) {
+            e.preventDefault();
+        }
+    });
+}
+
+var final_status;
+
+
+$('#tblGBPTable tbody').on('click', 'td button', function (){
+	var selected_data = tblGBPTable.row( $(this).parents('tr') ).data();
+	final_status = selected_data.status;
+	
+	if (selected_data.reportType == "Accomplishment Report") {
+        loadARAmount(selected_data.parentFolderID);
+    } else {
+		$.ajax({
+			url: "../program_assets/php/web/sessioner.php",
+			data: {
+				command   : 'change_docu_status',
+				docu_status : selected_data.status
+			},
+			type: 'post',
+			success: function (data) {
+				window.open('../pdf/gbp2.php?ref=' + selected_data.parentFolderID, '_blank');
+			}
+		});
+	}
+});
+
+			
+var total_gaa,act_gad,orig_bud,util_bud,per_gad;
+
+function loadARAmount(parentFolderID) {
+	$.ajax({
+		url: "../program_assets/php/web/accomplishment",
+		data: {
+			command   : 'load_acc_details',
+			parentFolderID : parentFolderID
+		},
+		type: 'post',
+		success: function (data) {
+			var data = jQuery.parseJSON(data);
+			
+			for (var i = 0; i < data.length; i++) {
+				total_gaa = data[i].totalAmount;
+				
+				//$("#spOrg").text(data[i].college);
+				//$("#spOrgHi").text(data[i].college);
+				//$("#lblGAABudget").text();
+				//$("#lblFY").text(data[i].year);
+				//$("#lblApprovedByName").text(data[i].approvedBy);
+				//$("#lblApprovedByPosition").text(data[i].approvedByPosition);
+				//$("#lblPreparedByName").text(data[i].preparedBy);
+				//$("#lblPreparedByPosition").text(data[i].preparedByPosition);
+				//$("#lblDocReq").text(data[i].status);
+				//$("#spRef").text(data[i].ref);
+				//$("#spDateEndorse2").text(data[i].dateEndorse);
+			}
+			
+			//$("#spTotalExpenditure_mirror").text($("#spTotalExpenditure").text());
+			//$("#spOriginalBudget_mirror").text($("#spOriginalBudget").text());
+			//$("#spUtilBudget_mirror").text($("#spUtilBudget").text());
+			//$("#spGADExp_mirror").text($("#spGADExp").text());
+			getTotalUtils(parentFolderID);
+		}
+	});
+}
+
+function getTotalUtils(parentFolderID) {
+  $.ajax({
+    url: "../program_assets/php/web/accomplishment",
+    data: {
+      command   : 'all_cost',
+      parentFolderID : parentFolderID
+    },
+    type: 'post',
+    success: function (data) {
+      var data = jQuery.parseJSON(data);
+      
+      console.log(data);
+      
+	  act_gad = data[0].totalExpense;
+	  orig_bud = data[0].totalBudget;
+	  
+	  var percent_util = (Number(data[0].totalExpense.replaceAll(",","")) / Number(data[0].totalBudget.replaceAll(",",""))) * 100;
+      var percent_gad =  (Number(data[0].totalExpense.replaceAll(",","")) / Number(total_gaa.replaceAll(",",""))) * 100;
+	  
+	  util_bud = percent_util.toFixed(2);
+	  per_gad = percent_gad.toFixed(2);
+	  
+	  
+      //$("#spTotalExpenditure").text(data[0].totalExpense);
+      //$("#spOriginalBudget").text(data[0].totalBudget);
+      //
+      //var percent_util = (Number(data[0].totalExpense.replaceAll(",","")) / Number(data[0].totalBudget.replaceAll(",",""))) * 100;
+      //var percent_gad =  (Number(data[0].totalExpense.replaceAll(",","")) / Number($("#spTotalGAA").text().replaceAll(",",""))) * 100;
+      //
+      //$("#spUtilBudget").text(percent_util.toFixed(2));
+      //$("#spGADExp").text(percent_gad.toFixed(2));
+	  exportPDFAR(parentFolderID);
+    }
+  });
+}
+
+
+function exportPDFAR(parentFolderID) {
+	$.ajax({
+        url: "../program_assets/php/web/accomplishment",
+        data: {
+            command   : 'pdf_acc',
+            total_gaa : total_gaa,
+            act_gad : act_gad,
+            orig_bud : orig_bud,
+            util_bud : util_bud,
+            per_gad : per_gad
+        },
+        type: 'post',
+        success: function (data) {
+            
+            
+			
+			if (final_status == "Complete") {
+                window.open('../pdf/ar.php?ref=' + parentFolderID, '_blank');
+            } else {
+				$.ajax({
+					url: "../program_assets/php/web/sessioner.php",
+					data: {
+						command   : 'change_docu_status',
+						docu_status : final_status
+					},
+					type: 'post',
+					success: function (data) {
+						window.open('../pdf/ar2.php?ref=' + parentFolderID, '_blank');
+					}
+				});
+			}
+        }
+    });
 }
 
 function openCommentModal(commentID) {
@@ -978,7 +1251,7 @@ function loadComments() {
                 comments += `
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
-                            <div class="alert `+color+` cust-label">
+                            <div class="alert `+ color +` cust-label">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>${data[i].fullName}</label>
@@ -1091,95 +1364,3 @@ function attachFile(folderID,updateID) {
         }
     });
 }
-
-$("#btnPDF2").click(function(){
-	var status = $("#lblDocReq").text();
-	
-	if (status == "Complete") {
-        //window.open('../pdf/gbp.php?ref=' + generalCommentParentID, '_blank');
-		
-		$.ajax({
-			url: "../program_assets/php/web/accomplishment",
-			data: {
-				command   : 'pdf_acc',
-				total_gaa : $("#lblGAABudget2").text(),
-				act_gad : $("#spTotalExpenditure_mirror").text(),
-				orig_bud : $("#spOriginalBudget_mirror").text(),
-				util_bud : $("#spUtilBudget_mirror").text(),
-				per_gad : $("#spGADExp_mirror").text()
-			},
-			type: 'post',
-			success: function (data) {
-				
-				window.open('../pdf/ar.php?ref=' + selectParentFolderID, '_blank');
-			}
-		});
-    } else {
-		$.ajax({
-			url: "../program_assets/php/web/sessioner.php",
-			data: {
-				command   : 'change_docu_status',
-				docu_status : status
-			},
-			type: 'post',
-			success: function (data) {
-				$.ajax({
-					url: "../program_assets/php/web/accomplishment",
-					data: {
-						command   : 'pdf_acc',
-						total_gaa : $("#lblGAABudget2").text(),
-						act_gad : $("#spTotalExpenditure_mirror").text(),
-						orig_bud : $("#spOriginalBudget_mirror").text(),
-						util_bud : $("#spUtilBudget_mirror").text(),
-						per_gad : $("#spGADExp_mirror").text()
-					},
-					type: 'post',
-					success: function (data) {
-						
-						window.open('../pdf/ar2.php?ref=' + selectParentFolderID, '_blank');
-					}
-				});
-			}
-		});
-	}
-});
-
-$("#btnPDF3").click(function(){
-	$.ajax({
-        url: "../program_assets/php/web/accomplishment",
-        data: {
-            command   : 'pdf_acc',
-            total_gaa : $("#lblGAABudget2").text(),
-            act_gad : $("#spTotalExpenditure_mirror").text(),
-            orig_bud : $("#spOriginalBudget_mirror").text(),
-            util_bud : $("#spUtilBudget_mirror").text(),
-            per_gad : $("#spGADExp_mirror").text()
-        },
-        type: 'post',
-        success: function (data) {
-            
-            window.open('../pdf/ar_comment.php?ref=' + selectParentFolderID, '_blank');
-        }
-    });
-});
-
-$("#btnExcel_AR").click(function(){
-	$.ajax({
-        url: "../program_assets/php/web/accomplishment",
-        data: {
-            command   : 'pdf_acc',
-            total_gaa : $("#lblGAABudget2").text(),
-            act_gad : $("#spTotalExpenditure_mirror").text(),
-            orig_bud : $("#spOriginalBudget_mirror").text(),
-            util_bud : $("#spUtilBudget_mirror").text(),
-            per_gad : $("#spGADExp_mirror").text()
-        },
-        type: 'post',
-        success: function (data) {
-            
-            window.open('../excel/ar.php?ref=' + selectParentFolderID, '_blank');
-        }
-    });
-});
-
-

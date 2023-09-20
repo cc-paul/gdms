@@ -71,7 +71,7 @@
 			$positionID    = $_SESSION['positionID'];
 			
 			if ($positionID == 1) {
-				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 4 || $menu_id == 7 || $menu_id == 10) {
+				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 4 || $menu_id == 7 || $menu_id == 10 || $menu_id == 11) {
 					echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
 					echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
 					echo '</li>';
@@ -86,8 +86,8 @@
 			//	}
 			//}
 			
-			if ($positionID == 4 || $menu_id == 10) {
-				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 6) {
+			if ($positionID == 4 || $positionID == 10) {
+				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 6 || $menu_id == 11) {
 					echo '<li id='.$li_id_name.' name='.$li_id_name.'>';
 					echo '	<a data-id="sm-' .$header_id. '" href="'.$detail_file.'" data-header="'.$header_menu.'" data-desc="'.$detail_desc.'"><i class="fa '.$detail_icon.'"></i>'.$detail_menu.'</a>';
 					echo '</li>';

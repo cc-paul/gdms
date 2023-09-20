@@ -73,6 +73,62 @@
             
         break;
     
+        case "load_gbp_table_filter" :
+            
+            $report  = $_POST["report"];
+            $year    = $_POST["year"];
+            $status  = $_POST["status"];
+            $id      = $_SESSION["id"];
+            $college = $_POST["college"];
+            $positionID = $_SESSION['positionID'];
+            
+            $q_report = $report == '-' ? '' : " OR a.reportType = '$report' ";
+            $q_year   = $year   == '-' ? '' : " OR a.`year` = '$year' ";
+            $q_status = $status == '-' ? '' : " OR a.`status` = '$status' ";
+            $q_status = $status == '-' ? '' : " OR a.`status` = '$status' ";
+            $q_college = $college == '-' ? '' : " OR c.`id` = '$college' ";
+            $q_created = $positionID == 1 ? 'AND a.createdBy = '.$id : '';
+            
+            $sql = "
+                SELECT 
+                    a.id,
+                    a.parentFolderID,
+                    a.reportType,
+                    c.college,
+                    a.`year`,
+                    a.`status`,
+                    FORMAT(a.totalAmount,2) AS totalAmount,
+                    CONCAT(IFNULL(b.lastName,''),', ',IFNULL(b.firstName,''),' ',IFNULL(middleName,'')) AS fullName,
+                    d.approvedBy,
+                    d.approvedByPosition,
+                    d.preparedBy,
+                    d.preparedByPosition,
+                    b.email,
+                    a.remarks
+                FROM
+                    omg_gbp_parent a 
+                INNER JOIN 
+                    omg_registration b 
+                ON 
+                    a.createdBy = b.id 
+                INNER JOIN	
+                    omg_colleges c 
+                ON 
+                    b.collegeID = c.id 
+                LEFT JOIN
+                    omg_signatory d
+                ON 
+                    a.parentFolderID = d.parentFolderID
+                WHERE
+                    a.`status` != 'YEAH' $q_created 
+                    $q_report $q_year $q_status $q_college
+                ORDER BY
+                    a.id DESC
+            ";
+            return builder($con,$sql);
+            
+        break;
+    
         case "change_status" :
             
             $status = $_POST["status"];
