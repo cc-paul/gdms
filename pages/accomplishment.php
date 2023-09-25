@@ -237,6 +237,47 @@
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="admin">
+								<div class="row">
+									<div class="col-md-12">
+										<?php
+											include "../program_assets/php/connection/conn.php";
+											$isDateBetween = "Yes";
+											$schedMessage = "";
+											$schedDate = "";
+											
+											$sql_valid = "
+												SELECT
+												CONCAT(DATE_FORMAT(a.dateFrom, '%m/%d/%Y'),'  -  ',DATE_FORMAT(a.dateTo, '%m/%d/%Y')) AS dateRange,
+												a.message,
+												CASE
+													WHEN DATE('".$global_date."') BETWEEN a.dateFrom 
+													AND a.dateTo THEN
+														'Yes' ELSE 'No' 
+														END AS isDateBetween 
+												FROM
+													omg_schedule a 
+												ORDER BY
+												a.dateCreated DESC 
+												LIMIT 1;
+											";
+											$result_valid = mysqli_query($con,$sql_valid);
+											
+											while ($row_valid = mysqli_fetch_assoc($result_valid)) {
+												$schedDate = $row_valid["dateRange"];
+												$isDateBetween = $row_valid["isDateBetween"];
+												$schedMessage = $row_valid["message"];
+											}
+										?>
+									</div>
+									<label id="lblEnableSched" hidden><?php echo $isDateBetween ?></label>
+									<div id="dvSched" class="col-md-12" hidden>
+										<div class="alert alert-warning cust-label">
+											<strong>Date of Submission: </strong> <?php echo $schedDate ?>
+											<br>
+											<strong>Message: </strong> <?php echo $schedMessage ?>
+										</div>
+									</div>
+								</div>
 								<div class="row" hidden>
 									<div class="col-md-10 col-sm-12">
 										<input id="txtSearchAcc" class="form-control input-sm cust-label" type="text" placeholder="Search accomplishment here..." autocomplete="off">

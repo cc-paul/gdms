@@ -162,3 +162,57 @@ function loadAnnouncement() {
         }
     });
 }
+
+$("#btnSaveSchedule").click(function(){
+	var txtDateFrom = $("#txtDateFrom").val();
+	var txtDateTo = $("#txtDateTo").val();
+	var txtMessage = $("#txtScheduleMessage").val();
+	
+	if (txtDateFrom == "" || txtDateTo == "" || txtMessage == "") {
+		JAlert("Please fill in required fields","red");
+		return;
+    }
+    
+    var startDate = new Date(txtDateFrom);
+    var endDate = new Date(txtDateTo);
+    
+    if (startDate > endDate){
+        JAlert("Incorrect Date Range","red");
+		return;
+    }
+    
+    $.ajax({
+        url: "../program_assets/php/web/masterfile",
+        data: {
+            command   : 'save_sched',
+            dateFrom  : txtDateFrom,
+            dateTo    : txtDateTo,
+            message   : txtMessage
+        },
+        type: 'post',
+        success: function (data) {
+            var data = jQuery.parseJSON(data);
+            
+            JAlert(data[0].message,data[0].color);
+        }
+    });
+});
+
+
+loadSched();
+function loadSched() {
+    $.ajax({
+        url: "../program_assets/php/web/masterfile",
+        data: {
+            command   : 'show_sched'
+        },
+        type: 'post',
+        success: function (data) {
+            var data = jQuery.parseJSON(data);
+            
+            $("#txtDateFrom").val(data[0].dateFrom);
+            $("#txtDateTo").val(data[0].dateTo);
+            $("#txtScheduleMessage").val(data[0].message);
+        }
+    });
+}

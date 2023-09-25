@@ -279,6 +279,53 @@
             echo json_encode($json);
             
         break;
+    
+        case "save_sched" :
+            
+            $dateFrom = $_POST["dateFrom"];
+            $dateTo   = $_POST["dateTo"];
+            $message  = $_POST["message"];
+            
+            $query = "INSERT INTO omg_schedule (dateFrom,dateTo,message,dateCreated) VALUES (?,?,?,?)";
+            if ($stmt = mysqli_prepare($con, $query)) {
+                mysqli_stmt_bind_param($stmt,"ssss",$dateFrom,$dateTo,$message,$global_date);
+                mysqli_stmt_execute($stmt);
+               
+                $error   = false;
+                $color   = "green";
+                $message = "Schedule has been added successfully"; 
+               
+            } else {
+                $error   = true;
+                $color   = "red";
+                $message = "Error saving schedule"; 
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
+            
+        break;
+    
+        case "show_sched" :
+            
+            $sql    = "SELECT * FROM omg_schedule ORDER BY dateCreated DESC LIMIT 1";
+            $result = mysqli_query($con,$sql);
+            
+            $json = array();
+            while ($row  = mysqli_fetch_assoc($result)) {
+                $json[] = array(
+                    'dateFrom' => $row["dateFrom"],
+                    'dateTo'   => $row["dateTo"],
+                    'message'  => $row["message"]
+                );
+            }
+            echo json_encode($json);
+            
+        break;
     }
     
 ?>

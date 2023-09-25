@@ -191,52 +191,105 @@
 					<ol class="breadcrumb page-order"></ol>
 				</section>
 				<!-- Main content -->
-				<section class="content col-md-7 col-xs-12">
-					<div class="nav-tabs-custom">
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Announcement Setup</a></li>
-							<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
-						</ul>
-						<div class="tab-content">
-							<div class="tab-pane active" id="admin">
-								<div class="row">
-									<div class="col-md-9 col-xs-12">
-										<div class="form-group">
-											<input id="txtSearchAnnouncement" class="form-control input-sm cust-label" type="text" placeholder="Search announcement here...">
-										</div>
-									</div>
-									<div class="col-md-3 col-xs-6">
-										<div class="form-group">
-											<button id="btnAddAnnouncement" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
-												<i class="fa fa-gear"></i>
-												&nbsp;
-												New Announcement
-											</button>
+				<section class="content col-md-12 col-xs-12">
+					<div class="row">
+						<div class="col-md-8 col-xs-12">
+							<div class="nav-tabs-custom">
+								<ul class="nav nav-tabs">
+										<li class="active"><a href="#admin" data-toggle="tab" aria-expanded="true" class="cust-label">Announcement Setup</a></li>
+										<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane active" id="admin">
+											<div class="row">
+												<div class="col-md-10 col-xs-12">
+													<div class="form-group">
+														<input id="txtSearchAnnouncement" class="form-control input-sm cust-label" type="text" placeholder="Search announcement here...">
+													</div>
+												</div>
+												<div class="col-md-2 col-xs-6">
+													<div class="form-group">
+														<button id="btnAddAnnouncement" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
+															<i class="fa fa-gear"></i>
+															&nbsp;
+															New Announcement
+														</button>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12 col-sm-12">
+													<div class="table-container">
+														<table id="tblAnnouncement" name="tblAnnouncement" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
+															<thead>
+																<tr>
+																	<th>Subject</th>
+																	<th>Description</th>
+																	<th>Type</th>
+																	<th>Date Created</th>
+																	<th></th>
+																</tr>
+															</thead>
+															<tbody></tbody>
+														</table>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-md-12 col-sm-12">
-										<div class="table-container">
-											<table id="tblAnnouncement" name="tblAnnouncement" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
-												<thead>
-													<tr>
-														<th>Subject</th>
-														<th>Description</th>
-														<th>Type</th>
-														<th>Date Created</th>
-														<th></th>
-													</tr>
-												</thead>
-												<tbody></tbody>
-											</table>
+							</div>
+							<div class="col-md-4 col-xs-12">
+								<div class="nav-tabs-custom">
+									<ul class="nav nav-tabs">
+											<li class="active"><a href="#schedulling" data-toggle="tab" aria-expanded="true" class="cust-label">Scheduling</a></li>
+											<!--<li class=""><a href="#user" data-toggle="tab" aria-expanded="false" class="cust-label">User Registration</a></li>-->
+										</ul>
+										<div class="tab-content">
+											<div class="tab-pane active" id="schedulling">
+												<div class="row">
+													<div class="col-md-4 col-sm-12">
+														<div class="form-group">
+														  <label for="txtDateFrom" class="cust-label">Date From</label>
+														  <label class="cust-label text-danger">*</label>
+														  <input style="height: 30px !important;" type="date" class="form-control cust-label cust-textbox" id="txtDateFrom" name="txtDateFrom" placeholder="Enter Date From" autocomplete="off">
+														</div>
+													</div>
+													<div class="col-md-4 col-sm-12">
+														<div class="form-group">
+														  <label for="txtDateTo" class="cust-label">Date To</label>
+														  <label class="cust-label text-danger">*</label>
+														  <input style="height: 30px !important;" type="date" class="form-control cust-label cust-textbox" id="txtDateTo" name="txtDateTo" placeholder="Enter Date To" autocomplete="off">
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-12 col-sm-12">
+														<label class="cust-label">Message</label>
+														<label class="cust-label text-danger">*</label>
+														<textarea id="txtScheduleMessage" name="txtScheduleMessage" rows="3" class="form-control cust-label cust-textbox" placeholder="Enter Message for Scheduling"></textarea>
+													</div>
+												</div>
+												<br>
+												<div class="row">
+													<div class="col-md-8 col-xs-12"></div>
+													<div class="col-md-4 col-xs-12">
+														<div class="form-group">
+															<button id="btnSaveSchedule" name="btnSaveSchedule" type="button" class="btn btn-block btn-default btn-sm cust-textbox">
+																<i class="fa fa-save"></i>
+																&nbsp;
+																Save Schedule
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 				</section>
 				<!-- /.content -->
 			</div>

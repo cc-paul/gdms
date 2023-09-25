@@ -231,6 +231,47 @@
 						<div class="tab-content" style="height: 600px; overflow-x: hidden;">
 							<div class="tab-pane active" id="admin">
 								<div class="row">
+									<div class="col-md-12">
+										<?php
+											include "../program_assets/php/connection/conn.php";
+											$isDateBetween = "Yes";
+											$schedMessage = "";
+											$schedDate = "";
+											
+											$sql_valid = "
+												SELECT
+												CONCAT(DATE_FORMAT(a.dateFrom, '%m/%d/%Y'),'  -  ',DATE_FORMAT(a.dateTo, '%m/%d/%Y')) AS dateRange,
+												a.message,
+												CASE
+													WHEN DATE('".$global_date."') BETWEEN a.dateFrom 
+													AND a.dateTo THEN
+														'Yes' ELSE 'No' 
+														END AS isDateBetween 
+												FROM
+													omg_schedule a 
+												ORDER BY
+												a.dateCreated DESC 
+												LIMIT 1;
+											";
+											$result_valid = mysqli_query($con,$sql_valid);
+											
+											while ($row_valid = mysqli_fetch_assoc($result_valid)) {
+												$schedDate = $row_valid["dateRange"];
+												$isDateBetween = $row_valid["isDateBetween"];
+												$schedMessage = $row_valid["message"];
+											}
+										?>
+									</div>
+									<label id="lblEnableSched" hidden><?php echo $isDateBetween ?></label>
+									<div id="dvSched" class="col-md-12">
+										<div class="alert alert-warning cust-label">
+											<strong>Date of Submission: </strong> <?php echo $schedDate ?>
+											<br>
+											<strong>Message: </strong> <?php echo $schedMessage ?>
+										</div>
+									</div>
+								</div>
+								<div class="row">
 									<div class="col-md-12 col-xs-12">
 										<div class="btn-group pull-right">
 											<button id="btnViewGBP" type="button" class="btn btn-default cust-label">
@@ -276,7 +317,6 @@
 								<div class="row">
 									<div class="col-md-12" hidden>
 										<?php
-											include "../program_assets/php/connection/conn.php";
 											$data_parentFolderID = "-";
 											$data_year = "";
 											$data_amount = "";

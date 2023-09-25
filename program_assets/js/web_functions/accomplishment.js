@@ -52,6 +52,15 @@ $(document).ready(function(){
   }, 1500);
 });
 
+var lblEnableSched = $("#lblEnableSched").text().trim();
+
+  if (lblEnableSched == "Yes") {
+      $("#dvSched").hide();
+  } else {
+      $("#dvSched").show();
+  }
+    
+
 $('#tblAccTable tbody').on('click', 'td button', function (){
 	var data = tblAccTable.row( $(this).parents('tr') ).data();
      
@@ -70,7 +79,7 @@ $('#tblAccTable tbody').on('click', 'td button', function (){
   
   
   getTotalUtils();
-  
+    
   if (data.status == "For Review" || data.status == "Complete") {
     $("#btnSubmitGBPFinal").prop("disabled", true);
     $("#row1").hide();
@@ -80,7 +89,6 @@ $('#tblAccTable tbody').on('click', 'td button', function (){
     $("#row5").hide();
     $("#dvReminder").show();
   }
-  
                  //AND
                  //   a.status IN ('Revision','Endorse','Completed')
   
