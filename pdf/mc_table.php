@@ -149,12 +149,19 @@ class PDF_MC_Table extends FPDF
         $this->SetXY($col2X + 70, $col2Y);
 
         // Column 3
-        $col3Content = "SUSAN G. TAN, PHD\nDIRECTOR, GADRC";
+		// Check if $_SESSION["pdf_preparedby"] exists, otherwise use a default value
+		$preparedBy = isset($_SESSION["pdf_preparedby"]) ? $_SESSION["pdf_preparedby"] : "SUSAN G. TAN";
+		$preparedByPosition = isset($_SESSION["pdf_preparedbyPosition"]) ? $_SESSION["pdf_preparedbyPosition"] : "DIRECTOR, GADRC";
+		$col3Content = $preparedBy . "\n" . $preparedByPosition;
+        $col3Content = strtoupper($col3Content);
         $this->SetXY(120, -16); // Adjust the X position
         $this->MultiCell(70, 5, $col3Content, 0, 'L'); // Use MultiCell to allow line breaks
 
         // Column 4
-        $col4Content = "DR. HERNANDO D. ROBLES,\nCEO VI\nUNIVERSITY PRESIDENT";
+		$approvedBy = isset($_SESSION["pdf_approvedby"]) ? $_SESSION["pdf_approvedby"] : "DR. HERNANDO D. ROBLES";
+		$approvedByPosition = isset($_SESSION["pdf_approvedbyPosition"]) ? $_SESSION["pdf_approvedbyPosition"] : "UNIVERSITY PRESIDENT";
+		$col4Content = $approvedBy . "\n" . $approvedByPosition;
+        $col4Content = strtoupper($col4Content);
         $this->SetXY(160, -16); // Adjust the X position
         $this->MultiCell(70, 5, $col4Content, 0, 'L'); // Use MultiCell to allow line breaks
 

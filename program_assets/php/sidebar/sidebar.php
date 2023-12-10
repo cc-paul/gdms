@@ -69,7 +69,8 @@
 			$li_id_name    = strtolower(str_replace(" ","_",$detail_menu));
 			$menu_id       = $row_detail[4];
 			$positionID    = $_SESSION['positionID'];
-			
+			$message_counter = "";
+
 			if ($positionID == 1) {
 				if ($menu_id == 8 || $menu_id == 2 || $menu_id == 4 || $menu_id == 7 || $menu_id == 10 || $menu_id == 11) {
 					echo '<li id='.$li_id_name.' name='.$li_id_name.'>';

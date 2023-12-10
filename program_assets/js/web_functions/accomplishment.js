@@ -2,6 +2,7 @@ var tblAccTable;
 var cur_parentFolderID = 0;
 var tblBudget_attrID = 0;
 var tblFiles_attrID = 0;
+var tblFilesID = 0;
 var curfolderID;    
 var selectedTab = 1;
 var tblBudgetID_acc = 0;
@@ -579,7 +580,7 @@ function openAttr() {
 
 $('#tblClientFocus tbody').on('click', '.view', function (){
     var data = tblClientFocus.row( $(this).parents('tr') ).data();
-    var curfolderID = data.folderID;
+    curfolderID = data.folderID;
     selectedFolderID = data.folderID;
     
     prepareGBP();
@@ -616,7 +617,7 @@ $('#tblClientFocus tbody').on('click', '.view', function (){
             }
         }
         
-        console.log(data.arrFiles.length);
+        console.log(data.arrFiles);
         
         if (data.arrFiles != "" || data.arrFiles != null) {
             var arrData = data.arrFiles.split('~~');
@@ -644,6 +645,8 @@ $('#tblClientFocus tbody').on('click', '.view', function (){
             }
         }
         
+        
+        console.log(data.arrGenderIssue);
         if (data.arrGenderIssue != "" || data.arrGenderIssue != null) {
             var arrData = data.arrGenderIssue.split('~~');
             
@@ -1232,7 +1235,7 @@ function prepareGBP() {
                         <a
                             id="aFiles${row.id}"
                             name="aFiles${row.id}"
-                            onclick="downLoadFile('${folderID}','${row.description}')"
+                            onclick="downLoadFile('${curfolderID}','${row.description}')"
                             href="#">
                             ${row.description}
                         </a>
@@ -1396,9 +1399,6 @@ function loadClientFocus(selectedTab,parentFolderID) {
                     return `
                         <button type="button" class="btn btn-default view">
                             <i class="fa fa-eye"></i>
-                        </button>
-                        <button type="button" class="btn btn-default edit">
-                            <i class="fa fa-edit"></i>
                         </button>
                     `;
                 }
@@ -1670,9 +1670,6 @@ function loadAttr() {
                         <button type="button" class="btn btn-default view">
                             <i class="fa fa-eye"></i>
                         </button>
-                        <button type="button" class="btn btn-default edit">
-                            <i class="fa fa-edit"></i>
-                        </button>
                     `;
                 }
             }
@@ -1704,3 +1701,10 @@ function loadAttr() {
     });
 }
 
+function downLoadFile(id,fileName) {
+    if (fileName == "-") {
+        JAlert("Nothing to download","red");
+    } else {
+        window.open(`../documents/${id}/${fileName}`,'_blank');
+    }
+}

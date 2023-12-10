@@ -2,10 +2,9 @@
 ini_set('log_errors', 1);
 ini_set('error_log', 'error.log');
 
-
+require dirname(__FILE__,2) . '/program_assets/php/connection/conn.php';
 require('fpdf.php');
 require('mc_table.php');
-require dirname(__FILE__,2) . '/program_assets/php/connection/conn.php';
 if(!isset($_SESSION)) { session_start(); } 
 
 
@@ -62,6 +61,11 @@ while ($row  = mysqli_fetch_assoc($result)) {
     $preparedBy = $row["preparedBy"];
     $preparedByPosition =$row["preparedByPosition"];
     $dateEndorse = $row["dateEndorse"];
+    
+    $_SESSION["pdf_preparedby"] = $preparedBy;
+    $_SESSION["pdf_preparedbyPosition"] = $preparedByPosition;
+    $_SESSION["pdf_approvedby"] = $approvedBy;
+    $_SESSION["pdf_approvedbyPosition"] = $approvedByPosition;
 }
 
 $sql = "

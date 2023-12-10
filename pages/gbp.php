@@ -574,7 +574,7 @@
 										<div class="alert alert-info alert-dismissible">
 											<h4><i class="icon fa fa-info"></i> Alert!</h4>
 											<!--Unable to create GBP. There is an ongoing approval. You can create/edit once it is returned to you.-->
-											The <?php echo $data_year; ?> GAD Plan and Budget Report has been submitted to <?php echo $data_approver; ?> of Gender and 
+											The <?php echo $data_year; ?> GAD Plan and Budget Report has been submitted to Gender and 
 Development Resource Center for review and may not be edited until it has been returned to you.
 										</div>
 									</div>
@@ -933,6 +933,13 @@ Development Resource Center for review and may not be edited until it has been r
 							</div>
 							<div class="col-md-5 col-sm-12">
 								<div class="table-containerx">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="alert alert-warning cust-label">
+												<strong>Allowed file size is only 20mb</strong>
+											</div>
+										</div>
+									</div>
 									<table id="tblFiles" name="tblFiles" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
 										<thead>
 											<tr>
@@ -1206,6 +1213,13 @@ Development Resource Center for review and may not be edited until it has been r
 							</div>
 							<div class="col-md-5 col-sm-12">
 								<div class="table-containerx">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="alert alert-warning cust-label">
+												<strong>Allowed file size is only 20mb</strong>
+											</div>
+										</div>
+									</div>
 									<table id="tblFiles_attr" name="tblFiles_attr" class="table table-bordered table-hover cust-label" style="width: 100% !important;">
 										<thead>
 											<tr>

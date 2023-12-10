@@ -390,3 +390,25 @@ function JAlert (message,type,confirmCallback) {
 		backgroundDismissAnimation : 'glow'
 	});
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

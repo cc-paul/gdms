@@ -512,6 +512,8 @@ function prepareGBP() {
                             style="width: 100%;"
                             id="txtBudgetAmount${row.id}"
                             name="txtBudgetAmount${row.id}"
+                            oninput="this.value = 
+                            !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
                             class="form-control cust-label cust-textbox"
                             placeholder="Enter Budget">
                     `;				
@@ -762,6 +764,15 @@ $("#txtFile").change(function(){
     var fileInput = document.getElementById('txtFile');   
     var filename = fileInput.files[0].name;
     var form_data = new FormData();
+    
+    const fileSizeInMB = file_data.size / 1024 / 1024; 
+
+	if (fileSizeInMB > 20) {
+		JAlert('File size exceeds 20MB. Please choose a smaller file.','orange');
+		$("#file_uploader").val(null);
+		
+		return;
+	}
     
     form_data.append('file', file_data);    
     form_data.append('fileName', filename);

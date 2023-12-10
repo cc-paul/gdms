@@ -80,6 +80,12 @@ while ($row  = mysqli_fetch_assoc($result)) {
     $dateEndorse = $row["dateEndorse"];
     $dateEndorse_format = $row["dateEndorse_format"];
     $ref = $row["ref"];
+    
+    
+    $_SESSION["pdf_preparedby"] = $preparedBy;
+    $_SESSION["pdf_preparedbyPosition"] = $preparedByPosition;
+    $_SESSION["pdf_approvedby"] = $approvedBy;
+    $_SESSION["pdf_approvedbyPosition"] = $approvedByPosition;
 }
 
 $sql = "

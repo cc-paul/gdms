@@ -265,22 +265,100 @@
                 ) AS receivers,
                 a.folderID,
                 DATE_FORMAT(a.dateCreated,'%m/%d/%Y') AS dateSent,
-                DATE_FORMAT(a.deadline,'%m/%d/%Y') AS deadline
+                DATE_FORMAT(a.deadline,'%m/%d/%Y') AS deadline,
+                d.id,
+                d.isRead
             FROM
                 omg_email_header a 
             INNER JOIN
                 omg_registration b 
             ON 
                 a.createdBy = b.id
+            INNER JOIN
+                omg_email_details d
+            ON
+                a.folderID = d.folderID 
             WHERE
                 a.folderID IN (SELECT folderID from omg_email_details WHERE studentID = $id)
             AND
                 a.isAnnouncement = 0
+            GROUP BY
+                a.folderID
             ORDER BY
-                a.dateCreated DESC
+                a.dateCreated DESC 
             ";
             
             return builder($con,$sql);
+            
+        break;
+    
+        case "load_message_inbox_count" :
+            
+            $id = $_SESSION["id"];
+        
+            $sql    = "
+                SELECT
+                    COUNT(d.isRead) AS isRead
+                FROM
+                    omg_email_header a 
+                INNER JOIN
+                    omg_registration b 
+                ON 
+                    a.createdBy = b.id
+                INNER JOIN
+                    omg_email_details d
+                ON
+                    a.folderID = d.folderID 
+                WHERE
+                    a.folderID IN (SELECT folderID from omg_email_details WHERE studentID = $id)
+                AND
+                    a.isAnnouncement = 0
+                AND
+                    d.isRead = 0 
+                AND 
+                    d.studentID = $id
+                GROUP BY
+                    a.folderID
+                ORDER BY
+                    a.dateCreated DESC 
+            ";
+            $result = mysqli_query($con,$sql);
+            
+            $json = array();
+            while ($row  = mysqli_fetch_assoc($result)) {
+                $json[] = array(
+                    'isRead'  => $row["isRead"],
+                );
+            }
+            echo json_encode($json);
+            
+        break;
+    
+        case "read_message" :
+            
+            $id = $_POST["id"];
+        
+            $query = "UPDATE omg_email_details SET isRead = 1 WHERE id = ?";
+            if ($stmt = mysqli_prepare($con, $query)) {
+                mysqli_stmt_bind_param($stmt,"i",$id);
+                mysqli_stmt_execute($stmt);
+               
+                $error   = false;
+                $color   = "green";
+                $message = ""; 
+               
+            } else {
+                $error   = true;
+                $color   = "red";
+                $message = ""; 
+            }
+            
+            $json[] = array(
+                'error' => $error,
+                'color' => $color,
+                'message' => $message
+            );
+            echo json_encode($json);
             
         break;
     

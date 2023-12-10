@@ -228,6 +228,7 @@
 														<i class="fa fa-inbox cust-label pointer"></i>
 														&nbsp;
 														<label class="cust-label pointer">Inbox</label>
+														<span id="spMessageCounter" class="label label-primary pull-right">0</span>
 													</div>
 												</div>
 												<div class="row">
@@ -379,6 +380,13 @@
 										</thead>
 										<tbody></tbody>
 									</table>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="alert alert-warning cust-label">
+									<strong>Allowed file size is only 20mb</strong>
 								</div>
 							</div>
 						</div>

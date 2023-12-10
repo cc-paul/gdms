@@ -14,6 +14,7 @@ $("#btnSend").click(function(){
     var fileCount = Number(tblAttachFiles.data().count());
     var arrSelectedStudent = [];
     
+	
     for (var i = 0; i < arrStudentIDs.length; i++) {
         if (document.getElementById('chkActive' + arrStudentIDs[i]).checked) {
             arrSelectedStudent.push(arrStudentIDs[i]);
@@ -187,12 +188,15 @@ function prepareCompose() {
 }
 
 showSent();
+showInboxCount();
 
 $('#txtSearchHere').keyup(function(){
     tblEmails.search($(this).val()).draw();
 });
 
 function showInbox() {
+	showInboxCount();
+	
 	$("#dvTitle").html(`
         <i class="fa fa-inbox cust-label"></i>
         &nbsp;
@@ -282,6 +286,29 @@ function showInbox() {
     });
 }
 
+function showInboxCount() {
+	
+	
+	$.ajax({
+		url: "../program_assets/php/web/messaging",
+		data: {
+			command   : 'load_message_inbox_count',
+		},
+		type: 'post',
+		success: function (data) {
+			var data = jQuery.parseJSON(data);
+			var counter = 0;
+			
+			if (data.length != 0) {
+				counter = data[0].isRead;
+				
+				$("#spMessageCounter").text(counter);
+            } else {
+				$("#spMessageCounter").hide();	
+			}
+		}
+	});
+}
 
 function showSent() {
     $("#dvTitle").html(`
@@ -385,6 +412,7 @@ $('#tblEmails tbody').on('click', '.list', function (){
 	$("#txtMessageDetails").val(data.message);
 	$("#spDeadline").text(data.deadline);
 	$("#mdEmailDetails").modal();
+
 	
 	$.ajax({
 		url: "../program_assets/php/web/messaging",
@@ -413,6 +441,22 @@ $('#tblEmails tbody').on('click', '.list', function (){
 			}
 			
 			$("#dvFileHolder").html(file);
+		}
+	});
+	
+	$.ajax({
+		url: "../program_assets/php/web/messaging",
+		data: {
+			command   : 'read_message',
+			id  : data.id
+		},
+		type: 'post',
+		success: function (data) {
+			var data = jQuery.parseJSON(data);
+			
+			if (!data[0].error) {
+                showInboxCount();
+            }
 		}
 	});
 });
@@ -457,6 +501,15 @@ function uploadFile(id,filename,event) {
     var fileInput = document.getElementById('file_uploader');   
     var filename = fileInput.files[0].name;
     
+	const fileSizeInMB = file_data.size / 1024 / 1024; 
+
+	if (fileSizeInMB > 20) {
+		JAlert('File size exceeds 20MB. Please choose a smaller file.','orange');
+		$("#file_uploader").val(null);
+		
+		return;
+	}
+	
 	var form_data = new FormData();
     form_data.append('file', file_data);    
     form_data.append('fileName', filename);

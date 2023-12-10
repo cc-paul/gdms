@@ -423,6 +423,8 @@ function prepareAccForm() {
                             id="txtBudgetAmount_acc${row.id}"
                             name="txtBudgetAmount_acc${row.id}"
                             class="form-control cust-label cust-textbox"
+							oninput="this.value = 
+							!!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
                             placeholder="Enter Expense" value="${row.budget}">
                     `;				
                 }
@@ -600,6 +602,8 @@ function prepareAccForm2() {
                             id="txtBudgetAmount_acc_ar${row.id}"
                             name="txtBudgetAmount_acc_ar${row.id}"
                             class="form-control cust-label cust-textbox"
+							oninput="this.value = 
+							!!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null"
                             placeholder="Enter Expense" value="${row.budget}">
                     `;				
                 }
