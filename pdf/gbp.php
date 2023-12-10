@@ -27,6 +27,7 @@ $approvedByPosition = "";
 $preparedBy = "";
 $preparedByPosition = "";
 $dateEndorse = "";
+$totalF = 0;
 
 $sql = "
     SELECT 
@@ -62,6 +63,12 @@ while ($row  = mysqli_fetch_assoc($result)) {
     $preparedBy = $row["preparedBy"];
     $preparedByPosition =$row["preparedByPosition"];
     $dateEndorse = $row["dateEndorse"];
+    
+    
+    $_SESSION["pdf_preparedby"] = $preparedBy;
+    $_SESSION["pdf_preparedbyPosition"] = $preparedByPosition;
+    $_SESSION["pdf_approvedby"] = $approvedBy;
+    $_SESSION["pdf_approvedbyPosition"] = $approvedByPosition;
 }
 
 $sql = "
@@ -76,8 +83,11 @@ $sql = "
         SELECT GROUP_CONCAT(CONCAT(IF(budgetSource = 'GAA',budget,0)) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
     ),'') AS primarySource,
     IFNULL((
-        SELECT GROUP_CONCAT(CONCAT(IF(budgetSource != 'GAA',budget,0)) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
-    ),'') AS otherSource
+        SELECT SUM(IF(budgetSource != 'GAA',budget,0)) FROM omg_gbp_budget WHERE folderID = a.folderID
+    ),'') AS otherSource,
+    IFNULL((
+         SELECT SUM(IF(budgetSource = 'GAA',budget,0)) + SUM(IF(budgetSource != 'GAA',budget,0))  FROM omg_gbp_budget WHERE folderID = a.folderID
+    ),'') AS total
     FROM
         omg_gbp a 
     INNER JOIN
@@ -100,6 +110,7 @@ while ($row  = mysqli_fetch_assoc($result)) {
     $specAmount += $row["specAmount"];
     $primarySource += $row["primarySource"];
     $otherSource += $row["otherSource"];
+    $totalF += $row["total"];
 }
 
 $amountRemoved = $primarySource + $otherSource;
@@ -113,7 +124,7 @@ $pdf->SetWidths(array(280));
 $pdf->Row(array('Organization Hierarchy: '.$_SESSION["college"]));
 $pdf->SetWidths(array(280));
 $pdf->SetWidths(array(70, 70, 70, 70));
-$pdf->Row(array('Total GAD Budget: ' . number_format($specAmount, 2, '.', ','),'Primary Sources: '.number_format($primarySource, 2, '.', ','),'Other Sources: ' . number_format($otherSource, 2, '.', ','), '% of GAD Allocation: '.number_format($percentageRemoved,2).'%'));
+$pdf->Row(array('Total GAD Budget: ' . number_format($totalF, 2, '.', ','),'Primary Sources: '.number_format($primarySource, 2, '.', ','),'Other Sources: ' . number_format($otherSource, 2, '.', ','), '% of GAD Allocation: '.number_format($percentageRemoved,2).'%'));
 $pdf->SetWidths(array(8, 31, 30, 30, 30, 30, 31, 30, 30, 30));
 $pdf->Row(array(
     '',

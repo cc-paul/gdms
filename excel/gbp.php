@@ -21,6 +21,7 @@ define('SPECIAL_ARRAY_TYPE', CellSetterArrayValueSpecial::class);
 $ref = $_GET["ref"];
 $id = $_SESSION["id"];
 $total = 0;
+$totalF = 0;
 $primarySource = 0;
 $otherSource = 0;
 $specAmount = 0;
@@ -81,8 +82,11 @@ $sql = "
         SELECT GROUP_CONCAT(CONCAT(IF(budgetSource = 'GAA',budget,0)) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
     ),'') AS primarySource,
     IFNULL((
-        SELECT GROUP_CONCAT(CONCAT(IF(budgetSource != 'GAA',budget,0)) SEPARATOR '~~') FROM omg_gbp_budget WHERE folderID = a.folderID
-    ),'') AS otherSource
+        SELECT SUM(IF(budgetSource != 'GAA',budget,0)) FROM omg_gbp_budget WHERE folderID = a.folderID
+    ),'') AS otherSource,
+    IFNULL((
+         SELECT SUM(IF(budgetSource = 'GAA',budget,0)) + SUM(IF(budgetSource != 'GAA',budget,0))  FROM omg_gbp_budget WHERE folderID = a.folderID
+    ),'') AS total
     FROM
         omg_gbp a 
     INNER JOIN
@@ -105,6 +109,7 @@ while ($row  = mysqli_fetch_assoc($result)) {
     $specAmount += $row["specAmount"];
     $primarySource += $row["primarySource"];
     $otherSource += $row["otherSource"];
+    $totalF += $row["total"];
 }
 
 $amountRemoved = $primarySource + $otherSource;
@@ -359,8 +364,8 @@ function getClientFocused($whatQuery,$whatToReturn) {
 PhpExcelTemplator::outputToFile('gbp_template.xlsx', 'gbp_'.$seconds.'.xlsx', [
 	'{org}' => $_SESSION["college"],
 	'{org_cat}' => 'State Universities and Colleges, State University or College (Main Campus)',
-    '{total_gad}' => number_format($total, 2, '.', ','),
-    '{total_bud_gaa}' => number_format($specAmount, 2, '.', ','),
+    '{total_gad}' => number_format($totalF, 2, '.', ','),
+    '{total_bud_gaa}' => number_format($total, 2, '.', ','),
 	'{primary}' => number_format($primarySource, 2, '.', ','),
     '{per_gad}' => number_format($percentageRemoved,2).'%',
 	'{other}' => number_format($otherSource, 2, '.', ','),
